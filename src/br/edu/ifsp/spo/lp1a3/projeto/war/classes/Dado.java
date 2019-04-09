@@ -21,9 +21,8 @@ public class Dado {
 	}
 	
 	//Métodos
-	public int rolarDado(int qtdLados) {
-		int valorDado = new Random().nextInt(qtdLados);
-		
+	public int rolarDado() {
+		int valorDado = new Random().nextInt(getNumLados());
 		return valorDado + 1;
 	}
 	
