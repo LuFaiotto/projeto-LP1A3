@@ -11,7 +11,7 @@ public class Tabuleiro {
 	//Análise da rolagem
 	//"Matar" o exército - Retorna peças do player, perdidas ou ganhas
 	
-	int diceSet = 6; //Dice game set
+	int diceSet = 0; //Dice game set
 	
 	public Tabuleiro(int diceSet){
         this.diceSet = diceSet;
