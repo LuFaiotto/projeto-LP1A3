@@ -13,6 +13,8 @@ public class App {
 //		Dado dadoTeste = new Dado(6);
 
 		//dice compare
+		Partida p1 = new Partida(4);
+		p1.destribuirTerritorio(4);
 		Tabuleiro tabuleiro = new Tabuleiro(6);
 		System.out.println(tabuleiro.comprarRolagem());
 		int venceu = 0, perdeu = 0, empatou = 0;
