@@ -14,15 +14,15 @@ public class App {
 
 		//dice compare
 		Partida p1 = new Partida(4);
-		p1.destribuirTerritorio(4);
+		p1.distribuirTerritorio(4);
 		Tabuleiro tabuleiro = new Tabuleiro(6);
-		System.out.println(tabuleiro.comprarRolagem());
+		System.out.println(tabuleiro.compararRolagem());
 		int venceu = 0, perdeu = 0, empatou = 0;
 		for(int i = 0; i < 100; i ++){
 
-			if(tabuleiro.comprarRolagem().equals("Venceu")){
+			if(tabuleiro.compararRolagem().equals("Venceu")){
 				venceu++;
-			}	else if(tabuleiro.comprarRolagem().equals("Empatou")) {
+			}	else if(tabuleiro.compararRolagem().equals("Empatou")) {
 				empatou++;
 			} else {
 				perdeu++;

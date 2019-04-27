@@ -1,7 +1,9 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 public class Pais {
 	
@@ -18,6 +20,16 @@ public class Pais {
 //		this.player = player;
 //		this.conexoes = conexoes;
 //	}
+	
+	/*Map<Integer, String> mapa = new HashMap<Integer, String>();
+	
+	mapa.put(1, "Argentina");
+	mapa.put(2, "Brasil");
+	mapa.put(3, "Colômbia");
+	
+	//System.out.println(mapa);
+	
+	System.out.println(mapa.get(1));*/
 	
 	public String getNome() {
 		return nome;
