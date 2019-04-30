@@ -1,9 +1,58 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.*;
 
 public class App {
 
+	public void loadGameConf() {
+		
+		Map<Integer, Pais> mapa = new HashMap<Integer, Pais>();
+		Continente americaDoNorte = new Continente("América Do Norte", new int [] {1,2,3,4,5,6,7,8,9});
+		mapa.put(1, new Pais("Alaska", new int [] {2, 3, 37}));
+		mapa.put(2, new Pais("Mackenzie", new int [] {3, 4, 6}));
+		mapa.put(3, new Pais("Vancouver", new int [] {1, 2, 4}));
+		mapa.put(4, new Pais("Ottawa", new int [] {2, 3, 7, 8}));
+		mapa.put(5, new Pais("Labrador", new int [] {}));
+		mapa.put(6, new Pais("Groelândia", new int [] {}));
+		mapa.put(7, new Pais("Califórnia", new int [] {}));
+		mapa.put(8, new Pais("Nova York", new int [] {}));
+		mapa.put(9, new Pais("México", new int [] {}));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
 		
 //		Dado dadoTeste = new Dado(6);
