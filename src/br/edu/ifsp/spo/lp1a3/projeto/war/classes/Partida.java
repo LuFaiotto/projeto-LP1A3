@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 public class Partida {
 
 	public int playersQtd;
+	public int diceset;
 	public static int territorios = 42;
 	private LinkedHashSet<Player> players = new LinkedHashSet<>();
 	
@@ -27,6 +28,14 @@ public class Partida {
 
 	public void setPlayersQtd(int playersQtd) {
 		this.playersQtd = playersQtd;
+	}
+
+	public int getDiceset() {
+		return diceset;
+	}
+
+	public void setDiceset(int diceset) {
+		this.diceset = diceset;
 	}
 
 	public static int getTerritorios() {

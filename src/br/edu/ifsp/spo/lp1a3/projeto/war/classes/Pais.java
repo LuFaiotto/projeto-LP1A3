@@ -1,9 +1,9 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.Collection;
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
+//import java.util.Map;
 
 public class Pais {
 	
@@ -46,7 +46,5 @@ public class Pais {
 	public Collection<Pais> getConexoes() {
 		return conexoes;
 	}
-	
-	
 	
 }

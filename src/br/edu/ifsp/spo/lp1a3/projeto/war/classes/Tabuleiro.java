@@ -11,10 +11,10 @@ public class Tabuleiro {
 	//Análise da rolagem
 	//"Matar" o exército - Retorna peças do player, perdidas ou ganhas
 	
-	int diceSet = 0; //Dice game set
+	int diceSet; //Dice game set
 	
-	public Tabuleiro(int diceSet){
-        this.diceSet = diceSet;
+	public Tabuleiro(Partida partida){
+        this.diceSet = partida.getDiceset();
     }
 
     public String compararRolagem(){
