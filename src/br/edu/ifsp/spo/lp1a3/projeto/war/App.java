@@ -1,8 +1,5 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war;
 
-//import java.util.HashMap;
-//import java.util.Map;
-
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.*;
 
 public class App {
@@ -12,6 +9,37 @@ public class App {
 //		mapa.put(1, new Pais());
 //	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
 		
 //		Dado dadoTeste = new Dado(6);

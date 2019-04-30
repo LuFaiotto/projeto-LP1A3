@@ -2,38 +2,33 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.Collection;
 import java.util.HashSet;
-
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.*;
+import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Pais;
 
 @SuppressWarnings("unused")
 public class Continente {
-	
 	private String nome;
-	private Collection<Pais> paises = new HashSet<>();
-	private Collection<Continente> conexoes = new HashSet<>();
+	private int[] paises;
 	
+	public Continente(String nome, int [] paises) {
+		setNome(nome);
+		setPaises(paises);
+	}
+	
+	
+	
+	//GETTERS; SETTERS; OVERRIDES
 	public String getNome() {
 		return nome;
 	}
-	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public Collection<Pais> getPaises() {
-		return paises;
+	public Pais getPaises() {
+		for(int pais : paises){
 	}
-	
-	public void setPaises(Collection<Pais> paises) {
+	}
+	public void setPaises(int[] paises) {
 		this.paises = paises;
-	}
-	
-	public Collection<Continente> getConexoes() {
-		return conexoes;
-	}
-	
-	public void setConexoes(Collection<Continente> conexoes) {
-		this.conexoes = conexoes;
 	}
 
 	@Override
