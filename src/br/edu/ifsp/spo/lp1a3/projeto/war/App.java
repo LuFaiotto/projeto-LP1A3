@@ -1,11 +1,13 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.*;
 
 public class App {
+	
+//	public void iniciarPartida() {
+//		Map<Integer, Pais> mapa = new HashMap<Integer, Pais>();
+//		mapa.put(1, new Pais());
+//	}
 
 	
 	

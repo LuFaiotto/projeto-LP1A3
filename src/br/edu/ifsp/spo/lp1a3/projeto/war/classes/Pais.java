@@ -14,6 +14,7 @@ public class Pais {
 	private int qtdExercito;
 	private int [] conexoes;
 	
+
 	public Pais(String nome, int[] conexoes) {
 		this.nome = nome;
 		this.status = false;
@@ -34,6 +35,9 @@ public class Pais {
 	}
 	public int getQtdExercito() {
 		return qtdExercito;
+	}
+	public void setQtdExercito(int qtdExercito) {
+		this.qtdExercito = qtdExercito;
 	}
 	public int[] getConexoes() {
 		return conexoes;

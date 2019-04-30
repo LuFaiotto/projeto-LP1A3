@@ -83,4 +83,16 @@ public class Tabuleiro {
             return "Perdeu";
         }
     }
+    
+    public static int compareRolagemDados(int ladosDado) {
+    	Dado dado = new Dado(ladosDado);
+    	int result1 = dado.rolarDado();
+    	int result2 = dado.rolarDado();
+    	if(result1 > result2) {
+    		return 1;
+    	} else if(result1 == result2) {
+    		return 0;
+    	}
+    	return -1;
+    }
 }
