@@ -6,4 +6,17 @@ public class Exercito {
 	//Método atacar - retorna Booleano - gera rolagem de dados - recebe local do ataque
 	//Movimentar
 	//Posicionar
+	
+	public void movimentarExercito() {
+		
+	}
+	
+	public int posicionarExercito(Player player, Exercito exercito) {
+		return 0;
+	}
+	
+	public boolean atacar(Pais pais) {
+		//Validação se pode ou não atacar
+		return false;
+	}
 }

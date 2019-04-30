@@ -13,9 +13,9 @@ public class App {
 //		Dado dadoTeste = new Dado(6);
 
 		//dice compare
-		Partida p1 = new Partida(4);
-		p1.distribuirTerritorio(4);
-		Tabuleiro tabuleiro = new Tabuleiro(6);
+		Partida partida = new Partida(4, 6);
+		partida.distribuirTerritorio(4);
+		Tabuleiro tabuleiro = new Tabuleiro(partida);
 		System.out.println(tabuleiro.compararRolagem());
 		int venceu = 0, perdeu = 0, empatou = 0;
 		for(int i = 0; i < 100; i ++){

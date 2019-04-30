@@ -13,6 +13,10 @@ public class Tabuleiro {
 	
 	int diceSet; //Dice game set
 	
+//	public Tabuleiro() {
+//		
+//	}
+	
 	public Tabuleiro(Partida partida){
         this.diceSet = partida.getDiceset();
     }

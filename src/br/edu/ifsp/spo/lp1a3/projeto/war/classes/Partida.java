@@ -9,8 +9,9 @@ public class Partida {
 	public static int territorios = 42;
 	private LinkedHashSet<Player> players = new LinkedHashSet<>();
 	
-	public Partida(int playersQtd) {
+	public Partida(int playersQtd, int diceset) {
 		this.playersQtd = playersQtd;
+		this.diceset = diceset;
 	}
 	
 	public void distribuirTerritorio(int players) {
@@ -22,6 +23,7 @@ public class Partida {
 	}
 	
 	
+	//Getters e Setters
 	public int getPlayersQtd() {
 		return playersQtd;
 	}
