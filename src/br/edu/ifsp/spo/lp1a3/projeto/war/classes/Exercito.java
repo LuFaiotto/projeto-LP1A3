@@ -1,22 +1,71 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
+import java.util.ArrayList;
+
+// Classe nï¿½o serï¿½ utilizada. Movimentar os mï¿½todos para as outras classes
 public class Exercito {
 
-	//Ao atacar, o player vai receber de onde ele pode atacar, onde ele pode atacar, qos exércitos e escolhe qtos quer utilizar
-	//Método atacar - retorna Booleano - gera rolagem de dados - recebe local do ataque
+	//Ao atacar, o player vai receber de onde ele pode atacar, onde ele pode atacar, qos exï¿½rcitos e escolhe qtos quer utilizar
+	//Mï¿½todo atacar - retorna Booleano - gera rolagem de dados - recebe local do ataque
 	//Movimentar
 	//Posicionar
 	
-	public void movimentarExercito() {
-		
+	private int ladoDados = 6; //Configuraï¿½ï¿½o de quantidade de lados
+	
+	public String movimentarExercito(Pais paisAtual, Pais paisFuturo, int qtdExercito) {
+		if(validarAtaque() && qtdExercito < paisAtual.getQtdExercito()) {
+			paisAtual.setQtdExercito(paisAtual.getQtdExercito() - qtdExercito);
+			paisFuturo.setQtdExercito(paisFuturo.getQtdExercito() + qtdExercito);
+			return "Exï¿½rcito movimentado com sucesso";
+		}
+		return "Nï¿½o ï¿½ possï¿½vel realizar essa movimentaï¿½ï¿½o";
 	}
 	
-	public int posicionarExercito(Player player, Exercito exercito) {
+	//Ainda nï¿½o implementado
+	public int posicionarExercito(Pais pais) {
 		return 0;
 	}
 	
-	public boolean atacar(Pais pais) {
-		//Validação se pode ou não atacar
+	public void atacar(Pais atacante, Pais atacado, int qtdExercito) {
+		int valorRetornado;
+		//Validaï¿½ï¿½o se pode ou nï¿½o atacar - Ver se possui exercito locado no paï¿½s e se o paï¿½s a atacar estï¿½ aos arredores
+		if(validarAtaque() && atacante.getQtdExercito() > 1) {
+			//Ataque. Rolagem de dados. Considerar player 1 como o atacante
+			for(int i = 0; i <= qtdExercito; i++) {
+				//Rolagem de dados, recebendo o retorno do mï¿½todo
+				valorRetornado = Tabuleiro.compareRolagemDados(ladoDados);
+				//Melhorar esse mï¿½todo
+				if(atacante.getQtdExercito() > 1 && valorRetornado == 1 && atacado.getQtdExercito() > 0) {
+					atacado.setQtdExercito(atacado.getQtdExercito() - 1);
+				} else if (valorRetornado == 0) {
+					atacante.setQtdExercito(atacante.getQtdExercito() - 1);
+				} else {
+					atacante.setQtdExercito(atacante.getQtdExercito() - 1);
+				}
+			}
+		}
+		
+		if(atacado.getQtdExercito() == 0 && atacante.getQtdExercito() > 1) {
+			movimentarExercito(atacante, atacado, 1);
+		}
+	}
+	
+	public boolean validarAtaque() {
+		//Teste; Desconsiderar posteriormente
+		ArrayList<String> conexoes = new ArrayList<String>();
+		String paisAAtacar = "Argentina";
+		
+		conexoes.add("Argentina");
+		conexoes.add("Venezuela");
+		conexoes.add("Peru");
+		
+		//Se houver possibilidade de ataque, retorna true. Verificar o paï¿½s do qual deseja atacar e quais as conexï¿½es dele
+		for(String pais: conexoes) {
+			if(pais.equalsIgnoreCase(paisAAtacar)) {
+				return true;
+			}
+		}
 		return false;
 	}
+	
 }

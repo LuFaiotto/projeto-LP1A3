@@ -3,7 +3,6 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 import java.util.LinkedHashSet;
 
 public class Partida {
-
 	public int playersQtd;
 	public int diceset;
 	public static int territorios = 42;
@@ -27,35 +26,29 @@ public class Partida {
 	public int getPlayersQtd() {
 		return playersQtd;
 	}
-
 	public void setPlayersQtd(int playersQtd) {
 		this.playersQtd = playersQtd;
 	}
-
 	public int getDiceset() {
 		return diceset;
 	}
-
 	public void setDiceset(int diceset) {
 		this.diceset = diceset;
 	}
-
 	public static int getTerritorios() {
 		return territorios;
 	}
-
 	public static void setTerritorios(int territorios) {
 		Partida.territorios = territorios;
 	}
-
 	public LinkedHashSet<Player> getPlayers() {
 		return players;
 	}
-
 	public void setPlayers(LinkedHashSet<Player> players) {
 		this.players = players;
 	}
 
+	//OVERRIDES
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -63,7 +56,6 @@ public class Partida {
 		result = prime * result + ((players == null) ? 0 : players.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -80,6 +72,4 @@ public class Partida {
 			return false;
 		return true;
 	}
-	
-	
 }
