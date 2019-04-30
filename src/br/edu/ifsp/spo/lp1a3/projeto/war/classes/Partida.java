@@ -3,6 +3,7 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 import java.util.LinkedHashSet;
 
 public class Partida {
+
 	public int playersQtd;
 	public int diceset;
 	public static int territorios = 42;
@@ -13,12 +14,14 @@ public class Partida {
 		this.diceset = diceset;
 	}
 	
-	public void distribuirTerritorio(int players) {	
+	public void distribuirTerritorio(int players) {
+		
 	}
 	
 	public void distribuirExercitos(int players) {
 		
 	}
+	
 	
 	//Getters e Setters
 	public int getPlayersQtd() {

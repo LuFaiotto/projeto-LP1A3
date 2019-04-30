@@ -30,7 +30,7 @@ public class Tabuleiro {
 		mapa.put(9, new Pais("México", new int [] {7, 8, 10}));
 		
 		continentes.add(new Continente("América do Sul", new int [] {10, 11, 12, 13}));
-		
+		z
 	}
 
 	
