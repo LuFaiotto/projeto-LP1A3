@@ -17,7 +17,7 @@ public class Tabuleiro {
         this.diceSet = diceSet;
     }
 
-    public String comprarRolagem(){
+    public String compararRolagem(){
         Dado dice = new Dado(6);
         int resultP1 = dice.rolarDado();
         int resultP2 = dice.rolarDado();
