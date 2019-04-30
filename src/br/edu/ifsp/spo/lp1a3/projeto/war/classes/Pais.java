@@ -43,6 +43,9 @@ public class Pais {
 	public int getQtdExercito() {
 		return qtdExercito;
 	}
+	public void setQtdExercito(int qtdExercito) {
+		this.qtdExercito = qtdExercito;
+	}
 	public Collection<Pais> getConexoes() {
 		return conexoes;
 	}

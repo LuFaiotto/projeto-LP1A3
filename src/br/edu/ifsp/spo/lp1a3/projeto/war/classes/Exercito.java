@@ -2,6 +2,7 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
 
+// Classe não será utilizada. Movimentar os métodos para as outras classes
 public class Exercito {
 
 	//Ao atacar, o player vai receber de onde ele pode atacar, onde ele pode atacar, qos exércitos e escolhe qtos quer utilizar
@@ -9,21 +10,44 @@ public class Exercito {
 	//Movimentar
 	//Posicionar
 	
-	public void movimentarExercito() {
-		
-	}
+	private int ladoDados = 6; //Configuração de quantidade de lados
 	
-	public int posicionarExercito(Player player, Exercito exercito) {
-		return 0;
-	}
-	
-	public int atacar(Pais pais) {
-		//Validação se pode ou não atacar - chama dentro desse método
-		if(validarAtaque()) {
-			//ataque. Rolagem de dados
-			return 1;
+	public String movimentarExercito(Pais paisAtual, Pais paisFuturo, int qtdExercito) {
+		if(validarAtaque() && qtdExercito < paisAtual.getQtdExercito()) {
+			paisAtual.setQtdExercito(paisAtual.getQtdExercito() - qtdExercito);
+			paisFuturo.setQtdExercito(paisFuturo.getQtdExercito() + qtdExercito);
+			return "Exército movimentado com sucesso";
 		}
+		return "Não é possível realizar essa movimentação";
+	}
+	
+	//Ainda não implementado
+	public int posicionarExercito(Pais pais) {
 		return 0;
+	}
+	
+	public void atacar(Pais atacante, Pais atacado, int qtdExercito) {
+		int valorRetornado;
+		//Validação se pode ou não atacar - Ver se possui exercito locado no país e se o país a atacar está aos arredores
+		if(validarAtaque() && atacante.getQtdExercito() > 1) {
+			//Ataque. Rolagem de dados. Considerar player 1 como o atacante
+			for(int i = 0; i <= qtdExercito; i++) {
+				//Rolagem de dados, recebendo o retorno do método
+				valorRetornado = Tabuleiro.compareRolagemDados(ladoDados);
+				//Melhorar esse método
+				if(atacante.getQtdExercito() > 1 && valorRetornado == 1 && atacado.getQtdExercito() > 0) {
+					atacado.setQtdExercito(atacado.getQtdExercito() - 1);
+				} else if (valorRetornado == 0) {
+					atacante.setQtdExercito(atacante.getQtdExercito() - 1);
+				} else {
+					atacante.setQtdExercito(atacante.getQtdExercito() - 1);
+				}
+			}
+		}
+		
+		if(atacado.getQtdExercito() == 0 && atacante.getQtdExercito() > 1) {
+			movimentarExercito(atacante, atacado, 1);
+		}
 	}
 	
 	public boolean validarAtaque() {
