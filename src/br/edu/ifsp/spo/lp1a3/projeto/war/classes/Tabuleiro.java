@@ -44,19 +44,25 @@ public class Tabuleiro {
 		mapa.put(25, new Pais("Suécia", new int []{20, 26}));
 		mapa.put(26, new Pais("Moscou", new int []{24, 25, 27, 28, 29}));
 
-		continentes.add(new Continente("Ásia", new int[]{27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37}));
-		mapa.put(27, new Pais("Oriente Médio", new int[]{24, 26, 29, 30}));
-		mapa.put(28, new Pais("OMSK", new int[]{26, 29, 31, 33, 36}));
-		mapa.put(29, new Pais("Aral", new int[]{26, 27, 28, 30, 36}));
-		mapa.put(30, new Pais("Índia", new int[]{27, 29, 34, 36, 39}));
-		mapa.put(31, new Pais("Dudinka", new int[]{28, 32, 33, 35}));
-		mapa.put(32, new Pais("Tchita", new int[]{31, 33, 35, 36, 37}));
-		mapa.put(33, new Pais("Mongólia", new int[]{32}));
-		mapa.put(34, new Pais("Vietnã", new int[]{}));
-		mapa.put(35, new Pais("Sibéria", new int[]{}));
-		mapa.put(36, new Pais("China", new int[]{}));
-		mapa.put(37, new Pais("Vladvostok", new int[]{}));
-		mapa.put(38, new Pais("Japão", new int[]{36, 37}));
+		continentes.add(new Continente("Ásia", new int []{27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37}));
+		mapa.put(27, new Pais("Oriente Médio", new int []{24, 26, 29, 30}));
+		mapa.put(28, new Pais("OMSK", new int []{26, 29, 31, 33, 36}));
+		mapa.put(29, new Pais("Aral", new int []{26, 27, 28, 30, 36}));
+		mapa.put(30, new Pais("Índia", new int []{27, 29, 34, 36, 39}));
+		mapa.put(31, new Pais("Dudinka", new int []{28, 32, 33, 35}));
+		mapa.put(32, new Pais("Tchita", new int []{31, 33, 35, 36, 37}));
+		mapa.put(33, new Pais("Mongólia", new int []{28, 31, 32, 36}));
+		mapa.put(34, new Pais("Vietnã", new int []{30, 36, 40}));
+		mapa.put(35, new Pais("Sibéria", new int []{31, 32, 37}));
+		mapa.put(36, new Pais("China", new int []{28, 29, 30, 32, 33, 34, 37, 38}));
+		mapa.put(37, new Pais("Vladvostok", new int []{1, 32, 33, 35, 38}));
+		mapa.put(38, new Pais("Japão", new int []{36, 37}));
+
+		continentes.add(new Continente("Oceania", new int []{39, 40, 41, 42}));
+		mapa.put(39, new Pais("Sumatra", new int []{30, 42}));
+		mapa.put(40, new Pais("Borneo", new int []{34, 41, 42}));
+		mapa.put(41, new Pais("Nova Guiné", new int []{40, 42}));
+		mapa.put(42, new Pais("Austrália", new int []{39, 40, 41}));
 
 	}
 
