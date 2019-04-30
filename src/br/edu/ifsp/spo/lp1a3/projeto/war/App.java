@@ -1,8 +1,16 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.*;
 
 public class App {
+	
+//	public void iniciarPartida() {
+//		Map<Integer, Pais> mapa = new HashMap<Integer, Pais>();
+//		mapa.put(1, new Pais());
+//	}
 
 	public static void main(String[] args) {
 		
@@ -31,5 +39,9 @@ public class App {
 		System.out.println("ganhou " + venceu);
 		System.out.println("perder " + perdeu);
 		System.out.println("empatou" + empatou);
+		
+		Map<Integer, String> mapa = new HashMap<Integer, String>();
+
+		mapa.put(1, "Argentina");
 	}
 }
