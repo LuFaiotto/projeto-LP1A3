@@ -28,9 +28,13 @@ public class Continente {
 	}
 	public Pais getPaises() {
 		for(int pais : paises){
+<<<<<<< HEAD
 			for(int i = 1; i < Tabuleiro.mapa.size(); i++){	
 				return Tabuleiro.mapa.get(pais);
 			}
+=======
+			
+>>>>>>> 164f472e2c0b36a1016b4dca1c00672144c13220
 		}
 		return null;
 	}

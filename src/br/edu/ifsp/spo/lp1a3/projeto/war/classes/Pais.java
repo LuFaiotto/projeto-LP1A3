@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public class Pais {
 	private String nome;
 	private boolean status;
