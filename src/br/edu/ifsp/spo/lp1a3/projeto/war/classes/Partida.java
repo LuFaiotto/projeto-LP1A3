@@ -13,11 +13,15 @@ public class Partida {
 		this.diceset = diceset;
 	}
 	
-	public void distribuirTerritorio(int players) {
+	public void iniciarPartida(){
 		
 	}
 	
-	public void distribuirExercitos(int players) {
+	
+	private void distribuirTerritorio(int players) {
+		
+	}
+	private void distribuirExercitos(int players) {
 		
 	}
 	
