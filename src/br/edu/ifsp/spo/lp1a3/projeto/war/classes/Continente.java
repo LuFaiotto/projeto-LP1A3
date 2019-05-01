@@ -25,7 +25,9 @@ public class Continente {
 	}
 	public Pais getPaises() {
 		for(int pais : paises){
-	}
+			
+		}
+		return null;
 	}
 	public void setPaises(int[] paises) {
 		this.paises = paises;
