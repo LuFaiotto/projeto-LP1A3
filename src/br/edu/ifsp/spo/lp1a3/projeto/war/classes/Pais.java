@@ -56,7 +56,7 @@ public class Pais {
 
 	@Override
 	public String toString() {
-		return "Pais " + nome + ", Ocupação " + status + ", Dominador: " + player + ", Fronteiras: " + Arrays.toString(conexoes);
+		return "Pais " + nome + ", OcupaÃ§Ã£o: " + status + ", Dominador: " + player + ", Fronteiras: " + Arrays.toString(conexoes);
 	}
 
 

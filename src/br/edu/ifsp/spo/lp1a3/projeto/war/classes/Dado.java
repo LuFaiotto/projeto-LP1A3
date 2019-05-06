@@ -5,16 +5,19 @@ import java.util.Random;
 public class Dado {
 
 	private int diceSet;
-	//M�todos
+	
+	//Contrutor
+	//Construtor
+	public Dado(int lados) {
+		setNumLados(lados);
+	}	
+	
+	//Métodos	
 	public int rolarDado() {
 		int valorDado = new Random().nextInt(getNumLados());
 		return valorDado + 1;
 	}
 
-	//Construtor
-	public Dado(int lados) {
-		setNumLados(lados);
-	}	
 	//Getters e Setters
 	public int getNumLados() {
 		return this.diceSet;	

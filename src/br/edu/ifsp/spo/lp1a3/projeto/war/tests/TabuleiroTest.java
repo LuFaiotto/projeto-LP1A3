@@ -13,11 +13,9 @@ class TabuleiroTest {
 		// 3. Asser√ß√£o
 	@Test
 	void load_game_conf_deve_carregar_o_mapa() {
-		//1. ConfiguraÁ„o
+		//1. Configura√ß√£o
 		Tabuleiro t = new Tabuleiro(6);
-		//2. ExecuÁ„o
-		
-		//3. AsserÁ„o
+		// 2. Execu√ß√£o
 	}
 	
 	@Test
@@ -25,20 +23,31 @@ class TabuleiroTest {
 		// 1. Configura√ß√£o
 		Tabuleiro t = new Tabuleiro(6);
 		// 2. Execu√ß√£o
+		System.out.println("Retornando paises array");
 		for(Continente continente : t.continentes){
 			System.out.println(continente.toString());
 		}
 	}
 	
 	@Test
-	void deve_retornar_paises_continente() {
-		//1. ConfiguraÁ„o
+	void deve_retornar_paises_array() {
+		//1. Configura√ß√£o
 		Tabuleiro t = new Tabuleiro(6);
-		//2. ExecuÁ„o
+		//2. Execu√ß√£o
+		for(int i = 0; i < t.continentes.size(); i++) {
+			System.out.println(t.continentes.get(i).getPaisesArray());
+		}		
+	}
+	
+	@Test
+	void deve_retornar_paises_continente() {
+		//1. Configura√ß√£o
+		Tabuleiro t = new Tabuleiro(6);
+		//2. ExecuÔøΩÔøΩo
 		for(Continente continente : t.continentes){
 			System.out.println(continente.getPaises().toString());
 		}
-		//3. AsserÁ„o
+		//3. Asser√ß√£o
 	}
 
 }
