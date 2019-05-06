@@ -27,17 +27,14 @@ public class Continente {
 		this.nome = nome;
 	}
 	public Pais getPaises() {
-		for(int pais : paises){
-
-			for(int i = 1; i < Tabuleiro.mapa.size(); i++){	
-				return Tabuleiro.mapa.get(pais);
-			}
+		for(int i = 0; i < this.paises.length; i++){
+			return Tabuleiro.mapa.get(this.paises[i]);
 		}
 		return null;
 	}
 	public void setPaises(int[] paises) {
 		for(int i : paises){
-			pais.add(Tabuleiro.mapa.get(paises));
+			pais.add(Tabuleiro.mapa.get(i));
 		}
 	}
 
@@ -53,7 +50,7 @@ public class Continente {
 	}
 	@Override
 	public String toString() {
-		return "Continente: " + nome + "]";
+		return "Continente: " + nome;
 	}
 	@Override
 	public boolean equals(Object obj) {

@@ -12,6 +12,15 @@ class TabuleiroTest {
 		// 2. ExecuÃ§Ã£o
 		// 3. AsserÃ§Ã£o
 	@Test
+	void load_game_conf_deve_carregar_o_mapa() {
+		//1. Configuração
+		Tabuleiro t = new Tabuleiro(6);
+		//2. Execução
+		
+		//3. Asserção
+	}
+	
+	@Test
 	void deve_retornar_continentes(){
 		// 1. ConfiguraÃ§Ã£o
 		Tabuleiro t = new Tabuleiro(6);
@@ -19,6 +28,17 @@ class TabuleiroTest {
 		for(Continente continente : t.continentes){
 			System.out.println(continente.toString());
 		}
+	}
+	
+	@Test
+	void deve_retornar_paises_continente() {
+		//1. Configuração
+		Tabuleiro t = new Tabuleiro(6);
+		//2. Execução
+		for(Continente continente : t.continentes){
+			System.out.println(continente.getPaises().toString());
+		}
+		//3. Asserção
 	}
 
 }

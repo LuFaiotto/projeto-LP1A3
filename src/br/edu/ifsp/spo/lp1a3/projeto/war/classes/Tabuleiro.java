@@ -11,7 +11,6 @@ public class Tabuleiro {
 
 	//CARREGA TODAS A CONFIGURAÃ‡Ã•ES DO JOGO
 	public void loadMapConf(){
-		continentes.add(new Continente("Amï¿½rica Do Norte", new int [] {1,2,3,4,5,6,7,8,9}));
 		mapa.put(1, new Pais("Alaska", new int [] {2, 3, 37}));
 		mapa.put(2, new Pais("Mackenzie", new int [] {3, 4, 6}));
 		mapa.put(3, new Pais("Vancouver", new int [] {1, 2, 4}));
@@ -20,7 +19,8 @@ public class Tabuleiro {
 		mapa.put(6, new Pais("Groelï¿½ndia", new int [] {2, 5, 21}));
 		mapa.put(7, new Pais("Califï¿½rnia", new int [] {3, 4, 8, 9}));
 		mapa.put(8, new Pais("Nova York", new int [] {4, 5, 7, 9}));
-		mapa.put(9, new Pais("Mï¿½xico", new int [] {7, 8, 10}));	
+		mapa.put(9, new Pais("Mï¿½xico", new int [] {7, 8, 10}));
+		continentes.add(new Continente("Amï¿½rica Do Norte", new int [] {1,2,3,4,5,6,7,8,9}));
 		
     continentes.add(new Continente("América do Sul", new int [] {10, 11, 12, 13}));
 		mapa.put(10, new Pais("Venezuela", new int []{9, 11, 12, 13}));
