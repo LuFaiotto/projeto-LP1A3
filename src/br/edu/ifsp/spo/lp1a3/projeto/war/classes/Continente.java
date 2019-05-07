@@ -11,7 +11,7 @@ import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Pais;
 public class Continente {
 	private String nome;
 	private int[] paises;
-	private ArrayList<Pais> pais = new ArrayList<>();
+	private ArrayList<Pais> paisesArray = new ArrayList<>();
 	
 	public Continente(String nome, int [] paisesRef) {
 		setNome(nome);
@@ -21,7 +21,7 @@ public class Continente {
 	
 	
 	
-//GETTERS; SETTERS; OVERRIDES
+//GETTERS E SETTERS
 	public String getNome() {
 		return nome;
 	}
@@ -42,19 +42,11 @@ public class Continente {
 	
 	public void setPaisesArray(int[] paises) {
 		for(int i = 0; i < this.paises.length; i++){
-			pais.add(Tabuleiro.mapa.get(paises[i]));
-		}
-		System.out.println(pais.size());
-		for(Pais p : pais) {
-			System.out.println("SET TO STRING" + p.toString());
+			paisesArray.add(Tabuleiro.mapa.get(paises[i]));
 		}
 	}
-	public Pais getPaisesArray() {
-		for(Pais p : pais){
-			System.out.println(" pais get " + p.toString());
-			return p;
-		}
-		return null;
+	public ArrayList<Pais> getPaisesArray() {
+		return paisesArray;
 	}
 	
 //OVERRIDES

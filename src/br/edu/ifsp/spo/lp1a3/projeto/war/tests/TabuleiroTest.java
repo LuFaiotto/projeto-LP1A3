@@ -8,7 +8,8 @@ import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Continente;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Tabuleiro;
 
 class TabuleiroTest {
-		// 1. Configuração
+/*
+	// 1. Configuração
 		// 2. Execução
 		// 3. Asserção
 	@Test
@@ -49,5 +50,5 @@ class TabuleiroTest {
 		}
 		//3. Asserção
 	}
-
+*/
 }
