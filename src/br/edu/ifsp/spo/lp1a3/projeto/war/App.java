@@ -8,35 +8,6 @@ public class App {
 //		Map<Integer, Pais> mapa = new HashMap<Integer, Pais>();
 //		mapa.put(1, new Pais());
 //	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

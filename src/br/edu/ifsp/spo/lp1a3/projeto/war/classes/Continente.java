@@ -1,6 +1,7 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Tabuleiro;
@@ -10,39 +11,45 @@ import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Pais;
 public class Continente {
 	private String nome;
 	private int[] paises;
-	private ArrayList<Pais> pais = new ArrayList<>();
+	private ArrayList<Pais> paisesArray = new ArrayList<>();
 	
-	public Continente(String nome, int [] paises) {
+	public Continente(String nome, int [] paisesRef) {
 		setNome(nome);
-		setPaises(paises);
+		setPaisesRef(paisesRef);
+		setPaisesArray(paisesRef);
 	}
 	
 	
 	
-//GETTERS; SETTERS; OVERRIDES
+//GETTERS E SETTERS
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public void setPaisesRef(int [] paisesRef){
+		this.paises = paisesRef; 
+	}
+	
 	public Pais getPaises() {
-		for(int pais : paises){
-
-			for(int i = 1; i < Tabuleiro.mapa.size(); i++){	
-				return Tabuleiro.mapa.get(pais);
-			}
+		for(int i = 0; i < this.paises.length; i++){
+			return Tabuleiro.mapa.get(paises[i]);
 		}
 		return null;
 	}
-	public void setPaises(int[] paises) {
-		for(int i : paises){
-			pais.add(Tabuleiro.mapa.get(paises));
+	
+	public void setPaisesArray(int[] paises) {
+		for(int i = 0; i < this.paises.length; i++){
+			paisesArray.add(Tabuleiro.mapa.get(paises[i]));
 		}
 	}
-
-//OVERRIDES
+	public ArrayList<Pais> getPaisesArray() {
+		return paisesArray;
+	}
 	
+//OVERRIDES
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -53,7 +60,7 @@ public class Continente {
 	}
 	@Override
 	public String toString() {
-		return "Continente: " + nome + "]";
+		return "Continente: " + getNome() + Arrays.toString(paises);
 	}
 	@Override
 	public boolean equals(Object obj) {

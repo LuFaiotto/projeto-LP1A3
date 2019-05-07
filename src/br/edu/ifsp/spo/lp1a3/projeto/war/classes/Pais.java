@@ -2,12 +2,7 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 
-@SuppressWarnings("unused")
 public class Pais {
 	private String nome;
 	private boolean status;
@@ -20,10 +15,10 @@ public class Pais {
 		this.status = false;
 		this.player = null;
 		this.conexoes = conexoes;
+		setQtdExercito(0);
 	}
 	
-	
-	
+//GETTERS AND SETTERS
 	public String getNome() {
 		return nome;
 	}
@@ -42,23 +37,37 @@ public class Pais {
 	public int[] getConexoes() {
 		return conexoes;
 	}
+	public Pais getConexaoPorReferencia(int ref){
+		for(int i = 0; i < conexoes.length; i++){
+			if(ref == conexoes[i]){
+				return Tabuleiro.mapa.get(ref);
+			}
+		}
+		return null;
+	}
+	public ArrayList<Pais> getPaisesConexoes() {
+		ArrayList<Pais> paises = new ArrayList<>();
+		for(int i : conexoes){
+			paises.add(Tabuleiro.mapa.get(i));
+		}
+		return paises;
+	}
 
 
-	//OVERRIDE
+//OVERRIDES
+	@Override
+	public String toString() {
+		return "Pais " + getNome() + ", OcupaÃ§Ã£o: " + isStatus() + ", Dominador: " + getPlayer() + ", Fronteiras: " + Arrays.toString(getConexoes());
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + Arrays.hashCode(conexoes);
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + qtdExercito;
 		return result;
 	}
-
-	@Override
-	public String toString() {
-		return "Pais " + nome + ", Ocupação " + status + ", Dominador: " + player + ", Fronteiras: " + Arrays.toString(conexoes);
-	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -69,14 +78,18 @@ public class Pais {
 		if (getClass() != obj.getClass())
 			return false;
 		Pais other = (Pais) obj;
+		if (!Arrays.equals(conexoes, other.conexoes))
+			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (qtdExercito != other.qtdExercito)
-			return false;
 		return true;
 	}
 	
+	
 }
+	
+
+	
