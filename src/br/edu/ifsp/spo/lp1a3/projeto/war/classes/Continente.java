@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Tabuleiro;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Pais;
 
 @SuppressWarnings("unused")
@@ -33,11 +32,8 @@ public class Continente {
 		this.paises = paisesRef; 
 	}
 	
-	public Pais getPaises() {
-		for(int i = 0; i < this.paises.length; i++){
-			return Tabuleiro.mapa.get(paises[i]);
-		}
-		return null;
+	public int[] getPaises() {
+		return this.paises;
 	}
 	
 	public void setPaisesArray(int[] paises) {
