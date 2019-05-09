@@ -14,18 +14,20 @@ public class Player {
 		setStatusPlayer(true);
 	}
 	
-	//Desabilitar um player quando ele perde todos os territórios
+	
+	
+	
+	//Desabilitar um player quando ele perde todos os territï¿½rios
 	public void desabilitarPlayer(Player player) {
 		if(!validaPlayer()) {
 			System.out.println("Game Over para " + player.getNamePlayer());
 			players.remove(player);
 		}
 	}
-	
-	//Verifica se o player possui territórios ligado a ele
-	//TODO: Implementar o método de validação de player
+	//Verifica se o player possui territï¿½rios ligado a ele
+	//TODO: Implementar o mï¿½todo de validaï¿½ï¿½o de player
 	public boolean validaPlayer() {
-		//Se possui territórios, return true
+		//Se possui territï¿½rios, return true
 		return false;
 	}
 	
@@ -79,5 +81,4 @@ public class Player {
 			return false;
 		return true;
 	}
-	
 }
