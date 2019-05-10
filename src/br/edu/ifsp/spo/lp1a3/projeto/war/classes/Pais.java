@@ -8,7 +8,9 @@ public class Pais {
 	private boolean status;
 	private Player player;
 	private int qtdExercito;
-	private int [] conexoes;	
+	private int [] conexoes;
+	private String cor;
+
 
 	public Pais(String nome, int[] conexoes) {
 		this.nome = nome;
@@ -16,6 +18,7 @@ public class Pais {
 		this.player = null;
 		this.conexoes = conexoes;
 		setQtdExercito(0);
+		setCor("Sem cor");
 	}
 	
 //GETTERS AND SETTERS
@@ -51,6 +54,13 @@ public class Pais {
 			paises.add(Tabuleiro.mapa.get(i));
 		}
 		return paises;
+	}
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
 	}
 
 
