@@ -1,5 +1,6 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Player {
@@ -7,14 +8,17 @@ public class Player {
 	
 	private String namePlayer;
 	private boolean statusPlayer;
+	private String cor;
+
 	private HashSet<Player> players = new HashSet<>();
 	private int exercitosLivres;
-	private HashSet<Pais> paisesDominados = new HashSet<>();
+	private ArrayList<Pais> paisDominado = new ArrayList<>();
 	
-	public Player(String nome, int exercitosLivres) {
+	public Player(String nome, int exercitosLivres, String cor) {
 		setNamePlayer(nome);
 		setStatusPlayer(true);
 		setExercitosLivres(exercitosLivres);
+		setCor(cor);
 	}
 	
 	//Desabilitar um player quando ele perde todos os territ�rios
@@ -33,6 +37,12 @@ public class Player {
 	}
 	
 	//Getters e Setters
+	public String getCor() {
+		return cor;
+	}
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
 	public String getNamePlayer() {
 		return namePlayer;
 	}
@@ -62,22 +72,33 @@ public class Player {
 	public void setExercitosLivres(int exercitosLivres) {
 		this.exercitosLivres = exercitosLivres;
 	}
-	public HashSet<Pais> getPaisesDominados() {
-		return paisesDominados;
+	public void setPaisesDominados(Pais paisDominado) {
+		this.paisDominado.add(paisDominado);
+		paisDominado.setStatus(true);
+		paisDominado.setCor(this.cor);
+		paisDominado.setPlayer(this);
+	}
+	public ArrayList<Pais> getPaisesDominados() {
+		return paisDominado;
 	}
 
-	public void setPaisesDominados(Pais paisesDominados) {
-		this.paisesDominados.add(paisesDominados);
-	}
 
 
 	//Overrides
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((namePlayer == null) ? 0 : namePlayer.hashCode());
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Player: " + namePlayer + ", Exercitos Livres: " + exercitosLivres + ", Paises Dominados: "
+				+ paisDominado.toString();
 	}
 
 	@Override

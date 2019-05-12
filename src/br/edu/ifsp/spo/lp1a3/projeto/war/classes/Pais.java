@@ -25,11 +25,17 @@ public class Pais {
 	public String getNome() {
 		return nome;
 	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 	public boolean isStatus() {
 		return status;
 	}
 	public Player getPlayer() {
 		return player;
+	}
+	public void setPlayer(Player p){
+		this.player = p;
 	}
 	public int getQtdExercito() {
 		return qtdExercito;
@@ -67,7 +73,11 @@ public class Pais {
 //OVERRIDES
 	@Override
 	public String toString() {
-		return "Pais " + getNome() + ", Ocupação: " + isStatus() + ", Dominador: " + getPlayer() + ", Fronteiras: " + Arrays.toString(getConexoes());
+		if(status == true)
+			return "Pais " + getNome() + ", Dominador: " + getPlayer() + ", Fronteiras: " + Arrays.toString(getConexoes());
+		else 
+			return  "Pais " + getNome() + ", Ocupação: " + isStatus() +  ", Fronteiras: " + Arrays.toString(getConexoes());
+ 
 	}
 
 	@Override
