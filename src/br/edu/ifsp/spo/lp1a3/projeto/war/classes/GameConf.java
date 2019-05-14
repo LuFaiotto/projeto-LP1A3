@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-import com.sun.tools.javac.code.Attribute.Array;
-
 //CARREGA TODAS AS CONFIGURAÇÕES DO JOGO
 public class GameConf{
     
@@ -17,32 +15,15 @@ public class GameConf{
 	
 	public static void distribuirTerritório(ArrayList<Player> players){
 		ArrayList<Integer> vetPais = new ArrayList<>();
+		int pQtd = players.size();
 		for(int i = 0; i < 42; i++){
 			vetPais.add(i + 1);
 		}
 		Collections.shuffle(vetPais);
 		
-		if(42 % players.size() == 0) {	
-			int x = 1;
-			for(Player p : players) {	
-				if(x < 42) {
-					for(int i = 1; i <= 7; i++){	
-						p.setPaisesDominados(Tabuleiro.mapa.get(vetPais.get(x)));
-					}
-				x++;
-				}	else { 
-					break;
-				}
-			}
-		} else {
-			for(int i = 0; i < (42 - 42 % players.size()); i++){
-				for(Player p : players) {
-					p.setPaisesDominados(Tabuleiro.mapa.get(vetPais.get(i+1)));
-				}					
-			}
-			for(int j = 42 - 42 % players.size(); j < 42; j++) {
-				Tabuleiro.mapa.get(j+1).setCor("Neutro");
-				Tabuleiro.mapa.get(j+1).setQtdExercito(10);// colocar cor e exercito neutro
+		for(int p = 0, i = 0; p < players.size(); i = i + 42/pQtd, p++){
+			for(int j = i; j < j + (42/ pQtd); j++){
+				players.get(p).setPaisesDominados(Tabuleiro.mapa.get(j+1));
 			}
 		}
 	}
