@@ -28,7 +28,6 @@ public class Player {
 			players.remove(player);
 		}
 	}
-	
 	//Verifica se o player possui territ�rios ligado a ele
 	//TODO: Implementar o m�todo de valida��o de player
 	public boolean validaPlayer() {
@@ -117,5 +116,4 @@ public class Player {
 			return false;
 		return true;
 	}
-	
 }
