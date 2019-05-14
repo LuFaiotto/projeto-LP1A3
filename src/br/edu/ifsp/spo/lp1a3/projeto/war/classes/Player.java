@@ -12,7 +12,7 @@ public class Player {
 
 	private HashSet<Player> players = new HashSet<>();
 	private int exercitosLivres;
-	private ArrayList<Pais> paisDominado = new ArrayList<>();
+	private ArrayList<Pais> paisesDominados = new ArrayList<>();
 	
 	public Player(String nome, int exercitosLivres, String cor) {
 		setNamePlayer(nome);
@@ -72,13 +72,11 @@ public class Player {
 		this.exercitosLivres = exercitosLivres;
 	}
 	public void setPaisesDominados(Pais paisDominado) {
-		this.paisDominado.add(paisDominado);
-		paisDominado.setStatus(true);
-		paisDominado.setCor(this.cor);
-		paisDominado.setPlayer(this);
+		this.paisesDominados.add(paisDominado);
+
 	}
 	public ArrayList<Pais> getPaisesDominados() {
-		return paisDominado;
+		return paisesDominados;
 	}
 
 
@@ -97,7 +95,7 @@ public class Player {
 	@Override
 	public String toString() {
 		return "Player: " + namePlayer + ", Exercitos Livres: " + exercitosLivres + ", Paises Dominados: "
-				+ paisDominado.toString();
+				+ paisesDominados;
 	}
 
 	@Override

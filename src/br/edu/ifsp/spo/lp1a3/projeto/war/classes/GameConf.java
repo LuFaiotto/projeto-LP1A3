@@ -20,11 +20,17 @@ public class GameConf{
 			vetPais.add(i + 1);
 		}
 		Collections.shuffle(vetPais);
-		
-		for(int p = 0, i = 0; p < players.size(); i = i + 42/pQtd, p++){
-			for(int j = i; j < j + (42/ pQtd); j++){
-				players.get(p).setPaisesDominados(Tabuleiro.mapa.get(j+1));
+		if(42 % pQtd == 0) {
+			int flag = 0;
+			for(int p = 0; p < players.size(); p++){
+				for(int j = flag+1; j <= flag + 42/pQtd; j++){
+					players.get(p).setPaisesDominados(Tabuleiro.mapa.get(vetPais.get(j-1)));
+					Tabuleiro.mapa.get(j).setPlayer(players.get(p));
+				}
+				flag = flag + 42/pQtd;
 			}
+		}	else {
+			
 		}
 	}
 
