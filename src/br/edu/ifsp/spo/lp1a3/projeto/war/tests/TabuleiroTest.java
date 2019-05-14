@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Continente;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Tabuleiro;
 
+@SuppressWarnings("unused")
 class TabuleiroTest {
 /*
 	// 1. Configuração
