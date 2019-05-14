@@ -13,6 +13,7 @@ public class GameConf{
 		
 	}
 	
+	//TODO: Acionar o método posicionar exército da classe Exercito. Verificar se necessário.
 	public static void distribuirTerritório(ArrayList<Player> players){
 		ArrayList<Integer> vetPais = new ArrayList<>();
 		int pQtd = players.size();

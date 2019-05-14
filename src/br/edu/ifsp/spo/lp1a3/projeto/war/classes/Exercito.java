@@ -2,66 +2,70 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
 
-//Classe não será utilizada. Movimentar os métodos para as outras classes
-//TODO: Verificar em qual classe esses métodos ficariam melhor
+//Classe nï¿½o serï¿½ utilizada. Movimentar os mï¿½todos para as outras classes
+//TODO: Verificar em qual classe esses mï¿½todos ficariam melhor. Ou atÃ© mesmo pensar se ele estÃ¡ bom nesse local mesmo
 public class Exercito {
 
-	//Ao atacar, o player vai receber de onde ele pode atacar, onde ele pode atacar, qos exércitos e escolhe qtos quer utilizar
-	//Método atacar - retorna Booleano - gera rolagem de dados - recebe local do ataque
+	//Ao atacar, o player vai receber de onde ele pode atacar, onde ele pode atacar, qos exï¿½rcitos e escolhe qtos quer utilizar
+	//MÃ©todo atacar - retorna Booleano - gera rolagem de dados - recebe local do ataque
 	//Movimentar
 	//Posicionar
+	//TODO: Implementar os testes desses mÃ©todos em ExercitoTest.java
 	
-	private int ladoDados = 6; //Configuração de quantidade de lados
+	private int ladoDados = 6; //Configuraï¿½ï¿½o de quantidade de lados
 	
-	//Posicionar o exército base no território
-	//Utilizar apenas quando for o início do jogo
+	//Posicionar o exï¿½rcito base no territï¿½rio
+	//Utilizar apenas quando for o inï¿½cio do jogo
+	//TODO: Esse mÃ©todo estÃ¡ atrelado ao mÃ©todo de distribuir territÃ³rios na classe GameConf
 	public void posicionarExercito(Pais pais) {
 		if(pais.getQtdExercito() == 0) {
 			pais.setQtdExercito(1);
 		} else {
-			System.out.println("Já existe um exército locado neste país. Tente em outro país");
+			System.out.println("JÃ¡ existe um exÃ©rcito locado neste paÃ­s. Tente em outro paÃ­s");
 		}
 	}
 	
-	//Adicionar um exército a um país que já possui o exército base
+	//Adicionar um exï¿½rcito a um paï¿½s que jï¿½ possui o exï¿½rcito base
 	public void adicionarExercito(Player player, Pais pais, int qtdExercito) {
-		//Valida se o exército base é o mesmo do player
-		//TODO: Fazer a validação se o player tem permissão de colocar exército no país escolhido.
+		//Valida se o exï¿½rcito base ï¿½ o mesmo do player
+		//TODO: Fazer a validaï¿½ï¿½o se o player tem permissï¿½o de colocar exï¿½rcito no paï¿½s escolhido.
 		//Se sim:
 		pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
-		System.out.println(qtdExercito + " adicionados ao país " + pais.getNome());
-		//Senão:
-		System.out.println("Você não pode adicionar exército em um país de outro player.");
+		System.out.println(qtdExercito + " adicionados ao paï¿½s " + pais.getNome());
+		//Senï¿½o:
+		System.out.println("Vocï¿½ nï¿½o pode adicionar exï¿½rcito em um paï¿½s de outro player.");
 	}
 	
-	//Método utilizado ao conquistar um território ou ao querer movimentar exércitos entre países
+	//MÃ©todo utilizado ao conquistar um territÃ³rio ou ao querer movimentar exÃ©rcitos entre paÃ­ses
 	public String movimentarExercito(Pais paisAtual, Pais paisFuturo, int qtdExercito) {
 		if(validarConexao() && qtdExercito < paisAtual.getQtdExercito()) {
 			paisAtual.setQtdExercito(paisAtual.getQtdExercito() - qtdExercito);
 			paisFuturo.setQtdExercito(paisFuturo.getQtdExercito() + qtdExercito);
-			return "Exército movimentado com sucesso";
+			return "ExÃ©rcito movimentado com sucesso";
 		}
-		return "Não é possível realizar essa movimentação";
+		return "NÃ£o Ã© possÃ­vel realizar essa movimentaÃ§Ã£o";
 	}
 	
+	//TODO: Verificar se nÃ£o hÃ¡ possibilidade de diminuir o mÃ©todo
+	//TODO: Verificar a funcionalidade do mÃ©todo externamente
 	public void atacar(Pais atacante, Pais atacado, int qtdExercito) {
 		int valorRetornado;
-		//Validação se pode ou não atacar - Ver se possui exercito locado no país e se o país a atacar está aos arredores
+		//Validaï¿½ï¿½o se pode ou nï¿½o atacar - Ver se possui exercito locado no paï¿½s e se o paï¿½s a atacar estï¿½ aos arredores
 		if(validarConexao() && atacante.getQtdExercito() > 1) {
 			//Ataque. Rolagem de dados. Considerar player 1 como o atacante
 			for(int i = 0; i <= qtdExercito; i++) {
-				//Rolagem de dados, recebendo o retorno do método
+				//Rolagem de dados, recebendo o retorno do mï¿½todo
 				valorRetornado = Tabuleiro.compareRolagemDados(ladoDados);
-				//Melhorar esse método
+				//Melhorar esse mï¿½todo
 				if(atacante.getQtdExercito() > 1 && valorRetornado == 1 && atacado.getQtdExercito() > 0) {
 					atacado.setQtdExercito(atacado.getQtdExercito() - 1);
-					System.out.println("Vitória. Um exército oponente foi destruído.");
+					System.out.println("Vitï¿½ria. Um exï¿½rcito oponente foi destruï¿½do.");
 				} else if(valorRetornado == 0){
 					atacante.setQtdExercito(atacante.getQtdExercito() - 1);
-					System.out.println("Empate. Um exército seu foi destruído.");
+					System.out.println("Empate. Um exï¿½rcito seu foi destruï¿½do.");
 				} else {
 					atacante.setQtdExercito(atacante.getQtdExercito() - 1);
-					System.out.println("Derrota. Um exército seu foi destruído.");
+					System.out.println("Derrota. Um exï¿½rcito seu foi destruï¿½do.");
 				}
 			}
 		}
@@ -70,25 +74,24 @@ public class Exercito {
 			movimentarExercito(atacante, atacado, 1);
 		}*/
 		
-		//Observação: Talvez criar um método separado para fazer as operações abaixo
-		//TODO: Verificar se precisa dessa parte aqui ou se o método movimentarExercito já faz
+		//Observaï¿½ï¿½o: Talvez criar um mï¿½todo separado para fazer as operaï¿½ï¿½es abaixo
+		//TODO: Verificar se precisa dessa parte aqui ou se o mï¿½todo movimentarExercito jï¿½ faz
 		if(atacado.getQtdExercito() == 0) {
 			if(atacante.getQtdExercito() > 1) {
 				movimentarExercito(atacante, atacado, 1);
 			}else {
-				System.out.println("Você não possui exército suficiente para locar no novo território.");
-				//Nesse momento, o player pode selecionar um exército de outro território dele para ficar no território
+				System.out.println("Vocï¿½ nï¿½o possui exï¿½rcito suficiente para locar no novo territï¿½rio.");
+				//Nesse momento, o player pode selecionar um exï¿½rcito de outro territï¿½rio dele para ficar no territï¿½rio
 				//Ver melhor forma de implementar isso.
 			}
 		}		
 	}
 	
-	//Método que verifica se o país remetente possui conexão com o país escolhido
-	//Por enquanto, está sem parâmetros, porém, futuramente, receberá o país de agora e o destino
-	//TODO: Conversa sobre a implementação dos países no sistema
-	//TODO: Implementar a validação de acordo com o que foi decidido
+	//Objetivo: MÃ©todo que verifica se o paÃ­s remetente possui conexÃ£o com o paÃ­s escolhido
+	//ObservaÃ§Ãµes: Por enquanto, estï¿½ sem parï¿½metros, porï¿½m, futuramente, receberï¿½ o paï¿½s de agora e o destino
+	//TODO: Implementar a validaï¿½ï¿½o de acordo com o que foi decidido
 	public boolean validarConexao() {
-		//Teste; Desconsiderar posteriormente
+		//Teste para verificar funcionamento do mÃ©todo; Desconsiderar posteriormente
 		ArrayList<String> conexoes = new ArrayList<String>();
 		String paisAAtacar = "Argentina";
 		
