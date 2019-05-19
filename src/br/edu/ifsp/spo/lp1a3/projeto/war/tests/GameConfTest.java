@@ -31,7 +31,7 @@ public class GameConfTest {
 		//ap.add(p4);
 		//2. Execução
 		GameConf.loadMapConf();
-		GameConf.distribuirTerritório(ap);
+		GameConf.distribuirTerritorio(ap);
 		//3. Asserção
 		System.out.println(p1);
 		System.out.println(p2);
