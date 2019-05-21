@@ -5,15 +5,21 @@ import java.util.HashSet;
 
 public class Player {
 	//Deve suportar n jogadores
+	//TODO: Verificar mais métodos relacionados a classe
+	//TODO: Criar os testes de Player em PlayerTest.java
 	
 	private String namePlayer;
 	private boolean statusPlayer;
+	
+	//TODO: Talvez não seja a melhor abordagem para cor, já que está estático. Verificar se há algo melhor
 	private String cor;
 
+	//TODO: Verificar se é possível utilizar esse HashSet dentro da própria classe
 	private HashSet<Player> players = new HashSet<>();
 	private int exercitosLivres;
 	private ArrayList<Pais> paisesDominados = new ArrayList<>();
 	
+	//TODO: Verificar o construtor. Será mesmo que o player precisa indicar qual é a sua cor? Talvez coloque algum array de cores, enfim
 	public Player(String nome, int exercitosLivres, String cor) {
 		setNamePlayer(nome);
 		setStatusPlayer(true);
@@ -28,8 +34,9 @@ public class Player {
 			players.remove(player);
 		}
 	}
-	//Verifica se o player possui territ�rios ligado a ele
-	//TODO: Implementar o m�todo de valida��o de player
+	
+	//Objetivo: Verificar se o player possui territórios ligado a ele
+	//TODO: Implementar o método de validação de player de acordo com o jogo
 	public boolean validaPlayer() {
 		//Se possui territ�rios, return true
 		return false;
@@ -82,8 +89,6 @@ public class Player {
 
 
 	//Overrides
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

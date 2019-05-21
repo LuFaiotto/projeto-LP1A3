@@ -21,7 +21,4 @@ public class Tabuleiro {
     	return -1;
     }
 	
-	public static void distribuiriTerritório(){
-		
-	}
 }

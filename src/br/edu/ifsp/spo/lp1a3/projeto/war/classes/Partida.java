@@ -18,12 +18,12 @@ public class Partida {
 	}
 	
 	
-	private void distribuirTerritorio(int players) {
-		
-	}
-	private void distribuirExercitos(int players) {
-		
-	}
+//	private void distribuirTerritorio(int players) {
+//		
+//	}
+//	private void distribuirExercitos(int players) {
+//		
+//	}
 	
 	
 	//Getters e Setters
