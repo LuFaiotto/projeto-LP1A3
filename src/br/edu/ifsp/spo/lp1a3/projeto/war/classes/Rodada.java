@@ -14,6 +14,10 @@ public class Rodada {
 		
 	}
 	
+	public void posicionarExercito(Pais pais) {
+		
+	}
+	
 	//TODO: Fazer a validação se o player tem permissão para fazer o movimento
 	public void adicionarExercito(Pais pais, int qtdExercito) {
 		//Validação se o exército base é o mesmo do player
@@ -25,7 +29,7 @@ public class Rodada {
 	}
 	
 	public String movimentarExercito(Pais paisAtual, Pais paisFuturo, int qtdExercito) {
-		if(validarConexao() && qtdExercito < paisAtual.getQtdExercito()) {
+		if(validarConexao(paisAtual, paisFuturo) && qtdExercito < paisAtual.getQtdExercito()) {
 			paisAtual.setQtdExercito(paisAtual.getQtdExercito() - qtdExercito);
 			paisFuturo.setQtdExercito(paisFuturo.getQtdExercito() + qtdExercito);
 			return "Exército movimentado com sucesso";
@@ -38,7 +42,7 @@ public class Rodada {
 		int valorRetornado;
 		boolean resultadoFinal = false;
 		
-		if(validarConexao() && validarAtaque()) {
+		if(validarConexao(atacante, atacado) && validarAtaque(atacante, qtdExercito)) {
 			for(int i = 0; i < qtdExercito; i++) {
 				valorRetornado = Tabuleiro.compareRolagemDados(getLadosDado());
 				if(valorRetornado == 1) {
@@ -64,15 +68,22 @@ public class Rodada {
 	}
 	
 	//Método que valida se o atacante possui estrutura para cometer o ataque
-	//TODO: Implementar o método
 	//O que fazer: Avaliar se a quantidade de exércitos escolhidos está, no máximo, com a quantidade de
 	//exércitos posicionados no país de ataque - 1 (exército base)
-	public boolean validarAtaque() {
+	public boolean validarAtaque(Pais pais, int qtdExercito) {
+		if(qtdExercito > pais.getQtdExercito()) {
+			return true;
+		}
+		System.out.println("Você não possui exército suficiente em " + pais.getNome() + " para atacar.");
 		return false;
 	}
 	
-	//TODO: Implementar o método
-	public boolean validarConexao() {
+	public boolean validarConexao(Pais atacante, Pais atacado) {
+		for(Pais pais: atacante.getPaisesConexoes()) {
+			if(pais.equals(atacado)) {
+				return true;
+			}
+		}
 		return false;
 	}
 	
