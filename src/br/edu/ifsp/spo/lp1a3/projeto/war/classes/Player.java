@@ -29,7 +29,7 @@ public class Player {
 	
 	//Desabilitar um player quando ele perde todos os territ�rios
 	public void desabilitarPlayer(Player player) {
-		if(!validaPlayer()) {
+		if(!validarPlayer()) {
 			System.out.println("Game Over para " + player.getNamePlayer());
 			players.remove(player);
 		}
@@ -37,7 +37,7 @@ public class Player {
 	
 	//Objetivo: Verificar se o player possui territórios ligado a ele
 	//TODO: Implementar o método de validação de player de acordo com o jogo
-	public boolean validaPlayer() {
+	public boolean validarPlayer() {
 		//Se possui territ�rios, return true
 		return false;
 	}
