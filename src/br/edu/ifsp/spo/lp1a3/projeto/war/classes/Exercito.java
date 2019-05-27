@@ -3,27 +3,37 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 import java.util.ArrayList;
 
 //Classe n�o ser� utilizada. Movimentar os m�todos para as outras classes
-//TODO: Verificar em qual classe esses m�todos ficariam melhor. Ou até mesmo pensar se ele está bom nesse local mesmo
+
+/*
+ * Data: 22 de maio de 2019 - 23h37
+ * Classe inutilizada após discussão entre a dupla. Os métodos foram realocados para outras
+ * classes e implementadas de forma alinhada ao projeto.
+ * Apenas desconsiderar essa classe na composição do projeto.
+ * 
+ * Observações: Por possuir alguns problemas de realinhamento, a classe continuará aqui, pois
+ * está funcionando como backup dos métodos que foram desenvolvidos.
+ * 
+ * FAVOR NÃO EXCLUIR AINDA!!!
+ */
+
 public class Exercito {
 
 	//Ao atacar, o player vai receber de onde ele pode atacar, onde ele pode atacar, qos ex�rcitos e escolhe qtos quer utilizar
 	//Método atacar - retorna Booleano - gera rolagem de dados - recebe local do ataque
 	//Movimentar
 	//Posicionar
-	//TODO: Implementar os testes desses métodos em ExercitoTest.java
 	
 	private int ladoDados = 6; //Configura��o de quantidade de lados
 	
 	//Posicionar o ex�rcito base no territ�rio
 	//Utilizar apenas quando for o in�cio do jogo
-	//TODO: Esse método está atrelado ao método de distribuir territórios na classe GameConf
-	public void posicionarExercito(Pais pais) {
-		if(pais.getQtdExercito() == 0) {
-			pais.setQtdExercito(1);
-		} else {
-			System.out.println("Já existe um exército locado neste país. Tente em outro país");
-		}
-	}
+//	public void posicionarExercito(Pais pais) {
+//		if(pais.getQtdExercito() == 0) {
+//			pais.setQtdExercito(1);
+//		} else {
+//			System.out.println("Já existe um exército locado neste país. Tente em outro país");
+//		}
+//	}
 	
 	//Adicionar um ex�rcito a um pa�s que j� possui o ex�rcito base
 	public void adicionarExercito(Player player, Pais pais, int qtdExercito) {

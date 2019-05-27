@@ -34,6 +34,10 @@ public class GameConf{
 			
 		}
 	}
+	
+	public static void distribuirExercito() {
+		
+	}
 
 	
 	//Carrega todas as informações do mapa		
