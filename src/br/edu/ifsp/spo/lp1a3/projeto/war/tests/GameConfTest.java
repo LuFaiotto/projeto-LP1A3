@@ -28,12 +28,16 @@ public class GameConfTest {
 		ap.add(p1);
 		ap.add(p2);
 		ap.add(p3);
+		System.out.println(ap.get(0));
+		System.out.println(p2);
+		System.out.println(p3);
+
 		//ap.add(p4);
 		//2. Execução
 		GameConf.loadMapConf();
 		GameConf.distribuirTerritorio(ap);
 		//3. Asserção
-		System.out.println(p1);
+		System.out.println(ap.get(0));
 		System.out.println(p2);
 		System.out.println(p3);
 	//	System.out.println(p4.getPaisesDominados());
