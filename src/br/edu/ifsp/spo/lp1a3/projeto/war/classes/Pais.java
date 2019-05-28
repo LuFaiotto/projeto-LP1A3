@@ -49,7 +49,7 @@ public class Pais {
 	public Pais getConexaoPorReferencia(int ref){
 		for(int i = 0; i < conexoes.length; i++){
 			if(ref == conexoes[i]){
-				return Tabuleiro.mapa.get(ref);
+				return GameConf.mapa.get(ref);
 			}
 		}
 		return null;
@@ -57,7 +57,7 @@ public class Pais {
 	public ArrayList<Pais> getPaisesConexoes() {
 		ArrayList<Pais> paises = new ArrayList<>();
 		for(int i : conexoes){
-			paises.add(Tabuleiro.mapa.get(i));
+			paises.add(GameConf.mapa.get(i));
 		}
 		return paises;
 	}

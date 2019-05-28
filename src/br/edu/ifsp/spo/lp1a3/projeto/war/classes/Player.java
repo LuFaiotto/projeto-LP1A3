@@ -13,9 +13,6 @@ public class Player {
 	
 	//TODO: Talvez não seja a melhor abordagem para cor, já que está estático. Verificar se há algo melhor
 	private String cor;
-
-	//TODO: Verificar se é possível utilizar esse HashSet dentro da própria classe
-	private HashSet<Player> players = new HashSet<>();
 	private int exercitosLivres;
 	private ArrayList<Pais> paisesDominados = new ArrayList<>();
 	
@@ -26,21 +23,7 @@ public class Player {
 		setExercitosLivres(exercitosLivres);
 		setCor(cor);
 	}
-	
-	//Desabilitar um player quando ele perde todos os territ�rios
-	public void desabilitarPlayer(Player player) {
-		if(!validarPlayer()) {
-			System.out.println("Game Over para " + player.getNamePlayer());
-			players.remove(player);
-		}
-	}
-	
-	//Objetivo: Verificar se o player possui territórios ligado a ele
-	//TODO: Implementar o método de validação de player de acordo com o jogo
-	public boolean validarPlayer() {
-		//Se possui territ�rios, return true
-		return false;
-	}
+
 	
 	//Getters e Setters
 	public String getCor() {
@@ -63,15 +46,7 @@ public class Player {
 
 	public void setStatusPlayer(boolean statusPlayer) {
 		this.statusPlayer = statusPlayer;
-	}
-
-	public HashSet<Player> getPlayers() {
-		return players;
-	}
-
-	public void setPlayers(HashSet<Player> players) {
-		this.players = players;
-	}
+	}	
 	public int getExercitosLivres() {
 		return exercitosLivres;
 	}

@@ -38,7 +38,7 @@ public class Continente {
 	
 	public void setPaisesArray(int[] paises) {
 		for(int i = 0; i < this.paises.length; i++){
-			paisesArray.add(Tabuleiro.mapa.get(paises[i]));
+			paisesArray.add(GameConf.mapa.get(paises[i]));
 		}
 	}
 	public ArrayList<Pais> getPaisesArray() {

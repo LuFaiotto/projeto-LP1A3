@@ -4,13 +4,12 @@ import java.util.LinkedHashSet;
 
 public class Partida {
 	public int playersQtd;
-	public int diceset;
-	public static int territorios = 42;
+	public static int diceset;
 	private LinkedHashSet<Player> players = new LinkedHashSet<>();
 	
 	public Partida(int playersQtd, int diceset) {
 		this.playersQtd = playersQtd;
-		this.diceset = diceset;
+		Partida.diceset = diceset;
 	}
 	
 	public void iniciarPartida(){
@@ -37,13 +36,7 @@ public class Partida {
 		return diceset;
 	}
 	public void setDiceset(int diceset) {
-		this.diceset = diceset;
-	}
-	public static int getTerritorios() {
-		return territorios;
-	}
-	public static void setTerritorios(int territorios) {
-		Partida.territorios = territorios;
+		Partida.diceset = diceset;
 	}
 	public LinkedHashSet<Player> getPlayers() {
 		return players;

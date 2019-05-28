@@ -6,7 +6,6 @@ import java.lang.Object;
 
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.GameConf;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Pais;
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Tabuleiro;
 
 
 public class PaisTest{
@@ -40,7 +39,7 @@ public class PaisTest{
 		//2. Execução
 		Pais p = new Pais(testNome, testConexoes);
 		//3. Asserção
-		assertEquals(p.getConexaoPorReferencia(1), Tabuleiro.mapa.get(1));
+		assertEquals(p.getConexaoPorReferencia(1), GameConf.mapa.get(1));
 	}
 	
 	@Test

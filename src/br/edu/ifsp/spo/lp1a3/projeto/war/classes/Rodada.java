@@ -1,13 +1,13 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
+import java.util.LinkedHashSet;
+
 public class Rodada {
 	
-	private int ladosDado;
-	private Player player;
+	private LinkedHashSet<Player> players;
 	
-	public Rodada(Player player, int numLados) {
-		setPlayer(player);
-		setLadosDado(numLados);
+	public Rodada(LinkedHashSet<Player> players) {
+		setPlayer(players);
 	}
 	
 	public void iniciarRodada() {
@@ -44,7 +44,7 @@ public class Rodada {
 		
 		if(validarConexao(atacante, atacado) && validarAtaque(atacante, qtdExercito)) {
 			for(int i = 0; i < qtdExercito; i++) {
-				valorRetornado = Tabuleiro.compareRolagemDados(getLadosDado());
+				valorRetornado = Tabuleiro.compareRolagemDados(Dado.diceSet);
 				if(valorRetornado == 1) {
 					atacado.setQtdExercito(atacado.getQtdExercito() - 1);
 					System.out.println("Vitória. Um exército oponente foi destruído.");
@@ -95,22 +95,26 @@ public class Rodada {
 			System.out.println("Derrota. O oponente defendeu o território.");
 		}
 	}
+	//Desabilitar um player quando ele perde todos os territ�rios
+	public void desabilitarPlayer(Player player) {
+		if(!validarPlayer()) {
+			System.out.println("Game Over para " + player.getNamePlayer());
+			players.remove(player);
+		}
+	}
+	//Objetivo: Verificar se o player possui territórios ligado a ele
+	//TODO: Implementar o método de validação de player de acordo com o jogo
+	public boolean validarPlayer() {
+		//Se possui territ�rios, return true
+		return false;
+	}
 
 	@SuppressWarnings("unused")
-	private Player getPlayer() {
-		return player;
+	private LinkedHashSet<Player> getPlayer() {
+		return players;
 	}
 
-	private void setPlayer(Player player) {
-		this.player = player;
+	private void setPlayer(LinkedHashSet<Player> player) {
+		this.players = player;
 	}
-
-	private int getLadosDado() {
-		return ladosDado;
-	}
-
-	private void setLadosDado(int ladosDado) {
-		this.ladosDado = ladosDado;
-	}
-
 }
