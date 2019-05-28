@@ -16,12 +16,9 @@ public class Player {
 	private int exercitosLivres;
 	private ArrayList<Pais> paisesDominados = new ArrayList<>();
 	
-	//TODO: Verificar o construtor. Será mesmo que o player precisa indicar qual é a sua cor? Talvez coloque algum array de cores, enfim
-	public Player(String nome, int exercitosLivres, String cor) {
+	public Player(String nome) {
 		setNamePlayer(nome);
 		setStatusPlayer(true);
-		setExercitosLivres(exercitosLivres);
-		setCor(cor);
 	}
 
 	

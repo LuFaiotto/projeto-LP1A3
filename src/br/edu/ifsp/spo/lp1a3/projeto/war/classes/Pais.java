@@ -73,11 +73,8 @@ public class Pais {
 //OVERRIDES
 	@Override
 	public String toString() {
-		if(status == true)
 			return "Pais " + getNome() + ", Dominador: " + getPlayer() + ", Fronteiras: " + Arrays.toString(getConexoes());
-		else 
-			return  "Pais " + getNome() + ", Ocupação: " + isStatus() +  ", Fronteiras: " + Arrays.toString(getConexoes());
- 
+		
 	}
 
 	@Override

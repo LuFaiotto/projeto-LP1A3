@@ -18,24 +18,40 @@ public class GameConf{
 	
 	//TODO: Acionar o método posicionar exército da classe Exercito. Verificar se necessário.
 	public static void distribuirTerritorio(ArrayList<Player> players){
+		//ArrayList para embaralhar os países
 		ArrayList<Integer> vetPais = new ArrayList<>();
 		int pQtd = players.size();
+		
+		//Embaralhando os países
 		for(int i = 0; i < 42; i++){
 			vetPais.add(i + 1);
 		}
 		Collections.shuffle(vetPais);
+		
+		//Distribuindo territórios
 		if(42 % pQtd == 0) {
 			int flag = 0;
 			for(int p = 0; p < players.size(); p++){
-				for(int j = flag+1; j <= flag + 42/pQtd; j++){
-					players.get(p).setPaisesDominados(mapa.get(vetPais.get(j-1)));
-					mapa.get(j).setPlayer(players.get(p));
+				for(int j = flag; j < flag + 42/pQtd; j++){
+					players.get(p).setPaisesDominados(mapa.get(vetPais.get(j)));
+					mapa.get(vetPais.get(j)).setPlayer(players.get(p));
 				}
 				flag = flag + 42/pQtd;
 			}
 		}	else {
-			
-		}
+				int flag = 0;
+				for(int p = 0; p < players.size(); p++){
+					for(int j = flag; j < flag + (int)42/pQtd; j++){
+						players.get(p).setPaisesDominados(mapa.get(vetPais.get(j)));
+						mapa.get(vetPais.get(j)).setPlayer(players.get(p));
+					}
+					flag = flag + 42/pQtd;
+				}
+				for(int i = (int)42/ pQtd; i < 42; i++){
+					mapa.get(vetPais.get(i)).setQtdExercito(10);
+					mapa.get(vetPais.get(i)).setCor("Neutro");
+				}
+			}
 	}
 	
 	public static void distribuirExercito() {
