@@ -16,32 +16,6 @@ public class GameConfTest {
 	//1. Configuração
 	//2. Execução
 	//3. Asserção
-	
-	@Test
-	public void deve_destribuir_territorios_sem_repeticao() {
-		//1. Configuração
-		ArrayList<Player> ap = new ArrayList<>();
-		Player p1 = new Player("João");
-		Player p2 = new Player("Maria");
-		Player p3 = new Player("Fulano");
-		//Player p4 = new Player("Ciclano", 3, "Rosa");
-		ap.add(p1);
-		ap.add(p2);
-		ap.add(p3);
-		System.out.println(ap.get(0));
-		System.out.println(p2);
-		System.out.println(p3);
-
-		//ap.add(p4);
-		//2. Execução
-		GameConf.loadMapConf();
-		GameConf.distribuirTerritorio(ap);
-		//3. Asserção
-		System.out.println(ap.get(0));
-		System.out.println(p2);
-		System.out.println(p3);
-	//	System.out.println(p4.getPaisesDominados());
-	}
 	@Test
 	public void deve_destribuir_territorios_div_inteira() {
 			//1. Configuração
@@ -74,12 +48,10 @@ public class GameConfTest {
 		ap.add(p2);
 		ap.add(p3);
 		ap.add(p4);
-
 		//2. Execução
 		GameConf.loadMapConf();
 		GameConf.distribuirTerritorio(ap);
 		//3. Asserção
-
 		assertEquals(10, p1.getPaisesDominados().size());
 		assertEquals(10, p2.getPaisesDominados().size());
 		assertEquals(10, p3.getPaisesDominados().size());

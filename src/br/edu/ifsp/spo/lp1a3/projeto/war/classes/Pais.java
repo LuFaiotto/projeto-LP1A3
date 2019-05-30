@@ -21,7 +21,69 @@ public class Pais {
 		setCor("Sem cor");
 	}
 	
-//GETTERS AND SETTERS
+	//TODO: Verificar validação do método getNumLados da classe Dado.
+	public void atacar(Pais atacante, Pais atacado, int qtdExercito) {
+		int valorRetornado;
+		boolean resultadoFinal = false;
+		
+		if(validarConexao(atacado) && validarAtaque(qtdExercito)) {
+			for(int i = 0; i < qtdExercito; i++) {
+				valorRetornado = Tabuleiro.compareRolagemDados();
+				if(valorRetornado == 1) {
+					atacado.setQtdExercito(atacado.getQtdExercito() - 1);
+					System.out.println("Vitória. Um exército oponente foi destruído.");
+				} else if (valorRetornado == 0){
+					atacante.setQtdExercito(atacante.getQtdExercito() - 1);
+					System.out.println("Empate. Um exército seu foi destruído.");
+				} else {
+					atacante.setQtdExercito(atacante.getQtdExercito() - 1);
+					System.out.println("Derrota. Um exército seu foi destruído.");
+				}
+				
+				//Valida se o atacado ainda possui exército
+				if(atacado.getQtdExercito() == 0) {
+					i = qtdExercito;
+					resultadoFinal = true;
+				}
+			}
+			
+			Tabuleiro.validarVencedor(resultadoFinal);
+		}
+	}
+	
+	public String movimentarExercito(Pais paisFuturo, int qtdExercito) {
+		if(validarConexao(paisFuturo) && qtdExercito < this.getQtdExercito()) {
+			this.setQtdExercito(this.getQtdExercito() - qtdExercito);
+			paisFuturo.setQtdExercito(paisFuturo.getQtdExercito() + qtdExercito);
+			return "Exército movimentado com sucesso";
+		}
+		return "Não é possível realizar essa movimentação";
+	}
+	
+	
+	
+//VALIDAÇÕES
+	public boolean validarConexao(Pais atacado) {
+		for(Pais pais: this.getPaisesConexoes()) {
+			if(pais.equals(atacado)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	//Método que valida se o atacante possui estrutura para cometer o ataque
+	//O que fazer: Avaliar se a quantidade de exércitos escolhidos está, no máximo, com a quantidade de
+	//exércitos posicionados no país de ataque - 1 (exército base)
+	public boolean validarAtaque(int qtdExercito) {
+		if(qtdExercito > this.getQtdExercito()) {
+			return true;
+		}
+		System.out.println("Você não possui exército suficiente em " + this.getNome() + " para atacar.");
+		return false;
+	}
+		
+
+	//GETTERS AND SETTERS
 	public String getNome() {
 		return nome;
 	}
@@ -64,19 +126,16 @@ public class Pais {
 	public String getCor() {
 		return cor;
 	}
-
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
 
-
 //OVERRIDES
 	@Override
 	public String toString() {
-			return "Pais " + getNome() + ", Dominador: " + getPlayer() + ", Fronteiras: " + Arrays.toString(getConexoes());
-		
+		return "Pais " + this.getNome() + "Dominador: " + this.getPlayer() + ", Fronteiras: " + Arrays.toString(getConexoes());	
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,7 +144,7 @@ public class Pais {
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -105,6 +164,3 @@ public class Pais {
 		return true;
 	}
 }
-	
-
-	

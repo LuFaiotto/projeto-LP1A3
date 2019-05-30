@@ -1,28 +1,25 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
-import java.util.LinkedHashSet;
+import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Rodada;
+import java.util.ArrayList;
 
 public class Partida {
 	public int playersQtd;
-	public static int diceset;
-	private LinkedHashSet<Player> players = new LinkedHashSet<>();
+	public static int diceset = 6;
+	private int rodada = 0; 
+	private ArrayList<Player> players = new ArrayList<>();
 	
-	public Partida(int playersQtd, int diceset) {
-		this.playersQtd = playersQtd;
+	public Partida(ArrayList<Player> players, int diceset) {
+		setPlayers(players);
 		Partida.diceset = diceset;
+		Tabuleiro.iniciarPartida();
 	}
 	
-	public void iniciarPartida(){
-		
+	public void iniciarRodadas(){
+		while(true) {
+			new Rodada(players, rodada);
+		}
 	}
-	
-	
-//	private void distribuirTerritorio(int players) {
-//		
-//	}
-//	private void distribuirExercitos(int players) {
-//		
-//	}
 	
 	
 	//Getters e Setters
@@ -32,16 +29,10 @@ public class Partida {
 	public void setPlayersQtd(int playersQtd) {
 		this.playersQtd = playersQtd;
 	}
-	public int getDiceset() {
-		return diceset;
-	}
-	public void setDiceset(int diceset) {
-		Partida.diceset = diceset;
-	}
-	public LinkedHashSet<Player> getPlayers() {
+	public ArrayList<Player> getPlayers() {
 		return players;
 	}
-	public void setPlayers(LinkedHashSet<Player> players) {
+	public void setPlayers(ArrayList<Player> players) {
 		this.players = players;
 	}
 

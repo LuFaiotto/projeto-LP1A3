@@ -1,16 +1,11 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class Player {
-	//Deve suportar n jogadores
-	//TODO: Verificar mais métodos relacionados a classe
-	//TODO: Criar os testes de Player em PlayerTest.java
 	
 	private String namePlayer;
 	private boolean statusPlayer;
-	
 	//TODO: Talvez não seja a melhor abordagem para cor, já que está estático. Verificar se há algo melhor
 	private String cor;
 	private int exercitosLivres;
@@ -21,6 +16,20 @@ public class Player {
 		setStatusPlayer(true);
 	}
 
+	public void jogar(){
+		System.out.println("Atacar");
+		System.out.println("");
+	}
+	
+	//TODO: Fazer a validação se o player tem permissão para fazer o movimento
+	public void adicionarExercito(Pais pais, int qtdExercito) {
+		//Validação se o exército base é o mesmo do player
+		//Se sim:
+		pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
+		System.out.println(qtdExercito + " adicionados ao pa�s " + pais.getNome());
+		//Senão:
+		System.out.println("Voc� n�o pode adicionar ex�rcito em um pa�s de outro player.");
+	}
 	
 	//Getters e Setters
 	public String getCor() {
@@ -52,6 +61,7 @@ public class Player {
 	}
 	public void setPaisesDominados(Pais paisDominado) {
 		this.paisesDominados.add(paisDominado);
+		paisDominado.setPlayer(this);
 
 	}
 	public ArrayList<Pais> getPaisesDominados() {
@@ -71,8 +81,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player: " + namePlayer + ", Exercitos Livres: " + exercitosLivres + ", Paises Dominados: "
-				+ paisesDominados;
+		return "Player: " + namePlayer + ", Exercitos Livres: " + exercitosLivres;
 	}
 
 	@Override
