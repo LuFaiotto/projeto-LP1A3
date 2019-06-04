@@ -1,45 +1,34 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class Player {
-	//Deve suportar n jogadores
-	//TODO: Verificar mais métodos relacionados a classe
-	//TODO: Criar os testes de Player em PlayerTest.java
 	
 	private String namePlayer;
 	private boolean statusPlayer;
-	
 	//TODO: Talvez não seja a melhor abordagem para cor, já que está estático. Verificar se há algo melhor
 	private String cor;
-
-	//TODO: Verificar se é possível utilizar esse HashSet dentro da própria classe
-	private HashSet<Player> players = new HashSet<>();
 	private int exercitosLivres;
 	private ArrayList<Pais> paisesDominados = new ArrayList<>();
 	
-	//TODO: Verificar o construtor. Será mesmo que o player precisa indicar qual é a sua cor? Talvez coloque algum array de cores, enfim
-	public Player(String nome, int exercitosLivres, String cor) {
+	public Player(String nome) {
 		setNamePlayer(nome);
 		setStatusPlayer(true);
-		setExercitosLivres(exercitosLivres);
-		setCor(cor);
+	}
+
+	public void jogar(){
+		System.out.println("Atacar");
+		System.out.println("");
 	}
 	
-	//Desabilitar um player quando ele perde todos os territ�rios
-	public void desabilitarPlayer(Player player) {
-		if(!validarPlayer()) {
-			System.out.println("Game Over para " + player.getNamePlayer());
-			players.remove(player);
-		}
-	}
-	
-	//Objetivo: Verificar se o player possui territórios ligado a ele
-	//TODO: Implementar o método de validação de player de acordo com o jogo
-	public boolean validarPlayer() {
-		//Se possui territ�rios, return true
-		return false;
+	//TODO: Fazer a validação se o player tem permissão para fazer o movimento
+	public void adicionarExercito(Pais pais, int qtdExercito) {
+		//Validação se o exército base é o mesmo do player
+		//Se sim:
+		pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
+		System.out.println(qtdExercito + " adicionados ao pa�s " + pais.getNome());
+		//Senão:
+		System.out.println("Voc� n�o pode adicionar ex�rcito em um pa�s de outro player.");
 	}
 	
 	//Getters e Setters
@@ -63,15 +52,7 @@ public class Player {
 
 	public void setStatusPlayer(boolean statusPlayer) {
 		this.statusPlayer = statusPlayer;
-	}
-
-	public HashSet<Player> getPlayers() {
-		return players;
-	}
-
-	public void setPlayers(HashSet<Player> players) {
-		this.players = players;
-	}
+	}	
 	public int getExercitosLivres() {
 		return exercitosLivres;
 	}
@@ -80,6 +61,7 @@ public class Player {
 	}
 	public void setPaisesDominados(Pais paisDominado) {
 		this.paisesDominados.add(paisDominado);
+		paisDominado.setPlayer(this);
 
 	}
 	public ArrayList<Pais> getPaisesDominados() {
@@ -99,8 +81,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player: " + namePlayer + ", Exercitos Livres: " + exercitosLivres + ", Paises Dominados: "
-				+ paisesDominados;
+		return "Player: " + namePlayer + ", Exercitos Livres: " + exercitosLivres;
 	}
 
 	@Override

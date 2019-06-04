@@ -1,15 +1,63 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
-import java.util.HashMap;
+import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.Scanner;
 
 public class Tabuleiro {
 	public static ArrayList<Continente> continentes = new ArrayList<>();
-	public static Map<Integer, Pais> mapa = new HashMap<>();
+	public Tabuleiro() {
+		
+	}
+	//Instancia uma partida
+	public static void iniciarPartida() {
+		ArrayList<Player> players = new ArrayList<>();
+		int qtdP = 0;
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Digite a quantidade de players:");
+		qtdP = input.nextInt();
+		input.nextLine();
+		
+		for(int i = 0; i < qtdP; i++) {
+			System.out.println("Insira seu Nickname: ");
+			String nome = input.nextLine();
+			players.add(new Player(nome));
+		}
+		input.close();
+		players = definirOrdemJogada(players);
+	}
+	
+	public static void distribuirExercito() {
+		
+	}
+	
+	public static ArrayList<Player> definirOrdemJogada(ArrayList<Player> players) {
+		ArrayList<Player> playersOrdem = new ArrayList<>();
+		for(int i = 0, j = players.size(); i < j; i++){
+			if(players.size() > 1){
+				if(Tabuleiro.compareRolagemDados() >= 0) {
+					playersOrdem.add(players.get(0));
+					players.remove(0);
+				}	else {
+				playersOrdem.add(players.get(1));
+				players.remove(1);
+				}
+			}	else {
+				playersOrdem.add(players.get(0));
+				players.remove(0);
+			}
+		}
+		return playersOrdem;	
+	}
+	
+	public static String definirCorPlayer() {
+		
+		return null;
+	
+	}
 
-
-	public static int compareRolagemDados(int ladosDado) {
-    	Dado dado = new Dado(ladosDado);
+	public static int compareRolagemDados() {
+    	Dado dado = new Dado();
     	int result1 = dado.rolarDado();
     	int result2 = dado.rolarDado();
     	System.out.println("Dado 1: " + result1 + " Dado 2: " + result2);
@@ -20,5 +68,14 @@ public class Tabuleiro {
     	}
     	return -1;
     }
+//Validações
+	//TODO: Implementar o método
+	public static void validarVencedor(boolean resultFinal) {
+		if(resultFinal) {
+			System.out.println("Vitória. Parabéns! Um exército seu será alocado no país conquistado.");
+		} else {
+			System.out.println("Derrota. O oponente defendeu o território.");
+		}
+	}
 	
 }

@@ -65,7 +65,7 @@ public class Exercito {
 			//Ataque. Rolagem de dados. Considerar player 1 como o atacante
 			for(int i = 0; i <= qtdExercito; i++) {
 				//Rolagem de dados, recebendo o retorno do m�todo
-				valorRetornado = Tabuleiro.compareRolagemDados(ladoDados);
+				valorRetornado = Tabuleiro.compareRolagemDados();
 				//Melhorar esse m�todo
 				if(atacante.getQtdExercito() > 1 && valorRetornado == 1 && atacado.getQtdExercito() > 0) {
 					atacado.setQtdExercito(atacado.getQtdExercito() - 1);

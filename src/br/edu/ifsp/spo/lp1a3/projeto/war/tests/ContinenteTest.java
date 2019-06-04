@@ -3,7 +3,6 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.tests;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Continente;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.GameConf;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Pais;
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Tabuleiro;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,9 +35,9 @@ public class ContinenteTest {
 		String nome = "América";
 		int [] paisref = {1, 2, 3};
 		ArrayList<Pais> arrayPais = new ArrayList<>();
-		arrayPais.add(Tabuleiro.mapa.get(1));
-		arrayPais.add(Tabuleiro.mapa.get(2));
-		arrayPais.add(Tabuleiro.mapa.get(3));
+		arrayPais.add(GameConf.mapa.get(1));
+		arrayPais.add(GameConf.mapa.get(2));
+		arrayPais.add(GameConf.mapa.get(3));
 		//2. Execução
 		Continente c = new Continente(nome, paisref);
 		//3. Asserção

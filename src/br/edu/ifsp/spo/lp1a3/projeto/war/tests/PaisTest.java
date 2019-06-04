@@ -3,10 +3,10 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.tests;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Test;
 import java.lang.Object;
+import java.util.ArrayList;
 
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.GameConf;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Pais;
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Tabuleiro;
 
 
 public class PaisTest{
@@ -40,7 +40,7 @@ public class PaisTest{
 		//2. Execução
 		Pais p = new Pais(testNome, testConexoes);
 		//3. Asserção
-		assertEquals(p.getConexaoPorReferencia(1), Tabuleiro.mapa.get(1));
+		assertEquals(p.getConexaoPorReferencia(1), GameConf.mapa.get(1));
 	}
 	
 	@Test
@@ -62,10 +62,17 @@ public class PaisTest{
 		GameConf.loadMapConf();
 		String testNome = "Pais teste";
 		int [] testConexoes = {1, 2, 3};
+		ArrayList<Pais> paisestest = new ArrayList<>();
+		paisestest.add(GameConf.mapa.get(1));
+		paisestest.add(GameConf.mapa.get(2));
+		paisestest.add(GameConf.mapa.get(3));
+
 		//2. Execução
 		Pais p = new Pais(testNome, testConexoes);
 		//3. Asserção
-		System.out.println(p.getPaisesConexoes().toString());
+		assertEquals(paisestest.get(0), GameConf.mapa.get(1));
+		assertEquals(paisestest.get(1), GameConf.mapa.get(2));
+		assertEquals(paisestest.get(2), GameConf.mapa.get(3));
 	}
 	
 	@Test

@@ -9,6 +9,10 @@ import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Tabuleiro;
 
 @SuppressWarnings("unused")
 class TabuleiroTest {
+	@Test
+	public void instanciar_partida() {
+		Tabuleiro.iniciarPartida();
+	}
 /*
 	// 1. Configuração
 		// 2. Execução
