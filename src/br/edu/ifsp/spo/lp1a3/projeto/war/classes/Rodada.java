@@ -11,7 +11,6 @@ public class Rodada {
 	public Rodada(ArrayList<Player> players, int rodada) {
 		setRodada(rodada);
 		setPlayer(players);
-		iniciarRodada();
 	}
 	
 	public void iniciarRodada() {
@@ -27,7 +26,6 @@ public class Rodada {
 		if(!validarPlayer()) {
 			System.out.println("Game Over para " + player.getNamePlayer());
 			players.remove(player);
-			Partida.this.setPlayers(players);
 		}
 	}
 	//Objetivo: Verificar se o player possui territórios ligado a ele

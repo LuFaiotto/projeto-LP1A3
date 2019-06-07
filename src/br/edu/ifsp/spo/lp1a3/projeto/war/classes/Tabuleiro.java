@@ -9,33 +9,40 @@ public class Tabuleiro {
 		
 	}
 	//Instancia uma partida
-	public static void iniciarPartida() {
-		ArrayList<Player> players = new ArrayList<>();
-		int qtdP = 0;
-		Scanner input = new Scanner(System.in);
-		
-		System.out.println("Digite a quantidade de players:");
-		qtdP = input.nextInt();
-		input.nextLine();
-		
-		for(int i = 0; i < qtdP; i++) {
-			System.out.println("Insira seu Nickname: ");
-			String nome = input.nextLine();
-			players.add(new Player(nome));
+	//Instancia e retorna uma partida
+		public static Partida iniciarPartida() {
+			ArrayList<Player> players = new ArrayList<>();
+			int qtdP = 0;
+			int diceSet = 0;
+			Scanner input = new Scanner(System.in);
+			
+			System.out.println("Digite o número de lados do dado: ");
+			diceSet = input.nextInt();
+			input.nextLine();
+			
+			System.out.println("Digite a quantidade de players:");
+			qtdP = input.nextInt();
+			input.nextLine();
+			
+			for(int i = 0; i < qtdP; i++) {
+				System.out.println("Insira seu Nickname: ");
+				String nome = input.nextLine();
+				players.add(new Player(nome));
+			}
+			
+			players = Tabuleiro.definirOrdemJogada(players, diceSet);
+			return (new Partida(players, diceSet));
 		}
-		input.close();
-		players = definirOrdemJogada(players);
-	}
 	
 	public static void distribuirExercito() {
 		
 	}
 	
-	public static ArrayList<Player> definirOrdemJogada(ArrayList<Player> players) {
+	public static ArrayList<Player> definirOrdemJogada(ArrayList<Player> players, int diceSet) {
 		ArrayList<Player> playersOrdem = new ArrayList<>();
 		for(int i = 0, j = players.size(); i < j; i++){
 			if(players.size() > 1){
-				if(Tabuleiro.compareRolagemDados() >= 0) {
+				if(Tabuleiro.compareRolagemDados(diceSet) >= 0) {
 					playersOrdem.add(players.get(0));
 					players.remove(0);
 				}	else {
@@ -56,8 +63,8 @@ public class Tabuleiro {
 	
 	}
 
-	public static int compareRolagemDados() {
-    	Dado dado = new Dado();
+	public static int compareRolagemDados(int diceSet) {
+    	Dado dado = new Dado(diceSet);
     	int result1 = dado.rolarDado();
     	int result2 = dado.rolarDado();
     	System.out.println("Dado 1: " + result1 + " Dado 2: " + result2);
