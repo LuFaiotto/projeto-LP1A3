@@ -23,12 +23,28 @@ public class Player {
 	
 	//TODO: Fazer a validaÃ§Ã£o se o player tem permissÃ£o para fazer o movimento
 	public void adicionarExercito(Pais pais, int qtdExercito) {
-		//ValidaÃ§Ã£o se o exÃ©rcito base Ã© o mesmo do player
-		//Se sim:
-		pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
-		System.out.println(qtdExercito + " adicionados ao paï¿½s " + pais.getNome());
-		//SenÃ£o:
-		System.out.println("Vocï¿½ nï¿½o pode adicionar exï¿½rcito em um paï¿½s de outro player.");
+		if(getNamePlayer().equals(pais.getPlayer().namePlayer)) {
+			pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
+			System.out.println(qtdExercito + " adicionados ao país " + pais.getNome());
+		} else {
+			System.out.println("Você não pode adicionar exército em um país de outro player.");
+		}		
+	}
+	
+	//TODO: Método não está totalmente implementado. Interferência de interface gráfica
+	public void iniciarJogada() {
+		int qtdExercitos;
+		System.out.println("Você possui " + getExercitosLivres() + "para adicionar ao jogo.");
+		while(getExercitosLivres() != 0) {
+			//Seleciona o país que o player quer adicionar e a qtd
+			Pais pais = null;
+			qtdExercitos = 2;
+			if(qtdExercitos > getExercitosLivres()) {
+				System.out.println("Quantidade de exércitos inválida.");
+			} else {
+				adicionarExercito(pais, qtdExercitos);
+			}
+		}
 	}
 	
 	//Getters e Setters
