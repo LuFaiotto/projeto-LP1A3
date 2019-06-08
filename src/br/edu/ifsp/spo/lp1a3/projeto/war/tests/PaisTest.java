@@ -68,6 +68,7 @@ public class PaisTest{
 		paisestest.add(GameConf.mapa.get(3));
 
 		//2. Execução
+		@SuppressWarnings("unused")
 		Pais p = new Pais(testNome, testConexoes);
 		//3. Asserção
 		assertEquals(paisestest.get(0), GameConf.mapa.get(1));

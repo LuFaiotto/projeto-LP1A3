@@ -14,6 +14,7 @@ public class Tabuleiro {
 			ArrayList<Player> players = new ArrayList<>();
 			int qtdP = 0;
 			int diceSet = 0;
+			@SuppressWarnings("resource")
 			Scanner input = new Scanner(System.in);
 			
 			System.out.println("Digite o número de lados do dado: ");

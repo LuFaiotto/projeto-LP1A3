@@ -9,7 +9,6 @@ import org.junit.Test;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.GameConf;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Player;
 
-@SuppressWarnings("unused")
 public class GameConfTest {
 	
 	

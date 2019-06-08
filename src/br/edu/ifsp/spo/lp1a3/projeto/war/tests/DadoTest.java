@@ -3,7 +3,6 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.tests;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Dado;
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
 
 class DadoTest {
 	//1. Configura��o
