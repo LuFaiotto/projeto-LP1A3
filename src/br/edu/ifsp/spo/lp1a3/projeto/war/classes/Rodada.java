@@ -12,28 +12,31 @@ public class Rodada {
 	}
 	
 	public void iniciarRodada() {
-		
+		for(@SuppressWarnings("unused") Player player: players) {
+			
+			desabilitarPlayer();
+		}
 	}
 	
-	public void posicionarExercito(Pais pais, int qtdExercito) {
-		pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
-	}
+//	public void posicionarExercito(Pais pais, int qtdExercito) {
+//		pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
+//	}
 	
 	//Desabilitar um player quando ele perde todos os territ�rios
-	public void desabilitarPlayer(Player player) {
-		if(!validarPlayer(player)) {
-			System.out.println("Game Over para " + player.getNamePlayer());
-			players.remove(player);
+	public void desabilitarPlayer() {
+		for(Player player: players) {
+			if(!player.isStatusPlayer()) {
+				players.remove(player);
+			}
 		}
 	}
 	//Objetivo: Verificar se o player possui territórios ligado a ele
-	//TODO: Implementar o método de validação de player de acordo com o jogo
-	public boolean validarPlayer(Player player) {
-		if(player.getPaisesDominados().size() > 0) {
-			return true;
-		}
-		return false;
-	}
+//	public boolean validarPlayer(Player player) {
+//		if(player.getPaisesDominados().size() > 0) {
+//			return true;
+//		}
+//		return false;
+//	}
 
 	@SuppressWarnings("unused")
 	private ArrayList<Player> getPlayer() {

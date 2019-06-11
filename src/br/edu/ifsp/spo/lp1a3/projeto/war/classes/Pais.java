@@ -21,8 +21,7 @@ public class Pais {
 		setCor("Sem cor");
 	}
 	
-	//TODO: Verificar validação do método getNumLados da classe Dado.
-	public void atacar(Pais atacante, Pais atacado, int qtdExercito) {
+	public void atacar(Pais atacado, int qtdExercito) {
 		int valorRetornado;
 		boolean resultadoFinal = false;
 		
@@ -33,10 +32,10 @@ public class Pais {
 					atacado.setQtdExercito(atacado.getQtdExercito() - 1);
 					System.out.println("Vitória. Um exército oponente foi destruído.");
 				} else if (valorRetornado == 0){
-					atacante.setQtdExercito(atacante.getQtdExercito() - 1);
+					this.setQtdExercito(this.getQtdExercito() - 1);
 					System.out.println("Empate. Um exército seu foi destruído.");
 				} else {
-					atacante.setQtdExercito(atacante.getQtdExercito() - 1);
+					this.setQtdExercito(this.getQtdExercito() - 1);
 					System.out.println("Derrota. Um exército seu foi destruído.");
 				}
 				
@@ -44,6 +43,7 @@ public class Pais {
 				if(atacado.getQtdExercito() == 0) {
 					i = qtdExercito;
 					resultadoFinal = true;
+					Tabuleiro.gameOver(atacado.getPlayer());
 				}
 			}
 			
@@ -78,7 +78,7 @@ public class Pais {
 		if(qtdExercito > this.getQtdExercito()) {
 			return true;
 		}
-		System.out.println("Você não possui exército suficiente em " + this.getNome() + " para atacar.");
+		System.out.println("Você não possui es�rcito suficiente em " + this.getNome() + " para atacar.");
 		return false;
 	}
 		
@@ -100,7 +100,10 @@ public class Pais {
 		this.player = p;
 	}
 	public int getQtdExercito() {
-		return qtdExercito;
+		if(status) {
+			return qtdExercito + 1;
+		}	else
+			return qtdExercito;
 	}
 	public void setQtdExercito(int qtdExercito) {
 		this.qtdExercito = qtdExercito;
