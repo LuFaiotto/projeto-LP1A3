@@ -6,7 +6,6 @@ public class Player {
 	
 	private String namePlayer;
 	private boolean statusPlayer;
-	//TODO: Talvez n√£o seja a melhor abordagem para cor, j√° que est√° est√°tico. Verificar se h√° algo melhor
 	private String cor;
 	private int exercitosLivres;
 	private ArrayList<Pais> paisesDominados = new ArrayList<>();
@@ -17,11 +16,11 @@ public class Player {
 	}
 
 	public void jogar(){
+		fortalecerTerritorios();
 		System.out.println("Atacar");
 		System.out.println("");
 	}
 	
-	//TODO: Fazer a valida√ß√£o se o player tem permiss√£o para fazer o movimento
 	public void adicionarExercito(Pais pais, int qtdExercito) {
 		if(getNamePlayer().equals(pais.getPlayer().namePlayer)) {
 			pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
@@ -32,7 +31,7 @@ public class Player {
 	}
 	
 	//TODO: MÈtodo n„o est· totalmente implementado. InterferÍncia de interface gr·fica
-	public void iniciarJogada() {
+	public void fortalecerTerritorios() {
 		int qtdExercitos;
 		System.out.println("VocÍ possui " + getExercitosLivres() + "para adicionar ao jogo.");
 		while(getExercitosLivres() != 0) {
@@ -46,6 +45,8 @@ public class Player {
 			}
 		}
 	}
+	
+	
 	
 	//Getters e Setters
 	public String getCor() {
