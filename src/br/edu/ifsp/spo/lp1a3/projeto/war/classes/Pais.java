@@ -28,7 +28,7 @@ public class Pais {
 		
 		if(validarConexao(atacado) && validarAtaque(qtdExercito)) {
 			for(int i = 0; i < qtdExercito; i++) {
-				valorRetornado = Tabuleiro.compareRolagemDados();
+				valorRetornado = Tabuleiro.compareRolagemDados(Dado.diceSet);
 				if(valorRetornado == 1) {
 					atacado.setQtdExercito(atacado.getQtdExercito() - 1);
 					System.out.println("Vitória. Um exército oponente foi destruído.");

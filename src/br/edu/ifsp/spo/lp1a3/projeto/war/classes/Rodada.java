@@ -1,7 +1,5 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
-
 import java.util.ArrayList;
 
 public class Rodada {
@@ -11,29 +9,29 @@ public class Rodada {
 	public Rodada(ArrayList<Player> players, int rodada) {
 		setRodada(rodada);
 		setPlayer(players);
-		iniciarRodada();
 	}
 	
 	public void iniciarRodada() {
 		
 	}
 	
-	public void posicionarExercito(Pais pais) {
-		
+	public void posicionarExercito(Pais pais, int qtdExercito) {
+		pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
 	}
 	
 	//Desabilitar um player quando ele perde todos os territ�rios
 	public void desabilitarPlayer(Player player) {
-		if(!validarPlayer()) {
+		if(!validarPlayer(player)) {
 			System.out.println("Game Over para " + player.getNamePlayer());
 			players.remove(player);
-			Partida.this.setPlayers(players);
 		}
 	}
 	//Objetivo: Verificar se o player possui territórios ligado a ele
 	//TODO: Implementar o método de validação de player de acordo com o jogo
-	public boolean validarPlayer() {
-		//Se possui territ�rios, return true
+	public boolean validarPlayer(Player player) {
+		if(player.getPaisesDominados().size() > 0) {
+			return true;
+		}
 		return false;
 	}
 
