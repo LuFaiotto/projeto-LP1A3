@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Partida {
 	public int playersQtd;
 	private Dado dice;
-	private int rodadaNum; 
+	private int rodadaNum = 0; 
 	private ArrayList<Player> players = new ArrayList<>();
 	
 	public Partida(ArrayList<Player> players, int diceset) {
@@ -18,9 +18,10 @@ public class Partida {
 	
 	//TODO Implementar rodadas
 	public void iniciarRodadas(){
-		Rodada rodada = new Rodada(players, ++rodadaNum);
-		rodada.iniciarRodada();
-	
+		while(true) {
+			Rodada rodada = new Rodada(players, ++rodadaNum);
+			rodada.iniciarRodada();
+		}
 	}
 	
 	

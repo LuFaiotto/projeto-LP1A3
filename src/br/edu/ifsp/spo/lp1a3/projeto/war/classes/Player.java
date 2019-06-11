@@ -17,12 +17,17 @@ public class Player {
 
 	public void jogar(){
 		fortalecerTerritorios();
-		System.out.println("Atacar");
-		System.out.println("");
+		int op = 1;
+		switch(op) {
+		case 1 : break;
+		case 2 : break;
+		default : System.out.println("Opção inválida");
+		break;
+		}
 	}
 	
 	public void adicionarExercito(Pais pais, int qtdExercito) {
-		if(getNamePlayer().equals(pais.getPlayer().namePlayer)) {
+		if(this.equals(pais.getPlayer())) {
 			pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
 			System.out.println(qtdExercito + " adicionados ao pa�s " + pais.getNome());
 		} else {
@@ -46,7 +51,6 @@ public class Player {
 			}
 		}
 	}
-	
 	
 	
 	//Getters e Setters
