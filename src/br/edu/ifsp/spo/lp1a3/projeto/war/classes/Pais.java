@@ -62,7 +62,7 @@ public class Pais {
 	
 	
 	
-//VALIDAÇÕES
+	//VALIDA��ES
 	public boolean validarConexao(Pais atacado) {
 		for(Pais pais: this.getPaisesConexoes()) {
 			if(pais.equals(atacado)) {
@@ -75,10 +75,10 @@ public class Pais {
 	//O que fazer: Avaliar se a quantidade de exércitos escolhidos está, no máximo, com a quantidade de
 	//exércitos posicionados no país de ataque - 1 (exército base)
 	public boolean validarAtaque(int qtdExercito) {
-		if(qtdExercito > this.getQtdExercito()) {
+		if(qtdExercito > 0 && qtdExercito < 4) {
 			return true;
 		}
-		System.out.println("Você não possui es�rcito suficiente em " + this.getNome() + " para atacar.");
+		System.out.println("Quantidade inv�lida de ex�rcitos.");
 		return false;
 	}
 		
