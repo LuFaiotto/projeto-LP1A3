@@ -128,9 +128,21 @@ public class Tabuleiro {
 	public static void validarVencedor(boolean resultFinal) {
 		if(resultFinal) {
 			System.out.println("Vitória. Parabéns! Um exército seu será alocado no país conquistado.");
+			
 		} else {
 			System.out.println("Derrota. O oponente defendeu o território.");
 		}
 	}
+	
+	//Desabilitar um player quando ele perde todos os territ�rios
+	public static void gameOver(Player player) {
+		if(player.getPaisesDominados().size() > 0) {
+			System.out.println("Game Over para " + player.getNamePlayer());
+			player.setStatusPlayer(false);
+			//return false;
+		}
+		//return true;
+	}
+	
 	
 }
