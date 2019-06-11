@@ -43,10 +43,12 @@ public class Pais {
 				if(atacado.getQtdExercito() == 0) {
 					i = qtdExercito;
 					resultadoFinal = true;
-					Tabuleiro.gameOver(atacado.getPlayer());
+					if(!Tabuleiro.gameOver(atacado.getPlayer())) {
+						this.getPlayer().setExercitosLivres(this.getPlayer().getExercitosLivres() + 10);
+					}
+					//Tabuleiro.gameOver(atacado.getPlayer());
 				}
-			}
-			
+			}	
 			Tabuleiro.validarVencedor(resultadoFinal);
 		}
 	}

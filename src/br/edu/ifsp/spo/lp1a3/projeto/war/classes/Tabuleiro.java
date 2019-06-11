@@ -137,14 +137,30 @@ public class Tabuleiro {
 	}
 	
 	//Desabilitar um player quando ele perde todos os territï¿½rios
-	public static void gameOver(Player player) {
+	public static boolean gameOver(Player player) {
 		if(player.getPaisesDominados().size() > 0) {
 			System.out.println("Game Over para " + player.getNamePlayer());
 			player.setStatusPlayer(false);
-			//return false;
+			return false;
 		}
-		//return true;
+		return true;
 	}
 	
-	
+	//Objetivo: Verificar se o player possui o domínio de um continente inteiro
+	public static boolean verificarDominio(Player player) {
+		int flag = 0;
+		Continente continente = new Continente();
+		ArrayList<Pais> paises = continente.getPaisesArray();
+		for(Pais pais: paises) {
+			if(pais.getPlayer().equals(player)) {
+				flag++;
+			}
+		}
+		
+		if(paises.size() == flag) {
+			return true;
+		}
+		
+		return false;
+	}
 }

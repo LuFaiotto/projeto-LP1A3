@@ -37,6 +37,24 @@ public class Rodada {
 //		}
 //		return false;
 //	}
+	
+//	//Objetivo: Verificar se o player possui o domínio de um continente inteiro
+//	public boolean verificarDominio(Player player) {
+//		int flag = 0;
+//		Continente continente = new Continente();
+//		ArrayList<Pais> paises = continente.getPaisesArray();
+//		for(Pais pais: paises) {
+//			if(pais.getPlayer().equals(player)) {
+//				flag++;
+//			}
+//		}
+//		
+//		if(paises.size() == flag) {
+//			return true;
+//		}
+//		
+//		return false;
+//	}
 
 	@SuppressWarnings("unused")
 	private ArrayList<Player> getPlayer() {

@@ -12,6 +12,10 @@ public class Continente {
 	private int[] paises;
 	private ArrayList<Pais> paisesArray = new ArrayList<>();
 	
+	public Continente() {
+		
+	}
+	
 	public Continente(String nome, int [] paisesRef) {
 		setNome(nome);
 		setPaisesRef(paisesRef);
