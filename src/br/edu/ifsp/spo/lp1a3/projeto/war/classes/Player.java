@@ -2,6 +2,8 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
 
+import br.edu.ifsp.spo.lp1a3.projeto.war.App;
+
 public class Player {
 	
 	private String namePlayer;
@@ -19,7 +21,15 @@ public class Player {
 		fortalecerTerritorios();
 		int op = 1;
 		switch(op) {
-		case 1 : break;
+		case 1 : 
+		System.out.println(this.paisesDominados);
+		System.out.println(paisesDominados.get(3));
+		System.out.println(paisesDominados.get(3));
+		System.out.println(App.p.getPlayers().get(1).getPaisesDominados().get(2));
+		paisesDominados.get(3).atacar(App.p.getPlayers().get(2).getPaisesDominados().get(2), 3);
+		System.out.println(paisesDominados.get(3));
+		System.out.println(App.p.getPlayers().get(2).getPaisesDominados().get(2));
+		break;
 		case 2 : break;
 		default : System.out.println("Opção inválida");
 		break;
@@ -42,12 +52,13 @@ public class Player {
 		System.out.println("Voc� possui " + getExercitosLivres() + "para adicionar ao jogo.");
 		while(getExercitosLivres() != 0) {
 			//Seleciona o pa�s que o player quer adicionar e a qtd
-			Pais pais = null;
-			qtdExercitos = 2;
+			Pais pais = paisesDominados.get(1);
+			qtdExercitos = 10;
 			if(qtdExercitos > getExercitosLivres()) {
 				System.out.println("Quantidade de ex�rcitos inv�lida.");
 			} else {
 				adicionarExercito(pais, qtdExercitos);
+				setExercitosLivres(getExercitosLivres()-qtdExercitos);
 			}
 		}
 	}

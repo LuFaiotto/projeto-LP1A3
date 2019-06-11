@@ -12,7 +12,7 @@ public class Rodada {
 	}
 	
 	public void iniciarRodada() {
-		for(@SuppressWarnings("unused") Player player: players) {
+		for(Player player: players) {
 			Tabuleiro.distribuirExercito(players);
 			player.jogar();
 			desabilitarPlayer();

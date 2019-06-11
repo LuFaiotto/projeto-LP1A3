@@ -62,7 +62,7 @@ public class Pais {
 	
 	
 	
-	//VALIDAÇÕES
+	//VALIDAï¿½ï¿½ES
 	public boolean validarConexao(Pais atacado) {
 		for(Pais pais: this.getPaisesConexoes()) {
 			if(pais.equals(atacado)) {
@@ -78,7 +78,7 @@ public class Pais {
 		if(qtdExercito > 0 && qtdExercito < 4) {
 			return true;
 		}
-		System.out.println("Quantidade inválida de exércitos.");
+		System.out.println("Quantidade invï¿½lida de exï¿½rcitos.");
 		return false;
 	}
 		
@@ -136,7 +136,7 @@ public class Pais {
 //OVERRIDES
 	@Override
 	public String toString() {
-		return "Pais " + this.getNome() + " Dominador: " + this.getPlayer().getNamePlayer();	
+		return "Pais " + this.getNome() + " Dominador: " + this.getPlayer().getNamePlayer() + " Exercitos " + getQtdExercito();	
 	}
 	
 	@Override
