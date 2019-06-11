@@ -39,15 +39,17 @@ public class Tabuleiro {
 	
 	
 	
-	public static void distribuirExercito(Player player) {
-		int qtdPaisesDominados = player.getPaisesDominados().size();
-		int resultDivisao = qtdPaisesDominados / 2;
-		
-		//No caso do player possuir um territ�rio
-		if(resultDivisao == 0) {
-			resultDivisao = 1;
-		}	
-		player.setExercitosLivres(resultDivisao);
+	public static void distribuirExercito(ArrayList<Player> players) {
+		for(Player player: players) {
+			int qtdPaisesDominados = player.getPaisesDominados().size();
+			int resultDivisao = qtdPaisesDominados / 2;
+			
+			//No caso do player possuir um territ�rio
+			if(resultDivisao == 0) {
+				resultDivisao = 1;
+			}	
+			player.setExercitosLivres(player.getExercitosLivres() + resultDivisao);
+		}
 	}
 	
 	public static ArrayList<Player> definirOrdemJogada(ArrayList<Player> players, int diceSet) {
