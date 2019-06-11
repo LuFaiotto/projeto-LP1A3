@@ -24,22 +24,23 @@ public class Player {
 	public void adicionarExercito(Pais pais, int qtdExercito) {
 		if(getNamePlayer().equals(pais.getPlayer().namePlayer)) {
 			pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
-			System.out.println(qtdExercito + " adicionados ao país " + pais.getNome());
+			System.out.println(qtdExercito + " adicionados ao paï¿½s " + pais.getNome());
 		} else {
-			System.out.println("Você não pode adicionar exército em um país de outro player.");
+			System.out.println("Vocï¿½ nï¿½o pode adicionar exï¿½rcito em um paï¿½s de outro player.");
 		}		
 	}
 	
-	//TODO: Método não está totalmente implementado. Interferência de interface gráfica
+
+	//TODO: Mï¿½todo nï¿½o estï¿½ totalmente implementado. Interferï¿½ncia de interface grï¿½fica
 	public void fortalecerTerritorios() {
 		int qtdExercitos;
-		System.out.println("Você possui " + getExercitosLivres() + "para adicionar ao jogo.");
+		System.out.println("Vocï¿½ possui " + getExercitosLivres() + "para adicionar ao jogo.");
 		while(getExercitosLivres() != 0) {
-			//Seleciona o país que o player quer adicionar e a qtd
+			//Seleciona o paï¿½s que o player quer adicionar e a qtd
 			Pais pais = null;
 			qtdExercitos = 2;
 			if(qtdExercitos > getExercitosLivres()) {
-				System.out.println("Quantidade de exércitos inválida.");
+				System.out.println("Quantidade de exï¿½rcitos invï¿½lida.");
 			} else {
 				adicionarExercito(pais, qtdExercitos);
 			}
