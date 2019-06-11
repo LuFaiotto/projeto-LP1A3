@@ -8,5 +8,8 @@ public class App {
 		Partida p;
 		p = Tabuleiro.iniciarPartida();
 		System.out.println(p.getPlayers());
+		for(Player player : p.getPlayers()) {
+			System.out.println(player.getPaisesDominados());;
+		}
 	}
 }

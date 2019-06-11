@@ -12,41 +12,6 @@ public class GameConf{
 	static Random random = new Random();
 
 	
-	//TODO: Acionar o método posicionar exército da classe Exercito. Verificar se necessário.
-	public static void distribuirTerritorio(ArrayList<Player> players){
-		//ArrayList para embaralhar os países
-		ArrayList<Integer> vetPais = new ArrayList<>();
-		int pQtd = players.size();	
-		//Embaralhando os países
-		for(int i = 1; i <= 42; i++){
-			vetPais.add(i);
-		}
-		Collections.shuffle(vetPais);
-		
-		//Distribuindo territórios
-		if(42 % pQtd == 0) {
-			int flag = 0;
-			for(int p = 0; p < players.size(); p++){
-				for(int j = flag; j < flag + 42/pQtd; j++){
-					players.get(p).setPaisesDominados(mapa.get(vetPais.get(j)));
-				}
-				flag = flag + 42/pQtd;
-			}
-		}	else {
-				int flag = 0;
-				for(int p = 0; p < players.size(); p++){
-					for(int j = flag; j < flag + (int)42/pQtd; j++){
-						players.get(p).setPaisesDominados(mapa.get(vetPais.get(j)));
-					}
-					flag = flag + 42/pQtd;
-				}
-				for(int i = (int)42/ pQtd; i < 42; i++){
-					mapa.get(vetPais.get(i)).setQtdExercito(10);
-					mapa.get(vetPais.get(i)).setCor("Neutro");
-				}
-			}
-	}
-	
 	//Carrega todas as informações do mapa		
 	public static void loadMapConf(){
 		mapa.put(1, new Pais("Alaska", new int [] {2, 3, 37}));

@@ -1,6 +1,7 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Tabuleiro {
@@ -32,18 +33,20 @@ public class Tabuleiro {
 		}
 			
 		players = Tabuleiro.definirOrdemJogada(players, diceSet);
+		distribuirTerritorio(players);
 		return (new Partida(players, diceSet));
 	}
+	
+	
 	
 	public static void distribuirExercito(Player player) {
 		int qtdPaisesDominados = player.getPaisesDominados().size();
 		int resultDivisao = qtdPaisesDominados / 2;
 		
-		//No caso do player possuir um territ�rio
+		//No caso do player possuir um territ�rio
 		if(resultDivisao == 0) {
 			resultDivisao = 1;
-		}
-		
+		}	
 		player.setExercitosLivres(resultDivisao);
 	}
 	
@@ -65,6 +68,42 @@ public class Tabuleiro {
 		}
 		return playersOrdem;	
 	}
+	
+	//TODO: Acionar o método posicionar exército da classe Exercito. Verificar se necessário.
+	public static void distribuirTerritorio(ArrayList<Player> players){
+		//ArrayList para embaralhar os países
+		ArrayList<Integer> vetPais = new ArrayList<>();
+		int pQtd = players.size();	
+		//Embaralhando os países
+		for(int i = 1; i <= 42; i++){
+			vetPais.add(i);
+		}
+		Collections.shuffle(vetPais);
+		
+		//Distribuindo territórios
+		if(42 % pQtd == 0) {
+			int flag = 0;
+			for(int p = 0; p < players.size(); p++){
+				for(int j = flag; j < flag + 42/pQtd; j++){
+					players.get(p).setPaisesDominados(GameConf.mapa.get(vetPais.get(j)));
+				}
+				flag = flag + 42/pQtd;
+			}
+		}	else {
+				int flag = 0;
+				for(int p = 0; p < players.size(); p++){
+					for(int j = flag; j < flag + (int)42/pQtd; j++){
+						players.get(p).setPaisesDominados(GameConf.mapa.get(vetPais.get(j)));
+					}
+					flag = flag + 42/pQtd;
+				}
+				for(int i = (int)42/ pQtd; i < 42; i++){
+					GameConf.mapa.get(vetPais.get(i)).setQtdExercito(10);
+					GameConf.mapa.get(vetPais.get(i)).setCor("Neutro");
+				}
+			}
+	}
+	
 	
 	public static String definirCorPlayer() {
 		

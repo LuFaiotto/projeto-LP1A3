@@ -133,7 +133,7 @@ public class Pais {
 //OVERRIDES
 	@Override
 	public String toString() {
-		return "Pais " + this.getNome() + "Dominador: " + this.getPlayer() + ", Fronteiras: " + Arrays.toString(getConexoes());	
+		return "Pais " + this.getNome() + " Dominador: " + this.getPlayer().getNamePlayer();	
 	}
 	
 	@Override
