@@ -89,6 +89,7 @@ public class Pais {
 	}
 	public void setStatus(boolean status) {
 		this.status = status;
+		setQtdExercito(1);
 	}
 	public boolean isStatus() {
 		return status;
@@ -98,11 +99,9 @@ public class Pais {
 	}
 	public void setPlayer(Player p){
 		this.player = p;
+		setStatus(true);
 	}
 	public int getQtdExercito() {
-		if(status) {
-			return qtdExercito + 1;
-		}	else
 			return qtdExercito;
 	}
 	public void setQtdExercito(int qtdExercito) {
