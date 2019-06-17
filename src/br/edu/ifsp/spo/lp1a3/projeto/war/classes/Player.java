@@ -25,7 +25,7 @@ public class Player {
 		System.out.println(this.paisesDominados);
 		System.out.println(paisesDominados.get(3));
 		System.out.println(paisesDominados.get(3));
-		System.out.println(App.p.getPlayers().get(1).getPaisesDominados().get(2));
+		System.out.println(App.p.getPlayers().toString());
 		paisesDominados.get(3).atacar(App.p.getPlayers().get(2).getPaisesDominados().get(2), 3);
 		System.out.println(paisesDominados.get(3));
 		System.out.println(App.p.getPlayers().get(2).getPaisesDominados().get(2));

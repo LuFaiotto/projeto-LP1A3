@@ -13,7 +13,6 @@ public class Partida {
 		setPlayers(players);
 		this.dice = new Dado(diceset);
 		this.rodadaNum = 0;
-		iniciarRodadas();
 	}
 	
 	//TODO Implementar rodadas
