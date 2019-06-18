@@ -135,7 +135,7 @@ public class Pais {
 //OVERRIDES
 	@Override
 	public String toString() {
-		return "Pais " + this.getNome() + " Dominador: " + this.getPlayer().getNamePlayer() + " Exercitos " + getQtdExercito();	
+		return "Pais " + this.getNome() + " Exercitos " + getQtdExercito();	
 	}
 	
 	@Override

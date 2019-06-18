@@ -1,6 +1,5 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Rodada;
 import java.util.ArrayList;
 
 public class Partida {

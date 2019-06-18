@@ -2,6 +2,7 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
 
+
 public class Rodada {
 	private int rodada;
 	private ArrayList<Player> players;
