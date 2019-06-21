@@ -1,44 +1,43 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.*;
-import br.edu.ifsp.spo.lp1a3.projeto.war.controllers.*;;
+import java.io.IOException;
 
-public class App {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;;
 
-	public static Partida p = null;
-	public static void main(String[] args) {
+public class App extends Application{
+	private static Stage stage = null;	
+	
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		Parent root = FXMLLoader.load(getClass().getResource("AppFx.fxml"));
 		
-		GameConf.loadMapConf();
-		//TESTE DO JOGO
-		
-		//AQUI PEGA INFORMAÇÃO PRA INSTANCIAR PARTIDA
-		ArrayList<Player> players = new ArrayList<>();
-		int qtdP = 0;
-		int diceSet = 0;
-		@SuppressWarnings("resource")
-		Scanner input = new Scanner(System.in);
-			
-		System.out.println("Digite o número de lados do dado: ");
-		diceSet = input.nextInt();
-		input.nextLine();
-		
-		System.out.println("Digite a quantidade de players:");
-		qtdP = input.nextInt();
-		input.nextLine();
-			
-		for(int i = 0; i < qtdP; i++) {
-			System.out.println("Insira seu Nickname: ");
-			String nome = input.nextLine();
-			players.add(new Player(nome));
-		}
-		
-		//CHAMANDO O CONTROLLER
-		p = PartidaController.iniciarJogo(players, diceSet);
-		p.iniciarRodadas();
-		
+		primaryStage.setScene(new Scene(root));
+		primaryStage.setTitle("War");
+		setStage(primaryStage);
+		primaryStage.show();
 		
 	}
+	
+	public static void changeScene(Scene scene) throws IOException{
+		getStage().setScene(scene);
+		getStage().show();
+	}
+	public static void main(String[] args) {	
+		launch(args);
+	}
+
+	public static Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		App.stage = stage;
+	}
+
 }
