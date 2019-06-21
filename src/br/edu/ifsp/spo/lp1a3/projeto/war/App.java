@@ -1,15 +1,43 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war;
 
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.*;
 
-public class App {
-	public static void main(String[] args) {
-		GameConf.loadMapConf();
-		Partida p;
-		p = Tabuleiro.iniciarPartida();
-		System.out.println(p.getPlayers());
-		for(Player player : p.getPlayers()) {
-			System.out.println(player.getPaisesDominados());;
-		}
+import java.io.IOException;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;;
+
+public class App extends Application{
+	private static Stage stage = null;	
+	
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		Parent root = FXMLLoader.load(getClass().getResource("AppFx.fxml"));
+		
+		primaryStage.setScene(new Scene(root));
+		primaryStage.setTitle("War");
+		setStage(primaryStage);
+		primaryStage.show();
+		
 	}
+	
+	public static void changeScene(Scene scene) throws IOException{
+		getStage().setScene(scene);
+		getStage().show();
+	}
+	public static void main(String[] args) {	
+		launch(args);
+	}
+
+	public static Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		App.stage = stage;
+	}
+
 }

@@ -11,27 +11,7 @@ public class Tabuleiro {
 	}
 	//Instancia uma partida
 	//Instancia e retorna uma partida
-	public static Partida iniciarPartida() {
-		ArrayList<Player> players = new ArrayList<>();
-		int qtdP = 0;
-		int diceSet = 0;
-		@SuppressWarnings("resource")
-		Scanner input = new Scanner(System.in);
-			
-		System.out.println("Digite o número de lados do dado: ");
-		diceSet = input.nextInt();
-		input.nextLine();
-		
-		System.out.println("Digite a quantidade de players:");
-		qtdP = input.nextInt();
-		input.nextLine();
-			
-		for(int i = 0; i < qtdP; i++) {
-			System.out.println("Insira seu Nickname: ");
-			String nome = input.nextLine();
-			players.add(new Player(nome));
-		}
-			
+	public static Partida iniciarPartida(ArrayList<Player> players, int diceSet) {		
 		players = Tabuleiro.definirOrdemJogada(players, diceSet);
 		distribuirTerritorio(players);
 		return (new Partida(players, diceSet));
@@ -44,7 +24,7 @@ public class Tabuleiro {
 			int qtdPaisesDominados = player.getPaisesDominados().size();
 			int resultDivisao = qtdPaisesDominados / 2;
 			
-			//No caso do player possuir um territ�rio
+			//No caso do player possuir um território
 			if(resultDivisao == 0) {
 				resultDivisao = 1;
 			}	
@@ -138,7 +118,7 @@ public class Tabuleiro {
 	
 	//Desabilitar um player quando ele perde todos os territ�rios
 	public static void gameOver(Player player) {
-		if(player.getPaisesDominados().size() > 0) {
+		if(player.getPaisesDominados().size() == 0) {
 			System.out.println("Game Over para " + player.getNamePlayer());
 			player.setStatusPlayer(false);
 			//return false;

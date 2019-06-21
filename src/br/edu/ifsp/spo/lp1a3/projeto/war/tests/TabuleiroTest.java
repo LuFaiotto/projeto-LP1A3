@@ -15,7 +15,7 @@ import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Tabuleiro;
 class TabuleiroTest {
 	@Test
 	public void instanciar_partida() {
-		Tabuleiro.iniciarPartida();
+		
 	}
 	@Test
 	public void deve_destribuir_territorios_div_inteira() {
