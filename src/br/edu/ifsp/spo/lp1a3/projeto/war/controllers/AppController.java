@@ -14,5 +14,4 @@ public class AppController {
 		Parent root = FXMLLoader.load(getClass().getResource("../IniciandoPartida.fxml"));
 		App.changeScene(new Scene(root));
 	}
-	
 }
