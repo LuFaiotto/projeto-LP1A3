@@ -85,7 +85,7 @@
       <Button fx:id="p36" layoutX="1042.0" layoutY="256.0" mnemonicParsing="false" onAction="#getPais" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 90 90 90 90;" />
       <Button fx:id="p38" layoutX="1150.0" layoutY="271.0" mnemonicParsing="false" onAction="#getPais" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 90 90 90 90;" />
       <Button fx:id="p30" layoutX="932.0" layoutY="286.0" mnemonicParsing="false" onAction="#getPais" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 90 90 90 90;" />
-      <Button layoutX="1027.0" layoutY="324.0" mnemonicParsing="false" onAction="#getPais" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 90 90 90 90;" />
+      <Button fx:id="p34" layoutX="1027.0" layoutY="324.0" mnemonicParsing="false" onAction="#getPais" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 90 90 90 90;" />
       <Button fx:id="p16" layoutX="690.0" layoutY="324.0" mnemonicParsing="false" onAction="#getPais" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 90 90 90 90;" />
       <Button fx:id="p18" layoutX="766.0" layoutY="301.0" mnemonicParsing="false" onAction="#getPais" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 90 90 90 90;" />
       <Button fx:id="p18" layoutX="796.0" layoutY="354.0" mnemonicParsing="false" onAction="#getPais" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 90 90 90 90;" />

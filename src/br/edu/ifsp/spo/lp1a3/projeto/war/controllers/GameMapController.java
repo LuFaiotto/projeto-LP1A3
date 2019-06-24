@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import br.edu.ifsp.spo.lp1a3.projeto.war.App;
+import br.edu.ifsp.spo.lp1a3.projeto.war.classes.GameConf;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -38,7 +39,7 @@ public class GameMapController implements Initializable {
 		Button b = (Button)event.getSource();
 		int id;
 		id = Integer.parseInt(b.getId().replaceAll("[^0-9.]", ""));
-		System.out.println(id);
+		System.out.println(GameConf.mapa.get(id).toString());
 	}
 	
 	public void rodada() {
