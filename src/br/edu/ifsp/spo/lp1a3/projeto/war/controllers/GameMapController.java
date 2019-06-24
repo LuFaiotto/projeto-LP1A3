@@ -5,15 +5,22 @@ import java.util.ResourceBundle;
 
 import br.edu.ifsp.spo.lp1a3.projeto.war.App;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.GameConf;
+import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Pais;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
+import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 public class GameMapController implements Initializable {
+	
+	@FXML
+    private Text paisSelect; 
+	
 	  @FXML
 	  private Text playerName;
 
@@ -21,7 +28,7 @@ public class GameMapController implements Initializable {
 	  private Text exercitoPlayer;
 
 	  @FXML
-	  private Text exercitoPlayer1;
+	  private Text paisesPlayer;
   
 	  @FXML
 	  private Button brMovimentar;
@@ -31,17 +38,40 @@ public class GameMapController implements Initializable {
 
 	  @FXML
 	  private Button btFinalizar;
+	  
+	  @FXML
+	  private TextField inputPlayer;
 	
-	Partida partida = null;
+	  Partida partida = null;
+	  
+	  Pais paisSelecionado = null;
 	
+	  public static Player jogando = null;
 	
 	public void getPais(ActionEvent event) {
+		
 		Button b = (Button)event.getSource();
 		int id;
 		id = Integer.parseInt(b.getId().replaceAll("[^0-9.]", ""));
-		System.out.println(GameConf.mapa.get(id).toString());
+		if(GameConf.mapa.get(id).getPlayer().equals(jogando))
+			paisSelecionado = GameConf.mapa.get(id);
 	}
 	
+	public void finalizarJogada() throws InterruptedException {
+		jogando.jogar(false);
+	}
+	
+	public void guerrilhar() {
+		if()
+	}
+	
+	public void jogar () throws InterruptedException {
+		
+	}
+	
+	public void getInt(ActionEvent e) {
+		
+	}
 	public void rodada() {
 		
 	}
@@ -50,13 +80,17 @@ public class GameMapController implements Initializable {
 		
 	}
 	
-	
-	public void initialize() {
-		
+	public void atulizarTela(Player jogando) {
+		playerName.setText(jogando.getNamePlayer());
+		exercitoPlayer.setText("" + jogando.getExercitosLivres());
 	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.partida = App.partida;
+		
+		atulizarTela(jogando)
 	}
+	
 
 }

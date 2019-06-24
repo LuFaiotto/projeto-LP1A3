@@ -2,6 +2,8 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
 
+import br.edu.ifsp.spo.lp1a3.projeto.war.controllers.GameMapController;
+
 
 public class Rodada {
 	private int rodada;
@@ -15,7 +17,8 @@ public class Rodada {
 	public void iniciarRodada() {
 		for(Player player: players) {
 			Tabuleiro.distribuirExercito(players);
-			player.jogar();
+			GameMapController.jogando = player;
+			player.jogar(true);
 			desabilitarPlayer();
 		}
 	}

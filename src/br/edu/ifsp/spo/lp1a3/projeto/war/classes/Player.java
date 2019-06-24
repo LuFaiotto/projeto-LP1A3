@@ -3,6 +3,7 @@ package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 import java.util.ArrayList;
 
 import br.edu.ifsp.spo.lp1a3.projeto.war.App;
+import br.edu.ifsp.spo.lp1a3.projeto.war.controllers.GameMapController;
 import br.edu.ifsp.spo.lp1a3.projeto.war.controllers.PlayerController;
 
 public class Player {
@@ -18,21 +19,11 @@ public class Player {
 		setStatusPlayer(true);
 	}
 
-	public void jogar(){
-		//fortalecerTerritorios();
-		switch(PlayerController.opcaoPlayer()) {
-		case 1 : 
-			PlayerController.atacar(this);
-		break;	
-		case 2 : 
-		
-		break;
-		case 3:
-			return;
-		default : 
-			System.out.println("Opção inválida");
-		break;
+	public void jogar(boolean jogando) throws InterruptedException{
+		while(jogando){
+			wait();
 		}
+		return;
 	}
 	
 	public void adicionarExercito(Pais pais, int qtdExercito) {
