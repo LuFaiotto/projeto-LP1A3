@@ -19,7 +19,7 @@ public class Player {
 	}
 
 	public void jogar(){
-		fortalecerTerritorios();
+		//fortalecerTerritorios();
 		switch(PlayerController.opcaoPlayer()) {
 		case 1 : 
 			PlayerController.atacar(this);
@@ -46,13 +46,10 @@ public class Player {
 	
 
 	//TODO: M�todo n�o est� totalmente implementado. Interfer�ncia de interface gr�fica
-	public void fortalecerTerritorios() {
-		int qtdExercitos;
+	public void fortalecerTerritorios(Pais pais, int qtdExercitos) {
 		System.out.println("Voc� possui " + getExercitosLivres() + "para adicionar ao jogo.");
 		while(getExercitosLivres() != 0) {
 			//Seleciona o pa�s que o player quer adicionar e a qtd
-			Pais pais = paisesDominados.get(0);
-			qtdExercitos = 10;
 			if(qtdExercitos > getExercitosLivres()) {
 				System.out.println("Quantidade de ex�rcitos inv�lida.");
 			} else {
