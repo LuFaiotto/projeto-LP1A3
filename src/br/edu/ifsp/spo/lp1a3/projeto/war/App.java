@@ -3,6 +3,7 @@ package br.edu.ifsp.spo.lp1a3.projeto.war;
 
 import java.io.IOException;
 
+import br.edu.ifsp.spo.lp1a3.projeto.war.classes.GameConf;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;;
 
 public class App extends Application{
 	private static Stage stage = null;	
-	public static Partida partida;
+	public static Partida partida = null;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -31,6 +32,7 @@ public class App extends Application{
 		getStage().show();
 	}
 	public static void main(String[] args) {	
+		GameConf.loadMapConf();
 		launch(args);
 	}
 

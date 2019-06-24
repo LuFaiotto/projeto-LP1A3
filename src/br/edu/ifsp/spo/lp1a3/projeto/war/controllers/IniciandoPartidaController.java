@@ -7,6 +7,7 @@ import br.edu.ifsp.spo.lp1a3.projeto.war.App;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Player;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Tabuleiro;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
@@ -37,8 +38,8 @@ public class IniciandoPartidaController {
     private int dice = 0;
     private int pNum = 0;
     ArrayList<Player> players = new ArrayList<>();
- 
-    public void setarGame(ActionEvent event) throws IOException {
+    
+	public void setarGame(ActionEvent event) throws IOException {
     	switch(labelText.getText()){
     	case "Digite a quantidade de lados do dado!":
     		setarDice();
@@ -50,6 +51,7 @@ public class IniciandoPartidaController {
 
     	}
     }
+    
     private void qtdPlayers() {
     	try {
 			if(Integer.parseInt(intext.getText()) >= 2
@@ -58,8 +60,8 @@ public class IniciandoPartidaController {
 				erroMsg.setText("");
 				intext.clear();
 				this.pNum = pNum;
-				setarPlayers();
-				
+				mudarEventBotao();
+				intext.setOnAction(setBt.getOnAction());
 			}	else {
 				erroMsg.setText("Minimo 2 players, máximo 42");
 				intext.clear();
@@ -89,31 +91,45 @@ public class IniciandoPartidaController {
 		}
     }
 
-    public void setarPlayers() throws IOException, InterruptedException { 		
+    public void mudarEventBotao() throws IOException, InterruptedException { 		
     	labelText.setText("Nick player ");
     	setBt.setOnAction((event) -> {
     		this.players.add(new Player(intext.getText()));
     		intext.clear();
-    		System.out.println(players);
-    		System.out.println(pNum);
-  		});
-    	while(true){
-    		wait();
-    		if(this.players.size() < this.pNum) {
-    			partidaStart();
+    		if(this.players.size() == this.pNum){
+    			try {
+					partidaStart();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
     		}
-    	}
-    	
-    	
+  		});	   	
     }
     
-   
-    
     public void partidaStart() throws IOException{
-    	System.out.println(this.players);
-    	System.out.println(this.dice);
-    	/*App.partida = Tabuleiro.iniciarPartida(this.players, this.dice);
-    	Parent root = FXMLLoader.load(getClass().getResource("../PartidaTela.fxml"));
-    	App.changeScene(new Scene(root));*/
+    	try {	
+			App.partida = Tabuleiro.iniciarPartida(getPlayers(), getDice());
+			Parent root = FXMLLoader.load(getClass().getResource("../GameMap.fxml"));
+			App.changeScene(new Scene(root));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     } 
+    
+    public int getDice() {
+		return dice;
+	}
+
+	public void setDice(int dice) {
+		this.dice = dice;
+	}
+
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(ArrayList<Player> players) {
+		this.players = players;
+	}
+
 }
