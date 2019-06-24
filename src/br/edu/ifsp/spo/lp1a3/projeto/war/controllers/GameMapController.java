@@ -35,7 +35,10 @@ public class GameMapController implements Initializable {
 	
 	
 	public void getPais(ActionEvent event) {
-		
+		Button b = (Button)event.getSource();
+		int id;
+		id = Integer.parseInt(b.getId().replaceAll("[^0-9.]", ""));
+		System.out.println(id);
 	}
 	
 	public void rodada() {
@@ -53,7 +56,6 @@ public class GameMapController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.partida = App.partida;
-		System.out.println(partida);
 	}
 
 }
