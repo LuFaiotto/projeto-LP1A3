@@ -35,13 +35,16 @@ public class GameMapController implements Initializable {
 	public  Text msg;
 	  
 	@FXML
-	public  Text time;
+	public  Text modeText;
 
 	@FXML
 	private  Text paisesPlayer = null;
   
 	@FXML
 	private Button brMovimentar;
+	
+	@FXML
+	private Button play;
 
 	@FXML
 	private Button btGuerrilhar;
@@ -58,7 +61,11 @@ public class GameMapController implements Initializable {
 	static Partida partida = null;
 	  
 	Pais paisSelecionado = null;
-	Pais atacar = null;
+	Pais paisSelecionado2 = null;
+	
+	boolean atacar = false;
+	boolean movimentar = false;
+
 	
 	//verifica se o player tem exercito pra possicionar e o obriga a fazer
 	boolean obrigacao;
@@ -89,20 +96,21 @@ public class GameMapController implements Initializable {
 			msg.setText("Fortaleça seus territórios, Camarada!");
 		}
 		else {
+			atualizar();
 			inputPlayer.setDisable(true);
 			setar.setDisable(true);
 			obrigacao = false;
 			
 			btGuerrilhar.setOnAction((event) -> {
 				if(paisSelecionado != null) {
-					msg.setText("Escolha um pais para atacar");
+					modoAtacar();
 				}
 				else msg.setText("Selecione um país, camarada!");
 			});
 			
 			brMovimentar.setOnAction((event) -> {
 				if(paisSelecionado != null) {
-					msg.setText("Escolha um país para mover");
+					modoMovimentar();
 				}
 				else msg.setText("Selecione um país, camarada!");
 			});
@@ -119,31 +127,46 @@ public class GameMapController implements Initializable {
 		Button b = (Button)event.getSource();
 		int id;
 		id = Integer.parseInt(b.getId().replaceAll("[^0-9.]", ""));
-		if(GameConf.mapa.get(id).getPlayer().equals(jogador)) {
-			msg.setText("");
-			paisSelecionado = GameConf.mapa.get(id);
-			paisSelect.setText(paisSelecionado.toString());
-		}	else
+		if(atacar) {
+			if(!GameConf.mapa.get(id).getPlayer().equals(jogador)) {
+				msg.setText("");
+				paisSelecionado2 = GameConf.mapa.get(id);
+				msg.setText(paisSelecionado2.toString());
+				play.setVisible(true);
+				play.setOnAction(setar.getOnAction());
+			}	else
+				msg.setText("É seu camarada, parça");
+		}
+		else if (movimentar) {
+			if(GameConf.mapa.get(id).getPlayer().equals(jogador)) {
+				msg.setText("");
+				paisSelecionado2 = GameConf.mapa.get(id);
+				msg.setText(paisSelecionado2.toString());
+				play.setVisible(true);
+				play.setOnAction(setar.getOnAction());
+			}	else
+				msg.setText("O país não é seu!");
+		}
+		else {	
+			play.setVisible(false);
+			if(GameConf.mapa.get(id).getPlayer().equals(jogador)) {
+				msg.setText("");
+				paisSelecionado = GameConf.mapa.get(id);
+				msg.setText(paisSelecionado.toString());
+			}	else
 			msg.setText("O país não é seu!");
+		}
 	}
 	  
 	public void finalizarJogada() {
-		jogando(partida.getRodada().proximo());
-		paisSelecionado = null;
-		atacar = null;
-		atualizar();
-		acaoDoPlayer();
-
-	}
-	
-	public void guerrilhar() {
-		setar.setDisable(false);
-		inputPlayer.setDisable(false);
-		if(paisSelecionado != null && atacar != null) {
-			while(exercito == 0 && exercito < 0) {
-				msg.setText("Quantidade de exercitos");
-			}
-			paisSelecionado.atacar(atacar, exercito);
+		if(obrigacao) 
+			msg.setText("Você precisa ao menos fortalecer seus territórios");
+		else{
+			jogando(partida.getRodada().proximo());
+			paisSelecionado = null;
+			paisSelecionado2 = null;
+			atualizar();
+			acaoDoPlayer();
 		}
 	}
 	
@@ -154,8 +177,32 @@ public class GameMapController implements Initializable {
 		return paisSelecionado = GameConf.mapa.get(id);
 	}
 	
-	public void jogar () {
-		
+	//Ativa e desativa modo de ataque
+	public void modoAtacar() {
+		if(atacar) {
+			atacar=false;
+			modeText.setText("");
+			setar.setDisable(true);
+		}
+		else {
+			atacar=true;
+			modeText.setText("Modo: atacar");
+			movimentar = false;
+		}
+	}
+	
+	//Ativa e desativa movimentar
+	public void modoMovimentar() {
+		if(movimentar) {
+			movimentar=false;
+			modeText.setText("");
+			setar.setDisable(true);
+		}
+		else {
+			movimentar=true;
+			modeText.setText("Modo: movimentar");
+			atacar = false;
+		}
 	}
 	
 	public void getInt(ActionEvent e) {
@@ -163,13 +210,26 @@ public class GameMapController implements Initializable {
 			if(obrigacao) {
 				obrigarFortalecer();
 			}
-			
+			else if(movimentar) {
+				movimentar();
+			}
+			else if(atacar) {
+				
+			}
 		}	catch(Exception exc) {
 			msg.setText("Digite um número");
 			inputPlayer.clear();
 		}
 	}
 	
+	public void movimentar() {
+		if(Integer.parseInt(inputPlayer.getText()) < paisSelecionado.getQtdExercito()
+				&& Integer.parseInt(inputPlayer.getText()) > 0){
+			paisSelecionado.movimentarExercito(paisSelecionado2,  Integer.parseInt(inputPlayer.getText()));
+		}
+		else
+			msg.setText("Digite quantos exercitos");
+	}
 	public void obrigarFortalecer() {
 		if(paisSelecionado != null) {
 			if(Integer.parseInt(inputPlayer.getText()) <= jogador.getExercitosLivres()) {
@@ -178,6 +238,8 @@ public class GameMapController implements Initializable {
 					msg.setText("Você fortaleceu seu território");
 					exercitoPlayer.setText("" + jogador.getExercitosLivres());
 					paisSelect.setText(paisSelecionado.toString());
+					if(jogador.getExercitosLivres() == 0)
+						acaoDoPlayer();
 			}
 			else
 				msg.setText("Número inválido, camarada");
@@ -206,6 +268,7 @@ public class GameMapController implements Initializable {
 	}
 
 	public void atualizar() {
+		play.setVisible(false);
 		playerName.setText("" +jogador.getNamePlayer());
 		paisesPlayer.setText("" + jogador.getPaisesDominados().size());
 		exercitoPlayer.setText("" + jogador.getExercitosLivres());

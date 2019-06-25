@@ -115,15 +115,11 @@
       <Button fx:id="p11" layoutX="466.0" layoutY="394.0" mnemonicParsing="false" onAction="#getPais" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 90 90 90 90;" />
       <Button fx:id="p13" layoutX="527.0" layoutY="469.0" mnemonicParsing="false" onAction="#getPais" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 90 90 90 90;" />
       <Button fx:id="p33" layoutX="997.0" layoutY="211.0" mnemonicParsing="false" onAction="#getPais" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 90 90 90 90;" />
-      <Text fill="WHITE" layoutX="1150.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo:">
+      <Text fx:id="modeText" fill="WHITE" layoutX="308.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="126.49218749999994">
          <font>
-            <Font size="20.0" />
+            <Font size="23.0" />
          </font>
       </Text>
-      <Text fx:id="time" fill="WHITE" layoutX="1225.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="60">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
+      <Button fx:id="play" layoutX="731.0" layoutY="557.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="116.0" text="Do it!" visible="false" />
    </children>
 </AnchorPane>
