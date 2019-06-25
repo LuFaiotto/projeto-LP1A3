@@ -59,6 +59,9 @@ public class GameMapController implements Initializable {
 	  
 	Pais paisSelecionado = null;
 	Pais atacar = null;
+	
+	//verifica se o player tem exercito pra possicionar e o obriga a fazer
+	boolean obrigacao;
 	  
 	static Player jogador;;
 	  
@@ -73,15 +76,26 @@ public class GameMapController implements Initializable {
 		}
 		else {
 			jogador = p; 
-			acaoDoPlayer();
 		}
 	}
 	 
 	public void acaoDoPlayer() {
 		if(jogador.getExercitosLivres() > 0){
-			msg.setText("Fortaleça seus territórios, Camarada!");
+			obrigacao = true;
 			btGuerrilhar.setOnAction(null);
 			brMovimentar.setOnAction(null);
+			inputPlayer.setDisable(false);
+			setar.setDisable(false);
+			msg.setText("Fortaleça seus territórios, Camarada!");
+		}
+		else {
+			obrigacao = false;
+			btGuerrilhar.setOnAction((event) -> {
+				if(paisSelecionado != null) {
+					msg.setText("Escolha um pais para atacar");
+				}
+				else msg.setText("Selecione um país, camarada!");
+			});
 		}
 	}
 	
@@ -107,7 +121,9 @@ public class GameMapController implements Initializable {
 		jogando(partida.getRodada().proximo());
 		paisSelecionado = null;
 		atacar = null;
-		atualizar();	
+		atualizar();
+		acaoDoPlayer();
+
 	}
 	
 	public void guerrilhar() {
@@ -133,7 +149,19 @@ public class GameMapController implements Initializable {
 	}
 	
 	public void getInt(ActionEvent e) {
-		
+		try {
+			if(Integer.parseInt(inputPlayer.getText()) <= jogador.getExercitosLivres()
+					&& paisSelecionado != null) {
+				int qtd = Integer.parseInt(inputPlayer.getText());
+				if(obrigacao) {
+					jogador.fortalecerTerritorios(paisSelecionado, qtd);
+					msg.setText("Você fortaleu seu território");
+				}
+			}
+		}	catch(Exception exc) {
+			msg.setText("Digite um número");
+			inputPlayer.clear();
+		}
 	}
 	
 	public void fortalecer() {
@@ -159,6 +187,7 @@ public class GameMapController implements Initializable {
 		paisesPlayer.setText("" + jogador.getPaisesDominados().size());
 		exercitoPlayer.setText("" + jogador.getExercitosLivres());
 		msg.setText("");
+		acaoDoPlayer();
 	}
 
 	public void atualizar() {

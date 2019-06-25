@@ -24,35 +24,30 @@
                </font></Text>
             <AnchorPane fx:id="backColor" prefHeight="575.0" prefWidth="299.0">
                <children>
-                  <Text fill="WHITE" layoutX="60.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exércitos livres:">
+                  <Text fill="WHITE" layoutX="6.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exércitos livres:" textAlignment="CENTER" wrappingWidth="284.875">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Text>
-                  <Text fx:id="exercitoPlayer" fill="WHITE" layoutX="142.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                  <Text fx:id="exercitoPlayer" fill="WHITE" layoutX="7.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="284.875">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="47.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Países dominados:">
+                  <Text fill="WHITE" layoutX="35.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Países dominados:" wrappingWidth="224.38818359375">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Text>
-                  <Text fx:id="paisesPlayer" fill="WHITE" layoutX="141.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                  <Text fx:id="paisesPlayer" fill="WHITE" layoutX="142.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="inputPlayer" disable="true" layoutX="75.0" layoutY="528.0" onAction="#getInt" />
-                  <Text fill="WHITE" layoutX="86.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entre com a quantidade" />
-                  <Button fx:id="setar" disable="true" layoutX="231.0" layoutY="528.0" mnemonicParsing="false" onAction="#getInt" text="Setar!" />
-                  <Text fill="WHITE" layoutX="57.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="País Selecionado">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="paisSelect" fill="WHITE" layoutX="6.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="284.875">
+                  <TextField fx:id="inputPlayer" disable="true" layoutX="67.0" layoutY="528.0" onAction="#getInt" />
+                  <Text fill="WHITE" layoutX="78.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entre com a quantidade" />
+                  <Button fx:id="setar" disable="true" layoutX="216.0" layoutY="528.0" mnemonicParsing="false" onAction="#getInt" text="Setar!" />
+                  <Text fx:id="paisSelect" fill="WHITE" layoutX="7.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="284.875">
                      <font>
                         <Font size="27.0" />
                      </font>
