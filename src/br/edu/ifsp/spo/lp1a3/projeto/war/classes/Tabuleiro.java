@@ -1,94 +1,104 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
-import java.util.HashMap;
+import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class Tabuleiro {
-	public Dado dice;
-	public ArrayList<Continente> continentes = new ArrayList<>();
-	public static Map<Integer, Pais> mapa = new HashMap<Integer, Pais>();
-
-
-	//CARREGA TODAS A CONFIGURAÃ‡Ã•ES DO JOGO
-	public void loadMapConf(){
-		continentes.add(new Continente("Amï¿½rica Do Norte", new int [] {1,2,3,4,5,6,7,8,9}));
-		mapa.put(1, new Pais("Alaska", new int [] {2, 3, 37}));
-		mapa.put(2, new Pais("Mackenzie", new int [] {3, 4, 6}));
-		mapa.put(3, new Pais("Vancouver", new int [] {1, 2, 4}));
-		mapa.put(4, new Pais("Ottawa", new int [] {2, 3, 5, 7, 8}));
-		mapa.put(5, new Pais("Labrador", new int [] {4, 6, 8}));
-		mapa.put(6, new Pais("Groelï¿½ndia", new int [] {2, 5, 21}));
-		mapa.put(7, new Pais("Califï¿½rnia", new int [] {3, 4, 8, 9}));
-		mapa.put(8, new Pais("Nova York", new int [] {4, 5, 7, 9}));
-		mapa.put(9, new Pais("Mï¿½xico", new int [] {7, 8, 10}));	
+	public static ArrayList<Continente> continentes = new ArrayList<>();
+	public Tabuleiro() {
 		
-    continentes.add(new Continente("América do Sul", new int [] {10, 11, 12, 13}));
-		mapa.put(10, new Pais("Venezuela", new int []{9, 11, 12, 13}));
-		mapa.put(11, new Pais("Peru", new int []{10, 12, 13}));
-		mapa.put(12, new Pais("Brasil", new int []{10, 11, 13, 16}));
-		mapa.put(13, new Pais("Argentina", new int []{11, 12}));
-
-		continentes.add(new Continente("Ã�frica", new int []{14, 15, 16, 17, 18, 19}));
-		mapa.put(14, new Pais("Madagascar", new int []{15, 19}));
-		mapa.put(15, new Pais("Ã�frica do Sul", new int []{14, 17}));
-		mapa.put(16, new Pais("ArgÃ©lia", new int []{12, 17, 18, 22}));
-		mapa.put(17, new Pais("Congo", new int []{15, 16}));
-		mapa.put(18, new Pais("Egito", new int []{16, 17, 22, 24}));
-		mapa.put(19, new Pais("SudÃ£o", new int []{14, 15, 16, 17, 18}));
-
-		continentes.add(new Continente("Europa", new int []{20, 21, 22, 23, 24, 25, 26}));
-		mapa.put(20, new Pais("Inglaterra", new int []{21, 22, 23, 25} ));
-		mapa.put(21, new Pais("IslÃ¢ndia", new int []{6, 20}));
-		mapa.put(22, new Pais("FranÃ§a", new int []{16, 18, 20, 23, 24}));
-		mapa.put(23, new Pais("Alemanha", new int []{20, 22, 24}));
-		mapa.put(24, new Pais("PolÃ´nia", new int []{18, 22, 23, 26, 27}));
-		mapa.put(25, new Pais("SuÃ©cia", new int []{20, 26}));
-		mapa.put(26, new Pais("Moscou", new int []{24, 25, 27, 28, 29}));
-
-		continentes.add(new Continente("Ã�sia", new int []{27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37}));
-		mapa.put(27, new Pais("Oriente MÃ©dio", new int []{24, 26, 29, 30}));
-		mapa.put(28, new Pais("OMSK", new int []{26, 29, 31, 33, 36}));
-		mapa.put(29, new Pais("Aral", new int []{26, 27, 28, 30, 36}));
-		mapa.put(30, new Pais("Ã�ndia", new int []{27, 29, 34, 36, 39}));
-		mapa.put(31, new Pais("Dudinka", new int []{28, 32, 33, 35}));
-		mapa.put(32, new Pais("Tchita", new int []{31, 33, 35, 36, 37}));
-		mapa.put(33, new Pais("MongÃ³lia", new int []{28, 31, 32, 36}));
-		mapa.put(34, new Pais("VietnÃ£", new int []{30, 36, 40}));
-		mapa.put(35, new Pais("SibÃ©ria", new int []{31, 32, 37}));
-		mapa.put(36, new Pais("China", new int []{28, 29, 30, 32, 33, 34, 37, 38}));
-		mapa.put(37, new Pais("Vladvostok", new int []{1, 32, 33, 35, 38}));
-		mapa.put(38, new Pais("JapÃ£o", new int []{36, 37}));
-
-		continentes.add(new Continente("Oceania", new int []{39, 40, 41, 42}));
-		mapa.put(39, new Pais("Sumatra", new int []{30, 42}));
-		mapa.put(40, new Pais("Borneo", new int []{34, 41, 42}));
-		mapa.put(41, new Pais("Nova GuinÃ©", new int []{40, 42}));
-		mapa.put(42, new Pais("AustrÃ¡lia", new int []{39, 40, 41}));
+	}
+	//Instancia uma partida
+	//Instancia e retorna uma partida
+	public static Partida iniciarPartida(ArrayList<Player> players, int diceSet) {		
+		players = Tabuleiro.definirOrdemJogada(players, diceSet);
+		distribuirTerritorio(players);
+		return (new Partida(players, diceSet));
 	}
 	
-	public Tabuleiro(int diceSet){
-		loadMapConf();
-    }
+	
+	
+	public static void distribuirExercito(ArrayList<Player> players) {
+		for(Player player: players) {
+			int qtdPaisesDominados = player.getPaisesDominados().size();
+			int resultDivisao = qtdPaisesDominados / 2;
+			
+			//No caso do player possuir um território
+			if(resultDivisao == 0) {
+				resultDivisao = 1;
+			}	
+			player.setExercitosLivres(player.getExercitosLivres() + resultDivisao);
+		}
+	}
+	
+	public static ArrayList<Player> definirOrdemJogada(ArrayList<Player> players, int diceSet) {
+		ArrayList<Player> playersOrdem = new ArrayList<>();
+		for(int i = 0, j = players.size(); i < j; i++){
+			if(players.size() > 1){
+				if(Tabuleiro.compareRolagemDados(diceSet) >= 0) {
+					playersOrdem.add(players.get(0));
+					players.remove(0);
+				}	else {
+				playersOrdem.add(players.get(1));
+				players.remove(1);
+				}
+			}	else {
+				playersOrdem.add(players.get(0));
+				players.remove(0);
+			}
+		}
+		return playersOrdem;	
+	}
+	
+	//TODO: Acionar o método posicionar exército da classe Exercito. Verificar se necessário.
+	public static void distribuirTerritorio(ArrayList<Player> players){
+		//ArrayList para embaralhar os países
+		ArrayList<Integer> vetPais = new ArrayList<>();
+		int pQtd = players.size();	
+		//Embaralhando os países
+		for(int i = 1; i <= 42; i++){
+			vetPais.add(i);
+		}
+		Collections.shuffle(vetPais);
+		
+		//Distribuindo territórios
+		if(42 % pQtd == 0) {
+			int flag = 0;
+			for(int p = 0; p < players.size(); p++){
+				for(int j = flag; j < flag + 42/pQtd; j++){
+					players.get(p).setPaisesDominados(GameConf.mapa.get(vetPais.get(j)));
+				}
+				flag = flag + 42/pQtd;
+			}
+		}	else {
+				int flag = 0;
+				for(int p = 0; p < players.size(); p++){
+					for(int j = flag; j < flag + (int)42/pQtd; j++){
+						players.get(p).setPaisesDominados(GameConf.mapa.get(vetPais.get(j)));
+					}
+					flag = flag + 42/pQtd;
+				}
+				for(int i = (int)42/ pQtd; i < 42; i++){
+					GameConf.mapa.get(vetPais.get(i)).setQtdExercito(10);
+					GameConf.mapa.get(vetPais.get(i)).setCor("Neutro");
+				}
+			}
+	}
+	
+	
+	public static String definirCorPlayer() {
+		
+		return null;
+	
+	}
 
-    public String compararRolagem(){
-        Dado dice = new Dado(6);
-        int resultP1 = dice.rolarDado();
-        int resultP2 = dice.rolarDado();
-        System.out.println("Dado 1: " + resultP1 + " Dado 2: " + resultP2);
-        if(resultP1 > resultP2){
-            return "Venceu" + resultP1;
-        }   else if(resultP1 == resultP2){
-            return "Empatou";
-        }   else{
-            return "Perdeu";
-        }
-    }
-    
-    //Versão Luana para o método acima (auxiliar nos métodos da classe Exercito
-    public static int compareRolagemDados(int ladosDado) {
-    	Dado dado = new Dado(ladosDado);
+	public static int compareRolagemDados(int diceSet) {
+    	Dado dado = new Dado(diceSet);
     	int result1 = dado.rolarDado();
     	int result2 = dado.rolarDado();
+    	//TODO IMPLEMENTAR SISTEMAS DE LOG PARA MOSTRAR ROLAGEM DE DADOS NA UI
+    	//	System.out.println("Dado 1: " + result1 + " Dado 2: " + result2);
     	if(result1 > result2) {
     		return 1;
     	} else if(result1 == result2) {
@@ -96,4 +106,26 @@ public class Tabuleiro {
     	}
     	return -1;
     }
+//Validações
+	//TODO: Implementar o método
+	public static void validarVencedor(boolean resultFinal) {
+		if(resultFinal) {
+			System.out.println("Vitória. Parabéns! Um exército seu será alocado no país conquistado.");
+			
+		} else {
+			System.out.println("Derrota. O oponente defendeu o território.");
+		}
+	}
+	
+	//Desabilitar um player quando ele perde todos os territ�rios
+	public static void gameOver(Player player) {
+		if(player.getPaisesDominados().size() == 0) {
+			System.out.println("Game Over para " + player.getNamePlayer());
+			player.setStatusPlayer(false);
+			//return false;
+		}
+		//return true;
+	}
+	
+	
 }

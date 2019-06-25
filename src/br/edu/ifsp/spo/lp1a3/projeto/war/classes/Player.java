@@ -1,35 +1,57 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import br.edu.ifsp.spo.lp1a3.projeto.war.controllers.GameMapController;
+
 
 public class Player {
-	//Deve suportar n jogadores
 	
 	private String namePlayer;
 	private boolean statusPlayer;
-	private HashSet<Player> players = new HashSet<>();
+	private String cor;
+	private int exercitosLivres;
+	private ArrayList<Pais> paisesDominados = new ArrayList<>();
 	
 	public Player(String nome) {
 		setNamePlayer(nome);
 		setStatusPlayer(true);
 	}
 	
-	//Desabilitar um player quando ele perde todos os territórios
-	public void desabilitarPlayer(Player player) {
-		if(!validaPlayer()) {
-			System.out.println("Game Over para " + player.getNamePlayer());
-			players.remove(player);
+	
+	public void adicionarExercito(Pais pais, int qtdExercito) {
+		if(this.equals(pais.getPlayer())) {
+			pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
+			System.out.println(qtdExercito + " adicionados ao paï¿½s " + pais.getNome());
+		} else {
+			System.out.println("Vocï¿½ nï¿½o pode adicionar exï¿½rcito em um paï¿½s de outro player.");
+		}		
+	}
+	
+
+	//TODO: Mï¿½todo nï¿½o estï¿½ totalmente implementado. Interferï¿½ncia de interface grï¿½fica
+	public void fortalecerTerritorios(Pais pais, int qtdExercitos) {
+		System.out.println("Vocï¿½ possui " + getExercitosLivres() + "para adicionar ao jogo.");
+		while(getExercitosLivres() != 0) {
+			//Seleciona o paï¿½s que o player quer adicionar e a qtd
+			if(qtdExercitos > getExercitosLivres()) {
+				System.out.println("Quantidade de exï¿½rcitos invï¿½lida.");
+			} else {
+				adicionarExercito(pais, qtdExercitos);
+				setExercitosLivres(getExercitosLivres()-qtdExercitos);
+			}
 		}
 	}
 	
-	//Verifica se o player possui territórios ligado a ele
-	//TODO: Implementar o método de validação de player
-	public boolean validaPlayer() {
-		//Se possui territórios, return true
-		return false;
-	}
 	
 	//Getters e Setters
+	public String getCor() {
+		return cor;
+	}
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
 	public String getNamePlayer() {
 		return namePlayer;
 	}
@@ -44,15 +66,23 @@ public class Player {
 
 	public void setStatusPlayer(boolean statusPlayer) {
 		this.statusPlayer = statusPlayer;
+	}	
+	public int getExercitosLivres() {
+		return exercitosLivres;
+	}
+	public void setExercitosLivres(int exercitosLivres) {
+		this.exercitosLivres = exercitosLivres;
+	}
+	public void setPaisesDominados(Pais paisDominado) {
+		this.paisesDominados.add(paisDominado);
+		paisDominado.setPlayer(this);
+
+	}
+	public ArrayList<Pais> getPaisesDominados() {
+		return paisesDominados;
 	}
 
-	public HashSet<Player> getPlayers() {
-		return players;
-	}
 
-	public void setPlayers(HashSet<Player> players) {
-		this.players = players;
-	}
 
 	//Overrides
 	@Override
@@ -61,6 +91,11 @@ public class Player {
 		int result = 1;
 		result = prime * result + ((namePlayer == null) ? 0 : namePlayer.hashCode());
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Player: " + namePlayer + ", Exercitos Livres: " + exercitosLivres;
 	}
 
 	@Override
@@ -79,5 +114,8 @@ public class Player {
 			return false;
 		return true;
 	}
-	
+
+
+
+
 }

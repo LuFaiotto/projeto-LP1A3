@@ -1,71 +1,47 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war;
 
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.*;
 
-public class App {
-	
-//	public void iniciarPartida() {
-//		Map<Integer, Pais> mapa = new HashMap<Integer, Pais>();
-//		mapa.put(1, new Pais());
-//	}
+import java.io.IOException;
 
+import br.edu.ifsp.spo.lp1a3.projeto.war.classes.GameConf;
+import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;;
+
+public class App extends Application{
+	private static Stage stage = null;	
+	public static Partida partida = null;
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public static void main(String[] args) {
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		Parent root = FXMLLoader.load(getClass().getResource("AppFx.fxml"));
 		
-//		Dado dadoTeste = new Dado(6);
-//		
-//		System.out.println(dadoTeste.rolarDado(6));
+		primaryStage.setScene(new Scene(root));
+		primaryStage.setTitle("War");
+		setStage(primaryStage);
+		primaryStage.show();
 		
-//		Dado dadoTeste = new Dado(6);
-
-		//dice compare
-		Partida partida = new Partida(4, 6);
-		partida.distribuirTerritorio(4);
-		Tabuleiro tabuleiro = new Tabuleiro(partida);
-		System.out.println(tabuleiro.compararRolagem());
-		int venceu = 0, perdeu = 0, empatou = 0;
-		for(int i = 0; i < 100; i ++){
-
-			if(tabuleiro.compararRolagem().equals("Venceu")){
-				venceu++;
-			}	else if(tabuleiro.compararRolagem().equals("Empatou")) {
-				empatou++;
-			} else {
-				perdeu++;
-			}
-		}
-		System.out.println("ganhou " + venceu);
-		System.out.println("perder " + perdeu);
-		System.out.println("empatou" + empatou);
 	}
+	
+	public static void changeScene(Scene scene) throws IOException{
+		getStage().setScene(scene);
+		getStage().show();
+	}
+	public static void main(String[] args) {	
+		GameConf.loadMapConf();
+		launch(args);
+	}
+
+	public static Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		App.stage = stage;
+	}
+
 }
