@@ -21,18 +21,12 @@ public class Player {
 	
 	
 	public void adicionarExercito(Pais pais, int qtdExercito) {
-		if(this.equals(pais.getPlayer())) {
-			pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
-			System.out.println(qtdExercito + " adicionados ao pa�s " + pais.getNome());
-		} else {
-			System.out.println("Voc� n�o pode adicionar ex�rcito em um pa�s de outro player.");
-		}		
+		pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);	
 	}
 	
 
 	//TODO: M�todo n�o est� totalmente implementado. Interfer�ncia de interface gr�fica
 	public void fortalecerTerritorios(Pais pais, int qtdExercitos) {
-		System.out.println("Voc� possui " + getExercitosLivres() + "para adicionar ao jogo.");
 			if(qtdExercitos > getExercitosLivres()) {
 			} else {
 				adicionarExercito(pais, qtdExercitos);

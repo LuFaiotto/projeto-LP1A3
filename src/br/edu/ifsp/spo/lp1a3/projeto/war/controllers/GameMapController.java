@@ -89,10 +89,20 @@ public class GameMapController implements Initializable {
 			msg.setText("Fortaleça seus territórios, Camarada!");
 		}
 		else {
+			inputPlayer.setDisable(true);
+			setar.setDisable(true);
 			obrigacao = false;
+			
 			btGuerrilhar.setOnAction((event) -> {
 				if(paisSelecionado != null) {
 					msg.setText("Escolha um pais para atacar");
+				}
+				else msg.setText("Selecione um país, camarada!");
+			});
+			
+			brMovimentar.setOnAction((event) -> {
+				if(paisSelecionado != null) {
+					msg.setText("Escolha um país para mover");
 				}
 				else msg.setText("Selecione um país, camarada!");
 			});
@@ -150,28 +160,33 @@ public class GameMapController implements Initializable {
 	
 	public void getInt(ActionEvent e) {
 		try {
-			if(Integer.parseInt(inputPlayer.getText()) <= jogador.getExercitosLivres()
-					&& paisSelecionado != null) {
-				int qtd = Integer.parseInt(inputPlayer.getText());
-				if(obrigacao) {
-					jogador.fortalecerTerritorios(paisSelecionado, qtd);
-					msg.setText("Você fortaleu seu território");
-				}
+			if(obrigacao) {
+				obrigarFortalecer();
 			}
+			
 		}	catch(Exception exc) {
 			msg.setText("Digite um número");
 			inputPlayer.clear();
 		}
 	}
 	
-	public void fortalecer() {
-		
+	public void obrigarFortalecer() {
+		if(paisSelecionado != null) {
+			if(Integer.parseInt(inputPlayer.getText()) <= jogador.getExercitosLivres()) {
+					int qtd = Integer.parseInt(inputPlayer.getText());
+					jogador.fortalecerTerritorios(paisSelecionado, qtd);
+					msg.setText("Você fortaleceu seu território");
+					exercitoPlayer.setText("" + jogador.getExercitosLivres());
+					paisSelect.setText(paisSelecionado.toString());
+			}
+			else
+				msg.setText("Número inválido, camarada");
+		}
+		else {
+			msg.setText("Selecione um país");
+		}
 	}
-	
-	public void initialize() {
-		System.out.println(jogador.getNamePlayer());
-		
-	}
+
 	public void buildScreen() throws IOException{
 		this.partida = App.partida;
 		partida.iniciarRodadas();
