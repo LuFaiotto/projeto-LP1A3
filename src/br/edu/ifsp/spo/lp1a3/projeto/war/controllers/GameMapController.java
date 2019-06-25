@@ -65,11 +65,12 @@ public class GameMapController implements Initializable {
 	  int exercito = 0;
 	  
 	  public void jogando(Player p){
-		  if(p == null)
+		  if(p == null) {
 			  partida.iniciarRodadas();
-		  else
+			  jogando(partida.getRodada().proximo());		  
+		  }
+			  else
 			  jogador = p;
-		  System.out.println(jogador);
 	  }
 	
 	
@@ -122,11 +123,9 @@ public class GameMapController implements Initializable {
 		
 	}
 	public void buildScreen() throws IOException{
-		System.out.println("Segundo a rodar");
 		this.partida = App.partida;
 		partida.iniciarRodadas();
 		jogando(partida.getRodada().proximo());
-		System.out.println(jogador);
 		Parent root = FXMLLoader.load(getClass().getResource("../GameMap.fxml"));
 		Scene scene = new Scene(root);
 		App.changeScene(scene);
@@ -134,7 +133,6 @@ public class GameMapController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("Primeiro a rodar");
 		/*partida.iniciarRodadas();
 		jogando(partida.getRodada().proximo());*/
 		System.out.println(jogador.getNamePlayer());
