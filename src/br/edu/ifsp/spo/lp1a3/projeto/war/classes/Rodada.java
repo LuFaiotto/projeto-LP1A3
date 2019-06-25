@@ -21,7 +21,6 @@ public class Rodada extends Thread {
 	
 	public Player proximo() {
 		if(++index == players.size()) {
-			System.out.println("index " + index);
 		return null;
 		}
 		else

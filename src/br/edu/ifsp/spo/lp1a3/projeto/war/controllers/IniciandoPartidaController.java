@@ -93,9 +93,20 @@ public class IniciandoPartidaController {
 
     public void mudarEventBotao() throws IOException, InterruptedException { 		
     	labelText.setText("Nick player ");
+    	
+    	//LAMBDA FUNCTION PRA MUDAR O EVENTO DO BOTÃO
     	setBt.setOnAction((event) -> {
-    		this.players.add(new Player(intext.getText()));
-    		intext.clear();
+    		try {
+    			if(intext.getText().isBlank() || intext.getText().isEmpty()) {
+    				erroMsg.setText("Está em branco");
+    			}	else {
+    				this.players.add(new Player(intext.getText()));
+            		intext.clear();
+            		erroMsg.setText("");
+    			}
+    		}	catch(Exception e){
+    			
+    		}
     		if(this.players.size() == this.pNum){
     			try {
 					partidaStart();

@@ -78,10 +78,12 @@ public class GameMapController implements Initializable {
 		Button b = (Button)event.getSource();
 		int id;
 		id = Integer.parseInt(b.getId().replaceAll("[^0-9.]", ""));
-		if(GameConf.mapa.get(id).getPlayer().equals(jogador))
+		if(GameConf.mapa.get(id).getPlayer().equals(jogador)) {
+			msg.setText("");
 			paisSelecionado = GameConf.mapa.get(id);
-		else
-			atacar = GameConf.mapa.get(id);
+			paisSelect.setText(paisSelecionado.getNome());
+		}	else
+			msg.setText("O país não é seu!");
 	  }
 	  
 	public void finalizarJogada() {
