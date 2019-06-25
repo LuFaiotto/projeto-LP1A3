@@ -1,13 +1,14 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-import br.edu.ifsp.spo.lp1a3.projeto.war.controllers.GameMapController;
 
 
 public class Rodada extends Thread {
 	private int rodada;
 	private ArrayList<Player> players;
+	int index = -1;
 	
 	public Rodada(ArrayList<Player> players, int rodada) {
 		setRodada(rodada);
@@ -15,17 +16,16 @@ public class Rodada extends Thread {
 	}
 	
 	public void iniciarRodada()  {
-		for(Player player: players) {
-			Tabuleiro.distribuirExercito(players);
-			GameMapController.jogando = player;
-			player.jogar();
-			desabilitarPlayer();
-		}
+		Tabuleiro.distribuirExercito(players);	
 	}
 	
-	public Player quemJoga() {
+	public Player proximo() {
+		if(++index == players.size()) {
+			System.out.println("index " + index);
 		return null;
-		
+		}
+		else
+		return players.get(index);
 	}
 //	public void posicionarExercito(Pais pais, int qtdExercito) {
 //		pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);

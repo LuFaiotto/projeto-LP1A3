@@ -109,8 +109,9 @@ public class IniciandoPartidaController {
     public void partidaStart() throws IOException{
     	try {	
 			App.partida = Tabuleiro.iniciarPartida(getPlayers(), getDice());
-			Parent root = FXMLLoader.load(getClass().getResource("../GameMap.fxml"));
-			App.changeScene(new Scene(root));
+			System.out.println(App.partida);
+			GameMapController gmc = new GameMapController();
+			gmc.buildScreen();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

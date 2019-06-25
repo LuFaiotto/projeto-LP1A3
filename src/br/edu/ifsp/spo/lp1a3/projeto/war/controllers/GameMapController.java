@@ -1,5 +1,6 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -11,7 +12,10 @@ import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -22,19 +26,19 @@ public class GameMapController implements Initializable {
     private Text paisSelect; 
 	
 	  @FXML
-	  private static Text playerName;
+	  private Text playerName = null;
 
 	  @FXML
-	  private static Text exercitoPlayer;
+	  private Text exercitoPlayer = null;
 
 	  @FXML
-	  public static Text msg;
+	  public  Text msg;
 	  
 	  @FXML
-	  public static Text time;
+	  public  Text time;
 
 	  @FXML
-	  private static Text paisesPlayer;
+	  private  Text paisesPlayer = null;
   
 	  @FXML
 	  private Button brMovimentar;
@@ -51,35 +55,36 @@ public class GameMapController implements Initializable {
 	  @FXML
 	  private TextField inputPlayer;
 	
-	  Partida partida = null;
+	  static Partida partida = null;
 	  
 	  Pais paisSelecionado = null;
 	  Pais atacar = null;
 	  
+	  static Player jogador;;
+	  
 	  int exercito = 0;
 	  
+	  public void jogando(Player p){
+		  if(p == null)
+			  partida.iniciarRodadas();
+		  else
+			  jogador = p;
+		  System.out.println(jogador);
+	  }
 	
-	  public static Player jogando = null;
 	
 	  public void getPais(ActionEvent event) {
 		Button b = (Button)event.getSource();
 		int id;
 		id = Integer.parseInt(b.getId().replaceAll("[^0-9.]", ""));
-		if(GameConf.mapa.get(id).getPlayer().equals(jogando))
+		if(GameConf.mapa.get(id).getPlayer().equals(jogador))
 			paisSelecionado = GameConf.mapa.get(id);
 		else
 			atacar = GameConf.mapa.get(id);
 	  }
-	
-	 public static void teste(ActionEvent e) {
-		
-	 }
 	  
 	public void finalizarJogada() {
-		if(proximo(jogando) == null)
-			partida.iniciarRodadas();
-		else
-			jogando = proximo(jogando);
+		jogando(partida.getRodada().proximo());
 	}
 	
 	public void guerrilhar() {
@@ -112,37 +117,35 @@ public class GameMapController implements Initializable {
 		
 	}
 	
-	public static void atualizarTela() {
-		playerName.setText(jogando.getNamePlayer());
-		paisesPlayer.setText("" + jogando.getPaisesDominados().size());
-		exercitoPlayer.setText("" + jogando.getExercitosLivres());
-		msg.setText("");
-	}
-	public void initialize(Player player){
+	public void initialize() {
+		System.out.println(jogador.getNamePlayer());
 		
+	}
+	public void buildScreen() throws IOException{
+		System.out.println("Segundo a rodar");
+		this.partida = App.partida;
+		partida.iniciarRodadas();
+		jogando(partida.getRodada().proximo());
+		System.out.println(jogador);
+		Parent root = FXMLLoader.load(getClass().getResource("../GameMap.fxml"));
+		Scene scene = new Scene(root);
+		App.changeScene(scene);
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.partida = App.partida;
-		System.out.println(partida.getPlayers());
-		System.out.println("1");
-		App.partida.iniciarRodadas();
+		System.out.println("Primeiro a rodar");
+		/*partida.iniciarRodadas();
+		jogando(partida.getRodada().proximo());*/
+		System.out.println(jogador.getNamePlayer());
+		playerName.setText("" +jogador.getNamePlayer());
+		paisesPlayer.setText("" + jogador.getPaisesDominados().size());
+		exercitoPlayer.setText("" + jogador.getExercitosLivres());
+		msg.setText("");
 	}
 
-	public Player proximo(Player player) {
-		for(int i = 0; i < partida.getPlayers().size() - 1 ; i++) {
-			if(partida.getPlayers().get(i).equals(player)) {
-				if(partida.getPlayers().get(i+1) != player)
-					return partida.getPlayers().get(i+1);
-				else
-					return null;
-			}
-		}
-		return null;
-	}
 
-	public static void rodada(ArrayList<Player> players) {
+	/*public static void rodada(ArrayList<Player> players) {
 		jogando = players.get(0);
 		atualizarTela();
 		
@@ -153,6 +156,6 @@ public class GameMapController implements Initializable {
 		System.out.println("2");
 		
 	}
-	
+	*/
 
 }
