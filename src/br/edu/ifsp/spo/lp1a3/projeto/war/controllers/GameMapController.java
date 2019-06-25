@@ -86,6 +86,7 @@ public class GameMapController implements Initializable {
 	  
 	public void finalizarJogada() {
 		jogando(partida.getRodada().proximo());
+		atualizar();
 	}
 	
 	public void guerrilhar() {
@@ -142,18 +143,11 @@ public class GameMapController implements Initializable {
 		msg.setText("");
 	}
 
-
-	/*public static void rodada(ArrayList<Player> players) {
-		jogando = players.get(0);
-		atualizarTela();
-		
+	public void atualizar() {
+		playerName.setText("" +jogador.getNamePlayer());
+		paisesPlayer.setText("" + jogador.getPaisesDominados().size());
+		exercitoPlayer.setText("" + jogador.getExercitosLivres());
+		msg.setText("");
 	}
-
-	public static void jogador(Player player) {
-		System.out.println(jogando);
-		System.out.println("2");
-		
-	}
-	*/
 
 }
