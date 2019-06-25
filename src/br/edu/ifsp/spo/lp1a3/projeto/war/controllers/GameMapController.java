@@ -132,6 +132,8 @@ public class GameMapController implements Initializable {
 				msg.setText("");
 				paisSelecionado2 = GameConf.mapa.get(id);
 				msg.setText(paisSelecionado2.toString());
+				setar.setDisable(false);
+				inputPlayer.setDisable(false);
 				play.setVisible(true);
 				play.setOnAction(setar.getOnAction());
 			}	else
@@ -142,6 +144,8 @@ public class GameMapController implements Initializable {
 				msg.setText("");
 				paisSelecionado2 = GameConf.mapa.get(id);
 				msg.setText(paisSelecionado2.toString());
+				setar.setDisable(false);
+				inputPlayer.setDisable(false);
 				play.setVisible(true);
 				play.setOnAction(setar.getOnAction());
 			}	else
@@ -214,11 +218,19 @@ public class GameMapController implements Initializable {
 				movimentar();
 			}
 			else if(atacar) {
-				
+				atacar();
 			}
 		}	catch(Exception exc) {
 			msg.setText("Digite um número");
 			inputPlayer.clear();
+		}
+	}
+	
+	public void atacar() {
+		if(Integer.parseInt(inputPlayer.getText()) < paisSelecionado.getQtdExercito()
+				&& Integer.parseInt(inputPlayer.getText()) > 0 
+				&& Integer.parseInt(inputPlayer.getText()) <=3) {
+			paisSelecionado.atacar(paisSelecionado2, Integer.parseInt(inputPlayer.getText()));
 		}
 	}
 	
@@ -228,7 +240,7 @@ public class GameMapController implements Initializable {
 			paisSelecionado.movimentarExercito(paisSelecionado2,  Integer.parseInt(inputPlayer.getText()));
 		}
 		else
-			msg.setText("Digite quantos exercitos");
+			msg.setText("Número inválido");
 	}
 	public void obrigarFortalecer() {
 		if(paisSelecionado != null) {
