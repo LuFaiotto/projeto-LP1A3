@@ -120,7 +120,6 @@ public class IniciandoPartidaController {
     public void partidaStart() throws IOException{
     	try {	
 			App.partida = Tabuleiro.iniciarPartida(getPlayers(), getDice());
-			System.out.println(App.partida);
 			GameMapController gmc = new GameMapController();
 			gmc.buildScreen();
 		} catch (IOException e) {

@@ -46,7 +46,7 @@
                   </Text>
                   <TextField fx:id="inputPlayer" disable="true" layoutX="75.0" layoutY="528.0" onAction="#getInt" />
                   <Text fill="WHITE" layoutX="86.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entre com a quantidade" />
-                  <Button fx:id="setar" disable="true" layoutX="231.0" layoutY="528.0" mnemonicParsing="false" onAction="#getInt" text="Button" />
+                  <Button fx:id="setar" disable="true" layoutX="231.0" layoutY="528.0" mnemonicParsing="false" onAction="#getInt" text="Setar!" />
                   <Text fill="WHITE" layoutX="57.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="País Selecionado">
                      <font>
                         <Font size="27.0" />
