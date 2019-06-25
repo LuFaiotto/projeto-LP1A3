@@ -1,10 +1,10 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
-import br.edu.ifsp.spo.lp1a3.projeto.war.App;
 import br.edu.ifsp.spo.lp1a3.projeto.war.controllers.GameMapController;
-import br.edu.ifsp.spo.lp1a3.projeto.war.controllers.PlayerController;
+
 
 public class Player {
 	
@@ -18,13 +18,7 @@ public class Player {
 		setNamePlayer(nome);
 		setStatusPlayer(true);
 	}
-
-	public void jogar(boolean jogando) throws InterruptedException{
-		while(jogando){
-			wait();
-		}
-		return;
-	}
+	
 	
 	public void adicionarExercito(Pais pais, int qtdExercito) {
 		if(this.equals(pais.getPlayer())) {
@@ -120,4 +114,8 @@ public class Player {
 			return false;
 		return true;
 	}
+
+
+
+
 }

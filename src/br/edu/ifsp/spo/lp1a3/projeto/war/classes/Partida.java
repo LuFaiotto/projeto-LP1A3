@@ -16,10 +16,8 @@ public class Partida {
 	
 	//TODO Implementar rodadas
 	public void iniciarRodadas(){
-		while(true) {
-			Rodada rodada = new Rodada(players, ++rodadaNum);
-			rodada.iniciarRodada();
-		}
+		Rodada rodada = new Rodada(players, ++rodadaNum);
+		rodada.iniciarRodada();
 	}
 	
 	

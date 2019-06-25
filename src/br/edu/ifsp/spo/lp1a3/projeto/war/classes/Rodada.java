@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import br.edu.ifsp.spo.lp1a3.projeto.war.controllers.GameMapController;
 
 
-public class Rodada {
+public class Rodada extends Thread {
 	private int rodada;
 	private ArrayList<Player> players;
 	
@@ -14,15 +14,19 @@ public class Rodada {
 		setPlayer(players);
 	}
 	
-	public void iniciarRodada() {
+	public void iniciarRodada()  {
 		for(Player player: players) {
 			Tabuleiro.distribuirExercito(players);
 			GameMapController.jogando = player;
-			player.jogar(true);
+			player.jogar();
 			desabilitarPlayer();
 		}
 	}
 	
+	public Player quemJoga() {
+		return null;
+		
+	}
 //	public void posicionarExercito(Pais pais, int qtdExercito) {
 //		pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
 //	}
