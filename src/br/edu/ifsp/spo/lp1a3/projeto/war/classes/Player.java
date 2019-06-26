@@ -17,6 +17,7 @@ public class Player {
 	public Player(String nome) {
 		setNamePlayer(nome);
 		setStatusPlayer(true);
+		this.cor = Cor.getCor();
 	}
 	
 	

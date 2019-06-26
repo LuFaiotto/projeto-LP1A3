@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class GameMapController implements Initializable {
@@ -303,7 +304,7 @@ public class GameMapController implements Initializable {
 		exercitoPlayer.setText("" + jogador.getExercitosLivres());
 		msg.setText("");
 		if(paisSelecionado != null)
-			paisSelect.setText("");
+			paisSelect.setText("" +paisSelecionado.toString());
 		
 	}
 
