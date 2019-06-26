@@ -21,7 +21,7 @@
          <children>
             <ButtonBar layoutX="668.0" layoutY="714.0" prefHeight="72.0" prefWidth="598.0">
               <buttons>
-                  <TextField fx:id="intext" accessibleHelp="Entre 4 e 100, meu camarada!" />
+                  <TextField fx:id="intext" accessibleHelp="Entre 4 e 100, meu camarada!" onAction="#setarGame" />
                 <Button fx:id="setBt" mnemonicParsing="false" onAction="#setarGame" prefHeight="25.0" prefWidth="350.0" text="Set!" />
                   <Label contentDisplay="CENTER" prefHeight="43.0" prefWidth="133.0" textAlignment="CENTER" />
               </buttons>

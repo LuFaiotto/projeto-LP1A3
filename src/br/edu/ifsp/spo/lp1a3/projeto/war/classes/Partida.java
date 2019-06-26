@@ -5,7 +5,10 @@ import java.util.ArrayList;
 public class Partida {
 	public int playersQtd;
 	private Dado dice;
-	private int rodadaNum = 0; 
+	private int rodadaNum = 0;
+	private Rodada rodada = null;
+
+
 	private ArrayList<Player> players = new ArrayList<>();
 	
 	public Partida(ArrayList<Player> players, int diceset) {
@@ -16,10 +19,8 @@ public class Partida {
 	
 	//TODO Implementar rodadas
 	public void iniciarRodadas(){
-		while(true) {
-			Rodada rodada = new Rodada(players, ++rodadaNum);
-			rodada.iniciarRodada();
-		}
+		this.rodada = new Rodada(players, ++rodadaNum);
+		rodada.iniciarRodada();
 	}
 	
 	
@@ -45,6 +46,9 @@ public class Partida {
 
 	public void setDice(Dado dice) {
 		this.dice = dice;
+	}
+	public Rodada getRodada() {
+		return rodada;
 	}
 
 //OVERRIDES

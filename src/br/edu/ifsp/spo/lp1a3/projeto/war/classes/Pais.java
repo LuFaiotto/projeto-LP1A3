@@ -42,6 +42,8 @@ public class Pais {
 				//Valida se o atacado ainda possui exército
 				if(atacado.getQtdExercito() == 0) {
 					i = qtdExercito;
+					atacado.setPlayer(this.getPlayer());
+					atacado.setQtdExercito(1);
 					resultadoFinal = true;
 					Tabuleiro.gameOver(atacado.getPlayer());
 				}
@@ -135,7 +137,7 @@ public class Pais {
 //OVERRIDES
 	@Override
 	public String toString() {
-		return "Pais " + this.getNome() + " Exercitos " + getQtdExercito();	
+		return this.getNome() + ", Exercitos: " + getQtdExercito();	
 	}
 	
 	@Override

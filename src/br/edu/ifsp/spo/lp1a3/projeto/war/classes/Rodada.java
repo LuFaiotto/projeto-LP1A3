@@ -1,25 +1,31 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
-public class Rodada {
+
+public class Rodada extends Thread {
 	private int rodada;
 	private ArrayList<Player> players;
+	int index = -1;
 	
 	public Rodada(ArrayList<Player> players, int rodada) {
 		setRodada(rodada);
 		setPlayer(players);
 	}
 	
-	public void iniciarRodada() {
-		for(Player player: players) {
-			Tabuleiro.distribuirExercito(players);
-			player.jogar();
-			desabilitarPlayer();
-		}
+	public void iniciarRodada()  {
+		Tabuleiro.distribuirExercito(players);	
 	}
 	
+	public Player proximo() {
+		if(++index == players.size()) {
+		return null;
+		}
+		else
+		return players.get(index);
+	}
 //	public void posicionarExercito(Pais pais, int qtdExercito) {
 //		pais.setQtdExercito(pais.getQtdExercito() + qtdExercito);
 //	}

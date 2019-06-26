@@ -97,7 +97,8 @@ public class Tabuleiro {
     	Dado dado = new Dado(diceSet);
     	int result1 = dado.rolarDado();
     	int result2 = dado.rolarDado();
-    	System.out.println("Dado 1: " + result1 + " Dado 2: " + result2);
+    	//TODO IMPLEMENTAR SISTEMAS DE LOG PARA MOSTRAR ROLAGEM DE DADOS NA UI
+    	//	System.out.println("Dado 1: " + result1 + " Dado 2: " + result2);
     	if(result1 > result2) {
     		return 1;
     	} else if(result1 == result2) {
