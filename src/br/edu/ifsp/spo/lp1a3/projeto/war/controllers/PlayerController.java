@@ -1,26 +1,46 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.controllers;
 
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Player;
-import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Tabuleiro;
-import java.util.Scanner;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 
-public class PlayerController {
-	public static void atacar(Player p) {
-		p.getPaisesDominados().get(1).atacar(p.getPaisesDominados().get(1).getPaisesConexoes().get(1), 3);
+public class PlayerController implements Initializable {
+	@FXML
+    private Text msg;
+
+    @FXML
+    private Button fechar;
+	static Stage stage = new Stage();
+	static String a = "";
+	public void mensagem(String msg){
+		try {
+			a = msg;
+			Parent root = FXMLLoader.load(getClass().getResource("../Warning.fxml"));
+			stage.setTitle("Mensagem");
+			stage.setScene(new Scene(root));
+			stage.show();
+		}	catch(Exception exc) {
+			exc.printStackTrace();
+		}
 	}
-
-	public static int opcaoPlayer() {
-		Scanner input = new Scanner(System.in);
-		int op;
-		System.out.println("Escolha uma opção:");
-		System.out.println("1. Para atacar.");
-		System.out.println("2. Para movimentar tropas.");
-		System.out.println("3. Para finalizar a rodada.");
-		op = input.nextInt();
-		input.nextLine();
-		return op;
+	@Override
+	public void initialize(URL location, ResourceBundle resources){
+		msg.setText(a);
 	}
+	
+	   @FXML
+	    void close(ActionEvent event) {
+		   stage.close();
+	    }
 	
 }

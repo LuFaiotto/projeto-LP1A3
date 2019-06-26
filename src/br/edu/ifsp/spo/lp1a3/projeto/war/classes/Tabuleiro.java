@@ -1,5 +1,8 @@
 package br.edu.ifsp.spo.lp1a3.projeto.war.classes;
+import br.edu.ifsp.spo.lp1a3.projeto.war.App;
 import br.edu.ifsp.spo.lp1a3.projeto.war.classes.Partida;
+import br.edu.ifsp.spo.lp1a3.projeto.war.controllers.PlayerController;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -85,13 +88,7 @@ public class Tabuleiro {
 				}
 			}
 	}
-	
-	
-	public static String definirCorPlayer() {
-		
-		return null;
-	
-	}
+
 
 	public static int compareRolagemDados(int diceSet) {
     	Dado dado = new Dado(diceSet);
@@ -110,10 +107,13 @@ public class Tabuleiro {
 	//TODO: Implementar o método
 	public static void validarVencedor(boolean resultFinal) {
 		if(resultFinal) {
+			PlayerController pc = new PlayerController();
+			pc.mensagem("Vitória. Parabéns! Um exército seu será alocado no país conquistado.");
 			System.out.println("Vitória. Parabéns! Um exército seu será alocado no país conquistado.");
 			
 		} else {
-			System.out.println("Derrota. O oponente defendeu o território.");
+			PlayerController pc = new PlayerController();
+			pc.mensagem("Derrota. O oponente defendeu o território.");
 		}
 	}
 	
@@ -122,9 +122,9 @@ public class Tabuleiro {
 		if(player.getPaisesDominados().size() == 0) {
 			System.out.println("Game Over para " + player.getNamePlayer());
 			player.setStatusPlayer(false);
-			//return false;
 		}
-		//return true;
+		if(App.partida.getPlayers().size() == 1)
+			System.out.println("Parabéns " +App.partida.getPlayers().get(0).getNamePlayer() +", Você Ganhou o game!");
 	}
 	
 	
