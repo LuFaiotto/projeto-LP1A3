@@ -51,6 +51,7 @@ public class Pais {
 			
 			Tabuleiro.validarVencedor(resultadoFinal);
 		}
+			
 	}
 	
 	public String movimentarExercito(Pais paisFuturo, int qtdExercito) {
