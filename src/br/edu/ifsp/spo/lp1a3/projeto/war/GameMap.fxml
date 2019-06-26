@@ -20,41 +20,51 @@
          <children>
             <Text fx:id="playerName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player" textAlignment="CENTER" wrappingWidth="294.13671875">
                <font>
-                  <Font size="25.0" />
+                  <Font name="System Bold" size="25.0" />
                </font></Text>
             <AnchorPane fx:id="backColor" prefHeight="575.0" prefWidth="299.0">
                <children>
                   <Text fill="WHITE" layoutX="6.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exércitos livres:" textAlignment="CENTER" wrappingWidth="284.875">
                      <font>
-                        <Font size="27.0" />
+                        <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="exercitoPlayer" fill="WHITE" layoutX="7.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="284.875">
+                  <Text fx:id="exercitoPlayer" fill="WHITE" layoutX="7.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="284.875">
                      <font>
-                        <Font size="27.0" />
+                        <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="35.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Países dominados:" wrappingWidth="224.38818359375">
+                  <Text fill="WHITE" layoutX="36.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Países dominados:" textAlignment="CENTER" wrappingWidth="224.38818359375">
                      <font>
-                        <Font size="27.0" />
+                        <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="paisesPlayer" fill="WHITE" layoutX="142.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                  <Text fx:id="paisesPlayer" fill="WHITE" layoutX="144.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                      <font>
-                        <Font size="27.0" />
+                        <Font size="20.0" />
                      </font>
                   </Text>
                   <TextField fx:id="inputPlayer" disable="true" layoutX="67.0" layoutY="528.0" onAction="#getInt" />
                   <Text fill="WHITE" layoutX="78.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entre com a quantidade" />
                   <Button fx:id="setar" disable="true" layoutX="216.0" layoutY="528.0" mnemonicParsing="false" onAction="#getInt" text="Setar!" />
-                  <Text fx:id="paisSelect" fill="WHITE" layoutX="7.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="284.875">
+                  <Text fx:id="paisSelect" fill="WHITE" layoutX="7.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="284.875">
                      <font>
-                        <Font size="27.0" />
+                        <Font size="20.0" />
                      </font>
                   </Text>
                   <Text fx:id="msg" fill="WHITE" layoutX="6.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="284.875">
                      <font>
                         <Font size="27.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="paisSelect2" fill="WHITE" layoutX="6.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="284.875">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo país selecionado" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
                      </font>
                   </Text>
                </children>

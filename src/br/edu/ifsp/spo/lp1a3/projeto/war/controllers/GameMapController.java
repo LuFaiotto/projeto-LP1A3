@@ -26,6 +26,10 @@ public class GameMapController implements Initializable {
     private Text paisSelect; 
 	
 	@FXML
+    private Text paisSelect2; 
+
+	
+	@FXML
 	private Text playerName = null;
 
 	@FXML
@@ -78,10 +82,14 @@ public class GameMapController implements Initializable {
 	
 	public void jogando(Player p){
 		if(p == null) {
+			atacar = false;
+			movimentar = false;
 			partida.iniciarRodadas();
 			jogando(partida.getRodada().proximo());		  
 		}
 		else {
+			atacar = false;
+			movimentar = false;
 			jogador = p; 
 		}
 	}
@@ -131,7 +139,7 @@ public class GameMapController implements Initializable {
 			if(!GameConf.mapa.get(id).getPlayer().equals(jogador)) {
 				msg.setText("");
 				paisSelecionado2 = GameConf.mapa.get(id);
-				msg.setText(paisSelecionado2.toString());
+				paisSelect2.setText(""+paisSelecionado2.toString());
 				setar.setDisable(false);
 				inputPlayer.setDisable(false);
 				play.setVisible(true);
@@ -140,25 +148,33 @@ public class GameMapController implements Initializable {
 				msg.setText("É seu camarada, parça");
 		}
 		else if (movimentar) {
-			if(GameConf.mapa.get(id).getPlayer().equals(jogador)) {
+			if(GameConf.mapa.get(id).getPlayer().equals(jogador) 
+					&& GameConf.mapa.get(id) != paisSelecionado) {
 				msg.setText("");
 				paisSelecionado2 = GameConf.mapa.get(id);
-				msg.setText(paisSelecionado2.toString());
+				paisSelect2.setText(paisSelecionado2.toString());
 				setar.setDisable(false);
 				inputPlayer.setDisable(false);
 				play.setVisible(true);
 				play.setOnAction(setar.getOnAction());
 			}	else
-				msg.setText("O país não é seu!");
+				msg.setText("País invalido");
 		}
 		else {	
 			play.setVisible(false);
 			if(GameConf.mapa.get(id).getPlayer().equals(jogador)) {
 				msg.setText("");
 				paisSelecionado = GameConf.mapa.get(id);
-				msg.setText(paisSelecionado.toString());
-			}	else
-			msg.setText("O país não é seu!");
+				paisSelect.setText(paisSelecionado.toString());
+			}	else {
+				if(obrigacao) {
+					msg.setText("País inimigo");
+				}
+				else {
+					paisSelecionado2 = GameConf.mapa.get(id);
+					paisSelect2.setText("Inimigo: "+paisSelecionado2.toString());
+				}
+			}
 		}
 	}
 	  
@@ -248,6 +264,7 @@ public class GameMapController implements Initializable {
 					int qtd = Integer.parseInt(inputPlayer.getText());
 					jogador.fortalecerTerritorios(paisSelecionado, qtd);
 					msg.setText("Você fortaleceu seu território");
+					inputPlayer.clear();
 					exercitoPlayer.setText("" + jogador.getExercitosLivres());
 					paisSelect.setText(paisSelecionado.toString());
 					if(jogador.getExercitosLivres() == 0)
@@ -285,7 +302,9 @@ public class GameMapController implements Initializable {
 		paisesPlayer.setText("" + jogador.getPaisesDominados().size());
 		exercitoPlayer.setText("" + jogador.getExercitosLivres());
 		msg.setText("");
-		paisSelect.setText("");
+		if(paisSelecionado != null)
+			paisSelect.setText("");
+		
 	}
 
 }
